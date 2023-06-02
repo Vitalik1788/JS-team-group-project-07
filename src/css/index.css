@@ -39,28 +39,25 @@ button {
 /* / dropdawn */
 
 .main-container {
+  margin-left: auto;
+  margin-right: auto;
   padding-left: 20px;
   padding-right: 20px;
+
+  width: 320px;
 }
 
-@media screen and (min-width: 320px) {
-  .main-container {
-    width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
 @media screen and (min-width: 768px) {
   .main-container {
-    width: 768px;
     padding-left: 32px;
     padding-right: 32px;
+
+    width: 768px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .main-container {
     width: 1280px;
-    padding-left: 32px;
-    padding-right: 32px;
   }
 }
