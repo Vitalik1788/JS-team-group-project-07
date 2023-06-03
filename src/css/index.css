@@ -64,3 +64,37 @@ button {
     padding-right: 32px;
   }
 }
+
+.upcoming__img-container {
+  background-size: cover;
+  /* background-position: -68px; */
+  background-position: center;
+
+  width: 280px;
+  height: 402px;
+
+  border-radius: 5px;
+}
+
+.upcoming__poster {
+  /* display: block; */
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  .upcoming__img-container {
+    /* background-position: unset; */
+    width: 704px;
+    height: 400px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .upcoming__img-container {
+    width: 805px;
+    height: 458px;
+  }
+}
