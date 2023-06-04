@@ -18,6 +18,7 @@ body {
   font-size: 16px;
   line-height: calc(19 / 16);
 
+  color: #111111;
   text-transform: uppercase;
 }
 
@@ -28,6 +29,36 @@ body {
   justify-content: center;
 }
 
+.upcoming-card__header {
+  position: relative;
+}
+
+.upcoming-card__layout {
+  outline: 1px solid red;
+  display: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 280px;
+  height: 402px;
+  margin-bottom: 24px;
+  margin-right: 20px;
+  margin-left: 20px;
+
+  background-image: linear-gradient(
+    307.47deg,
+    rgba(0, 0, 0, 0.2) 23.85%,
+    rgba(0, 0, 0, 0) 47.27%
+  );
+
+  background-size: cover;
+  background-position: center;
+
+  border-radius: 5px;
+}
+
 .upcoming-card__figure {
   width: 280px;
   height: 402px;
@@ -36,7 +67,6 @@ body {
   margin-left: 20px;
 
   background-size: cover;
-  /* background-position: -68px; */
   background-position: center;
 
   border-radius: 5px;
@@ -56,7 +86,74 @@ body {
   padding-left: 20px;
 }
 
+.metrics-list__main-container {
+  margin-bottom: 20px;
+}
+
+.upcoming-card__title {
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: calc(23 / 20);
+  color: #111111;
+}
+
+.metrics-list {
+  /* display: grid;
+  grid-template-columns: repeat(1, 1fr); */
+}
+
+.metrics-list__item {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.metrics-list__item:not(:last-child) {
+  margin-bottom: 12px;
+}
+
+.vote-wrapper {
+  padding: 1px 8px;
+
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  color: #282828;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+.vote-wrapper:first-child {
+  margin-right: 4px;
+}
+.vote-wrapper:last-child {
+  margin-left: 4px;
+}
+
+.metrics-text {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.metrics-text:first-child {
+  color: #111111;
+}
+
+.metrics-text--date {
+  color: #f87719;
+}
+
+.metrics-text--vote {
+  color: #f8f8f8;
+}
+
+.upcoming-card__subtitle {
+  margin-bottom: 16px;
+  font-weight: 500;
+  color: #111111;
+}
+
 .upcoming-card__text {
+  margin-bottom: 20px;
   font-weight: 400;
   font-size: 14px;
   line-height: 143%;
@@ -68,6 +165,7 @@ body {
     line-height: calc(28 / 24);
   }
 
+  .upcoming-card__layout,
   .upcoming-card__figure {
     /* background-position: unset; */
     width: 704px;
@@ -81,7 +179,7 @@ body {
     font-size: 28px;
     line-height: calc(33 / 28);
   }
-
+  .upcoming-card__layout,
   .upcoming-card__figure {
     width: 805px;
     height: 458px;

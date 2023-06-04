@@ -1,8 +1,27 @@
 export function careateUpcomingMarkup(film) {
-  const { backdrop_path, poster_path, title, release_date } = film;
+  const {
+    backdrop_path,
+    poster_path,
+    title,
+    release_date,
+    popularity,
+    vote_count,
+    vote_average,
+    genre_ids,
+  } = film;
 
   const transformedDate = release_date.replaceAll('-', '.');
+  const roundedPopularity = roundToTen(popularity);
+  const trimedGenres = trimGenres(['comedy', 'action', 'thriller']);
 
+  function trimGenres(genres) {
+    if (genres.length > 2) {
+      return `${genres.slice(0, 2).join(', ')}, ...`;
+    }
+    return `${genres.join(', ')}`;
+  }
+
+  //
   const fragment = document.createDocumentFragment();
 
   const log = document.querySelector('.upcoming-card');
@@ -12,57 +31,58 @@ export function careateUpcomingMarkup(film) {
   console.log(mediaList);
   // log.textContent += ` ${mediaList.media.mediaText}`;
 
+  // style='
+  //               background-image:
+  //                 linear-gradient(307.47deg, rgba(0, 0, 0, 0.2) 23.85%,
+  //                   rgba(0, 0, 0, 0) 47.27%),
+  //                 url(https://image.tmdb.org/t/p/original${backdrop_path})'
+
   //
-  return `          
-          <div
-            class='upcoming-card__figure'
-            style='
-              background-image:
-                linear-gradient(307.47deg, rgba(0, 0, 0, 0.2) 23.85%,
-                  rgba(0, 0, 0, 0) 47.27%),
-                url(https://image.tmdb.org/t/p/original${backdrop_path})'
-            >
+  return `
+  
+        <div class='upcoming-card__header'>
+          <div class='upcoming-card__layout'></div>
+          <div class='upcoming-card__figure'>
+            <img
+              src="https://image.tmdb.org/t/p/original${backdrop_path}"
+              alt="${title}"
+              loading='lazy'
+              class='upcoming-card__img'
+              > 
           </div>
+        </div>
 
           <div class='upcoming-card__body'>
+            <h3 class="upcoming-card__title">${title}</h3>
 
-            <h3 class="modal-film-title" id="modal-film-title">${title}</h3>
-            <ul class="list modal-film-info-list">
-              <li class="modal-film-info-item">
-                <p class="modal-film-info-label">Release date</p>
-                <p class="modal-film-info-desc" id="modal-film-popularity">${transformedDate}</p>
-              </li>
-              <li class="modal-film-info-item">
-                <p class="modal-film-info-label">Vote / Votes</p>
-                <p class="modal-film-info-desc">
-                  <span
-                    class="desc-voted desc-vote-average"
-                    id="modal-film-vote-average"
-                    >7.3</span
-                  >
-                  /
-                  <span class="desc-voted desc-votes-count" id="modal-film-vote-count"
-                    >1260</span
-                  >
-                </p>
-              </li>
-              <li class="modal-film-info-item">
-                <p class="modal-film-info-label">Popularity</p>
-                <p class="modal-film-info-desc" id="modal-film-popularity">100.2</p>
-              </li>
-              <li class="modal-film-info-item">
-                <p class="modal-film-info-label">Genre</p>
-                <p
-                  class="modal-film-info-desc film-info__desc--normal-text"
-                  id="modal-film-genre"
-                >
-                  Western
-                </p>
-              </li>
-            </ul> 
-            <h4 class="modal-film-info-label">ABOUT</h4>
-            <div class="upcoming-card__text container-film-descr">
-              <p class="film__desc film__description" id="modal-film-description">
+            <div class='metrics-list__main-container'>
+                <ul class="list metrics-list">
+                  <li class="metrics-list__item modal-film-info-item">
+                    <p class="metrics-text">Release date</p>
+                    <p class="metrics-text metrics-text--date">${transformedDate}</p>
+                  </li>
+                  <li class="metrics-list__item modal-film-info-item">
+                    <p class="metrics-text">Vote / Votes</p>
+                    <p class="metrics-text metrics-text--vote">
+                      <span class="vote-wrapper">${vote_average}</span>
+                      /
+                      <span class="vote-wrapper">${vote_count}</span>
+                    </p>
+                  </li>
+                  <li class="metrics-list__item modal-film-info-item">
+                    <p class="metrics-text">Popularity</p>
+                    <p class="metrics-text">${roundedPopularity}</p>
+                  </li>
+                  <li class="metrics-list__item modal-film-info-item">
+                    <p class="metrics-text">Genre</p>
+                    <p class="metrics-text film-info__desc--normal-text">
+                      ${trimedGenres}
+                    </p>
+                  </li>
+                </ul>
+            </div>
+            <h4 class="upcoming-card__subtitle metrics-text">ABOUT</h4>
+              <p class="upcoming-card__text" >
                 Four of the West’s most infamous outlaws assemble to steal a huge
                 stash of gold from the most corrupt settlement of the gold rush towns.
                 But not all goes to plan one is killed and the other three escapes
@@ -72,11 +92,10 @@ export function careateUpcomingMarkup(film) {
                 as they realise the bags of gold are filled with lead... they’ve been
                 double crossed – but by who and how?
               </p>
-            </div>
             <button class="btn--film btn_watched watched_send" type="button">Add to my library</button>
+          </div>`;
+}
 
-          </div>
-
-
-          `;
+function roundToTen(number) {
+  return Math.floor(number * 10) / 10;
 }

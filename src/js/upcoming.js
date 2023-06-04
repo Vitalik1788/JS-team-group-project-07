@@ -12,11 +12,9 @@ window.addEventListener('DOMContentLoaded', handleUpcoming);
 async function handleUpcoming() {
   try {
     const upcomingMovies = await getUpcomingMovies();
-    console.log(upcomingMovies);
-
+    // console.log(upcomingMovies);
     const randomMovie = getRandomItem(upcomingMovies);
     console.log(randomMovie);
-
     const markup = careateUpcomingMarkup(randomMovie);
     updateUpcoming(markup);
     handlePosterImg(randomMovie);
@@ -49,7 +47,9 @@ function handlePosterImg({ poster_path, title }) {
   // mediaWidth.onchange(() => console.log('change media'));
   // console.log(mediaWidth);
 
-  if (imgIsPresent && !mediaWidth.matches) clearElement(imgContainerEl);
+  if (imgIsPresent && !mediaWidth.matches) {
+    clearElement(imgContainerEl);
+  }
 
   if (imgIsPresent) return;
 
@@ -96,7 +96,7 @@ const upcomingMoviesApi = axios.create({
 
 async function getUpcomingMovies() {
   const response = await upcomingMoviesApi.get();
-  console.log(response);
+  // console.log(response);
   return response.data.results;
 }
 
