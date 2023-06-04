@@ -12,6 +12,8 @@ export function careateUpcomingMarkup(film) {
 
   const transformedDate = release_date.replaceAll('-', '.');
   const roundedPopularity = roundToTen(popularity);
+  const imgPath = window.screen.width < 768 ? poster_path : backdrop_path;
+
   const trimedGenres = trimGenres(['comedy', 'action', 'thriller']);
 
   function trimGenres(genres) {
@@ -38,13 +40,14 @@ export function careateUpcomingMarkup(film) {
   //                 url(https://image.tmdb.org/t/p/original${backdrop_path})'
 
   //
+
+  // <div class='upcoming-card__header'>
+
   return `
-  
-        <div class='upcoming-card__header'>
+        <div class='upcoming-card__figure'>
           <div class='upcoming-card__layout'></div>
-          <div class='upcoming-card__figure'>
             <img
-              src="https://image.tmdb.org/t/p/original${backdrop_path}"
+              src="https://image.tmdb.org/t/p/original${imgPath}"
               alt="${title}"
               loading='lazy'
               class='upcoming-card__img'

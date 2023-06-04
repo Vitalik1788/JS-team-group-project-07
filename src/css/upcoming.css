@@ -34,8 +34,9 @@ body {
 }
 
 .upcoming-card__layout {
-  outline: 1px solid red;
-  display: none;
+  /* outline: 1px solid red; */
+  /* background: aquamarine; */
+  /* display: none; */
 
   position: absolute;
   top: 0;
@@ -43,9 +44,9 @@ body {
 
   width: 280px;
   height: 402px;
-  margin-bottom: 24px;
+  /* margin-bottom: 24px;
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 20px; */
 
   background-image: linear-gradient(
     307.47deg,
@@ -53,32 +54,41 @@ body {
     rgba(0, 0, 0, 0) 47.27%
   );
 
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
 
   border-radius: 5px;
 }
 
 .upcoming-card__figure {
+  position: relative;
   width: 280px;
   height: 402px;
   margin-bottom: 24px;
-  margin-right: 20px;
-  margin-left: 20px;
+  /* margin-right: 20px;
+  margin-left: 20px; */
 
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
 
   border-radius: 5px;
 }
 
-.upcoming-card__poster {
+.upcoming-card__img {
   /* display: block; */
   height: 100%;
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
 }
+
+/* .upcoming-card__poster {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+} */
 
 .upcoming-card__body {
   /* display: flex; */

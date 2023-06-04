@@ -17,14 +17,16 @@ async function handleUpcoming() {
     console.log(randomMovie);
     const markup = careateUpcomingMarkup(randomMovie);
     updateUpcoming(markup);
-    handlePosterImg(randomMovie);
+    // handleUpcomingImg(randomMovie);
 
     //
     // const imgContainerEl = document.querySelector('.upcoming__img-container');
-    window.addEventListener(
-      'resize',
-      debounce(() => handlePosterImg(randomMovie), 200)
+    const debouncedImgHandler = debounce(
+      () => handleUpcomingImg(randomMovie),
+      200
     );
+
+    window.addEventListener('resize', debouncedImgHandler);
 
     //
   } catch (error) {
@@ -36,38 +38,52 @@ async function handleUpcoming() {
   }
 }
 
-function handlePosterImg({ poster_path, title }) {
-  const imgContainerEl = document.querySelector('.upcoming-card__figure');
-  if (!imgContainerEl) return console.log('no upcoming section');
+function handleUpcomingImg({ poster_path, backdrop_path, title }) {
+  // const imgContainerEl = document.querySelector('.upcoming-card__figure');
+  // if (!imgContainerEl) return console.log('no upcoming section');
 
-  const imgIsPresent = imgContainerEl.firstElementChild?.nodeName === 'IMG';
-  console.log(imgIsPresent);
+  // const imgIsPresent = imgContainerEl.firstElementChild?.nodeName === 'IMG';
+  // console.log(imgIsPresent);
 
   const mediaWidth = window.matchMedia('(max-width: 767px)');
   // mediaWidth.onchange(() => console.log('change media'));
   // console.log(mediaWidth);
 
-  if (imgIsPresent && !mediaWidth.matches) {
-    clearElement(imgContainerEl);
+  const img = document.querySelector('.upcoming-card__img');
+  if (!img) return console.log('no upcoming section');
+
+  const posterLink = `https://image.tmdb.org/t/p/original${poster_path}`;
+  const backdropLink = `https://image.tmdb.org/t/p/original${backdrop_path}`;
+
+  if (window.screen.width < 768 && img.src !== posterLink) {
+    return (img.src = posterLink);
   }
 
-  if (imgIsPresent) return;
-
-  if (mediaWidth.matches) {
-    const img = document.createElement('img');
-
-    const link = poster_path
-      ? `https://image.tmdb.org/t/p/original${poster_path}`
-      : defaultImg;
-
-    img.src = link;
-    img.alt = title;
-    img.loading = 'lazy';
-    img.classList.add('upcoming-card__poster');
-
-    console.log(img);
-    imgContainerEl.append(img);
+  if (window.screen.width >= 768 && img.src !== backdropLink) {
+    return (img.src = backdropLink);
   }
+
+  // if (imgIsPresent && !mediaWidth.matches) {
+  //   clearElement(imgContainerEl);
+  // }
+
+  // if (imgIsPresent) return;
+
+  // if (mediaWidth.matches) {
+  //   const img = document.createElement('img');
+
+  //   const link = poster_path
+  //     ? `https://image.tmdb.org/t/p/original${poster_path}`
+  //     : defaultImg;
+
+  //   img.src = link;
+  //   img.alt = title;
+  //   img.loading = 'lazy';
+  //   img.classList.add('upcoming-card__poster');
+
+  //   console.log(img);
+  //   imgContainerEl.append(img);
+  // }
 }
 
 function checkMedia(url) {
