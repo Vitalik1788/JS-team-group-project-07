@@ -1,9 +1,9 @@
 import axios from 'axios';
 import debounce from 'lodash.debounce';
 // import { API_KEY } from '../fetch/api_key';
-import { API_BAERER } from '../fetch/api_key';
+import { API_BAERER } from '../../fetch/api_key';
 import { careateUpcomingMarkup } from './create-upcoming-markup';
-import defaultImg from '../images/logo.png';
+// import defaultImg from '../images/logo.png';
 
 const upcomingEl = document.querySelector('.upcoming-card');
 
@@ -14,13 +14,11 @@ async function handleUpcoming() {
     const upcomingMovies = await getUpcomingMovies();
     // console.log(upcomingMovies);
     const randomMovie = getRandomItem(upcomingMovies);
-    console.log(randomMovie);
+    // console.log(randomMovie);
     const markup = careateUpcomingMarkup(randomMovie);
     updateUpcoming(markup);
     // handleUpcomingImg(randomMovie);
 
-    //
-    // const imgContainerEl = document.querySelector('.upcoming__img-container');
     const debouncedImgHandler = debounce(
       () => handleUpcomingImg(randomMovie),
       200
@@ -96,10 +94,6 @@ function getRandomItem(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function clearElement(elem) {
-  elem.innerHTML = '';
-}
-
 function updateUpcoming(markup = '') {
   upcomingEl.innerHTML = markup;
 }
@@ -114,9 +108,4 @@ async function getUpcomingMovies() {
   const response = await upcomingMoviesApi.get();
   // console.log(response);
   return response.data.results;
-}
-
-async function getOriginalimages(params) {
-  //
-  'https://image.tmdb.org/t/p/original/${film.backdrop_path})';
 }

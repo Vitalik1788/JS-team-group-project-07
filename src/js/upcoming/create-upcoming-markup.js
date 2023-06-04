@@ -30,28 +30,18 @@ export function careateUpcomingMarkup(film) {
   const myRules =
     document.styleSheets[document.styleSheets.length - 1].cssRules;
   const mediaList = myRules[0]; // a CSSMediaRule representing the media query.
-  console.log(mediaList);
+  // console.log(mediaList);
   // log.textContent += ` ${mediaList.media.mediaText}`;
-
-  // style='
-  //               background-image:
-  //                 linear-gradient(307.47deg, rgba(0, 0, 0, 0.2) 23.85%,
-  //                   rgba(0, 0, 0, 0) 47.27%),
-  //                 url(https://image.tmdb.org/t/p/original${backdrop_path})'
-
-  //
-
-  // <div class='upcoming-card__header'>
 
   return `
         <div class='upcoming-card__figure'>
           <div class='upcoming-card__layout'></div>
-            <img
-              src="https://image.tmdb.org/t/p/original${imgPath}"
-              alt="${title}"
-              loading='lazy'
-              class='upcoming-card__img'
-              > 
+          <img
+            src="https://image.tmdb.org/t/p/original${imgPath}"
+            alt="${title}"
+            loading='lazy'
+            class='upcoming-card__img'
+          > 
           </div>
         </div>
 
@@ -60,11 +50,11 @@ export function careateUpcomingMarkup(film) {
 
             <div class='metrics-list__main-container'>
                 <ul class="list metrics-list">
-                  <li class="metrics-list__item modal-film-info-item">
+                  <li class="metrics-list__item">
                     <p class="metrics-text">Release date</p>
                     <p class="metrics-text metrics-text--date">${transformedDate}</p>
                   </li>
-                  <li class="metrics-list__item modal-film-info-item">
+                  <li class="metrics-list__item">
                     <p class="metrics-text">Vote / Votes</p>
                     <p class="metrics-text metrics-text--vote">
                       <span class="vote-wrapper">${vote_average}</span>
@@ -72,13 +62,13 @@ export function careateUpcomingMarkup(film) {
                       <span class="vote-wrapper">${vote_count}</span>
                     </p>
                   </li>
-                  <li class="metrics-list__item modal-film-info-item">
+                  <li class="metrics-list__item">
                     <p class="metrics-text">Popularity</p>
                     <p class="metrics-text">${roundedPopularity}</p>
                   </li>
-                  <li class="metrics-list__item modal-film-info-item">
+                  <li class="metrics-list__item">
                     <p class="metrics-text">Genre</p>
-                    <p class="metrics-text film-info__desc--normal-text">
+                    <p class="metrics-text">
                       ${trimedGenres}
                     </p>
                   </li>
@@ -95,7 +85,7 @@ export function careateUpcomingMarkup(film) {
                 as they realise the bags of gold are filled with lead... they’ve been
                 double crossed – but by who and how?
               </p>
-            <button class="btn--film btn_watched watched_send" type="button">Add to my library</button>
+            <button class="btn" type="button">Add to my library</button>
           </div>`;
 }
 
