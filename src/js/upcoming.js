@@ -2,8 +2,10 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 // import { API_KEY } from '../fetch/api_key';
 import { API_BAERER } from '../fetch/api_key';
+import { careateUpcomingMarkup } from './create-upcoming-markup';
+import defaultImg from '../images/logo.png';
 
-const upcomingEl = document.querySelector('.upcoming');
+const upcomingEl = document.querySelector('.upcoming-card');
 
 window.addEventListener('DOMContentLoaded', handleUpcoming);
 
@@ -36,35 +38,8 @@ async function handleUpcoming() {
   }
 }
 
-function careateUpcomingMarkup(film) {
-  const { backdrop_path, poster_path, title } = film;
-
-  const fragment = document.createDocumentFragment();
-
-  try {
-    //
-  } catch (error) {
-    console.log(error);
-  }
-
-  //
-  return `
-          <h3>${title}</h3>
-          <div
-            class='upcoming__img-container'
-            style='
-              background-image: linear-gradient(307.47deg, rgba(0, 0, 0, 0.2) 23.85%,
-                rgba(0, 0, 0, 0) 47.27%),
-                url(https://image.tmdb.org/t/p/original${backdrop_path});
-              '
-
-            >
-          </div>
-          `;
-}
-
 function handlePosterImg({ poster_path, title }) {
-  const imgContainerEl = document.querySelector('.upcoming__img-container');
+  const imgContainerEl = document.querySelector('.upcoming-card__figure');
   if (!imgContainerEl) return console.log('no upcoming section');
 
   const imgIsPresent = imgContainerEl.firstElementChild?.nodeName === 'IMG';
@@ -81,9 +56,14 @@ function handlePosterImg({ poster_path, title }) {
   if (mediaWidth.matches) {
     const img = document.createElement('img');
 
-    img.src = `https://image.tmdb.org/t/p/original${poster_path}`;
+    const link = poster_path
+      ? `https://image.tmdb.org/t/p/original${poster_path}`
+      : defaultImg;
+
+    img.src = link;
     img.alt = title;
-    img.classList.add('upcoming__poster');
+    img.loading = 'lazy';
+    img.classList.add('upcoming-card__poster');
 
     console.log(img);
     imgContainerEl.append(img);
