@@ -1,7 +1,8 @@
 import MovieDetailProviver from './movieDetailProvider.js';
+import { API_KEY } from '../fetch/api_key';
 
-const KEY_API = 'dd027d4f0ede6cde1462c11a8aff31fd';
-const movieDetailProviver = new MovieDetailProviver(KEY_API);
+const movieDetailProviver = new MovieDetailProviver(API_KEY);
+
 const refs = {
   body: document.querySelector('body'),
   modal: document.querySelector('[data-modal]'),
@@ -14,18 +15,16 @@ const refs = {
   genre: document.querySelector('#modal-film-genre'),
   description: document.querySelector('#modal-film-description'),
   modalOpenBtn: document.querySelector('#open-modal'),
+  modalAddOrRemoveBtn: document.querySelector('#modal-film-add-or-rm'),
 };
-refs.modalOpenBtn.addEventListener('click', () => openModal(5));
 
 refs.modalCloseBtn.addEventListener('click', hide);
-document.addEventListener('keydown', event =>
-  event.key === 'Escape' ? hide() : null
-);
-window.addEventListener('click', event =>
-  event.target === refs.modal ? hide() : null
-);
+refs.modalAddOrRemoveBtn.addEventListener('click', addOrRemoveToLibrary);
+document.addEventListener('keydown', event => event.key === 'Escape' ? hide() : null);
+window.addEventListener('click', event => event.target === refs.modal ? hide() : null);
 
-function openModal(movieId) {
+//use this method to open a modal.
+function openModalAboutFilm(movieId) {
   movieDetailProviver
     .getMovieDetails(movieId)
     .then(response => {
@@ -36,12 +35,10 @@ function openModal(movieId) {
       refs.voteAverage.textContent = `${Number(movie.vote_average.toFixed(1))}`;
       refs.voteCount.textContent = `${movie.vote_count}`;
       refs.popularity.textContent = `${Number(movie.popularity.toFixed(1))}`;
-      refs.genre.textContent = `${movie.genres
-        .map(genre => genre.name)
-        .join(', ')}`;
+      refs.genre.textContent = `${movie.genres.map(genre => genre.name).join(', ')}`;
       refs.description.textContent = `${movie.overview}`;
 
-      updateState();
+      determinateBtnState();
       show();
     })
     .catch(error => {
@@ -49,26 +46,28 @@ function openModal(movieId) {
     });
 }
 
+//only internal.
 function show() {
-  refs.modal.classList.remove('is-hidden');
+  refs.modal.classList.remove('modal-film-is-hidden');
   refs.body.classList.add('body--modal-open');
 }
 
 function hide() {
-  refs.modal.classList.add('is-hidden');
+  refs.modal.classList.add('modal-film-is-hidden');
   refs.body.classList.remove('body--modal-open');
 }
 
-function addToLibrary() {
-
-    updateState();
+//TODO: Remove the placeholder when adding a class for managing the movie library.
+var libraryState = false;
+function addOrRemoveToLibrary() {
+  libraryState = !libraryState;
+  determinateBtnState();
 }
 
-function removeFromLibrary() {
-
-    updateState();
-}
-
-function updateState() {
-
+function determinateBtnState() {
+  if (libraryState) {
+    refs.modalAddOrRemoveBtn.textContent = "Add to my library";
+  } else {
+    refs.modalAddOrRemoveBtn.textContent = "Remove from my library";
+  }
 }
