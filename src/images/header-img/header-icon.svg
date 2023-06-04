@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <symbol id="icon-moon" viewBox="0 0 32 32">
+      <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.133" d="M2.189 16.585c.515 7.14 6.772 12.948 14.261 13.267 5.283.222 10.008-2.163 12.843-5.92 1.174-1.539.544-2.565-1.417-2.218-.959.166-1.947.236-2.978.194-7.002-.277-12.729-5.947-12.757-12.643a11.998 11.998 0 0 1 1.074-5.06c.773-1.719-.157-2.537-1.947-1.802-5.67 2.315-9.55 7.847-9.078 14.182z" style="stroke:var(--color1, #fff)"/>
+    </symbol>
+    <symbol id="icon-sun" viewBox="0 0 32 32">
+      <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 26c5.523 0 10-4.477 10-10S21.523 6 16 6 6 10.477 6 16s4.477 10 10 10z" style="stroke:var(--color1, #fff)"/>
+      <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m25.814 6.186.182-.182M6.004 25.996l.182-.182M16 2.112V2m0 28v-.112M2.112 16H2m28 0h-.112M6.186 6.186l-.182-.182m19.992 19.992-.182-.182" style="stroke:var(--color1, #fff)"/>
+    </symbol>
+    <symbol id="icon-btn-ball" viewBox="0 0 32 32">
+<path fill="#fff" style="fill: var(--color1, #fff)" d="M4.708 4.708c6.26-6.26 16.391-6.28 22.627-0.043s6.217 16.367-0.043 22.627c-6.26 6.26-16.391 6.28-22.627 0.043s-6.217-16.367 0.043-22.627z"></path>
+<path fill="none" stroke="#000" style="stroke: var(--color2, #000)" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.1333" d="M25.204 6.354c5.118 5.47 5.099 14.358-0.043 19.853"></path>
+</symbol>
+<symbol id="icon-btn-ball" viewBox="0 0 32 32">
+<path fill="#fff" style="fill: var(--color1, #fff)" d="M4.708 4.708c6.26-6.26 16.391-6.28 22.627-0.043s6.217 16.367-0.043 22.627c-6.26 6.26-16.391 6.28-22.627 0.043s-6.217-16.367 0.043-22.627z"></path>
+<path fill="none" stroke="#000" style="stroke: var(--color2, #000)" stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.1333" d="M25.204 6.354c5.118 5.47 5.099 14.358-0.043 19.853"></path>
+</symbol>
+  </defs>
+</svg>
