@@ -14,7 +14,7 @@ async function handleUpcoming() {
     const upcomingMovies = await getUpcomingMovies();
     // console.log(upcomingMovies);
     const randomMovie = getRandomItem(upcomingMovies);
-    // console.log(randomMovie);
+    console.log(randomMovie);
     const markup = careateUpcomingMarkup(randomMovie);
     updateUpcoming(markup);
     // handleUpcomingImg(randomMovie);
