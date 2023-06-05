@@ -22,9 +22,9 @@
 }
 @media screen and (min-width: 768px) {
   .main-container {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+    width: 734px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
 @media screen and (min-width: 1280px) {

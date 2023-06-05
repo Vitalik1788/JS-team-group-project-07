@@ -19,25 +19,40 @@
       </button>
     </form>
 
-    <div class="error-information is-hidden">
-      <p class="information">
-        OOPS... We are very sorry! We don’t have any results matching your
-        search.
-      </p>
-    </div>
+    <div class="error-container"></div>
 
     <ul class="movie-list" id="movieList"></ul>
-    <br /><br /><br /><br /><br />
 
-    <button class="next-button arrow-button" type="button">
-      <svg class="arrow-right-icon">
-        <use href="./images/sprite-catalog.svg#icon-arrow"></use>
-      </svg>
-    </button>
-    <button class="prev-button arrow-button" type="button">
-      <svg class="arrow-left-icon">
-        <use href="./images/sprite-catalog.svg#icon-arrow"></use>
-      </svg>
-    </button>
+    <div class="pagination-wrapper">
+      <button class="prev-button arrow-button" type="button">
+        <svg class="arrow-left-icon">
+          <use href="./images/sprite.svg#icon-arrow"></use>
+        </svg>
+      </button>
+      <ul class="pagination-pages-list">
+        <li class="pagination-item">
+          <button type="button" class="pagination-button">01</button>
+        </li>
+        <!-- <li class="pagination-item">
+          <button type="button" class="pagination-button">02</button>
+        </li>
+        <li class="pagination-item">
+          <button type="button" class="pagination-button">03</button>
+        </li>
+
+        <li class="pagination-item">
+          <button type="button">...</button>
+        </li> -->
+
+        <!-- <li class="pagination-item">
+          <button type="button" class="pagination-button">24</button>
+        </li> -->
+      </ul>
+      <button class="next-button arrow-button" type="button">
+        <svg class="arrow-right-icon">
+          <use href="./images/sprite.svg#icon-arrow"></use>
+        </svg>
+      </button>
+    </div>
   </div>
 </section>
