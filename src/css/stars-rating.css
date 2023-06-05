@@ -24,8 +24,6 @@
   width: calc(18px * 5 + 5px * 4);
   margin-block: 0;
   padding-left: 0;
-
-  background-color: #3418b2;
 }
 
 .stars-list__item {
