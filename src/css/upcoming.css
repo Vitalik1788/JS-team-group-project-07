@@ -5,9 +5,12 @@ body {
 .upcoming-container {
   padding-top: 20px;
   padding-bottom: 20px;
+  padding-left: 0;
+  padding-right: 0;
 
   /* color: #F8F8F8; */
   color: #282828;
+  font-family: 'Roboto';
 }
 
 .upcoming__title {
@@ -136,10 +139,31 @@ body {
   line-height: 143%;
 }
 
+.btn {
+  padding: 12px 24px;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  font-family: 'Roboto';
+  color: #111111;
+  background-color: transparent;
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 74px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  color: #f87719;
+  background-color: #fff;
+  background-image: unset;
+  border: 1px solid #f87719;
+}
+
 @media screen and (min-width: 768px) {
   .upcoming-container {
-    padding-left: 0;
-    padding-right: 0;
+    /* padding-left: 0;
+    padding-right: 0; */
   }
 
   .upcoming__title {
@@ -193,13 +217,6 @@ body {
     line-height: calc(33 / 28);
   }
 
-  .upcoming-card__body {
-    padding-right: 0;
-    padding-left: 16px;
-    max-width: 390px;
-    max-height: 458px;
-  }
-
   .upcoming-card {
     flex-direction: row;
     align-items: start;
@@ -215,6 +232,11 @@ body {
   .upcoming-card__body {
     display: flex;
     flex-direction: column;
+
+    padding-right: 0;
+    padding-left: 16px;
+    max-width: 390px;
+    max-height: 458px;
   }
 
   .upcoming-card__title {
@@ -233,11 +255,17 @@ body {
   }
 
   .upcoming-card__text {
-    max-height: 152px;
-    overflow: scroll;
+    /* max-height: 152px; */
+    overflow-y: auto;
+  }
+
+  .upcoming-card__text::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
   }
 
   .btn {
     align-self: start;
+    /* justify-self: flex-end; */
   }
 }
