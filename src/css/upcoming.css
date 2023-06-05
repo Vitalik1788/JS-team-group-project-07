@@ -255,6 +255,7 @@ body {
 
   .upcoming-card__layout,
   .upcoming-card__figure {
+    margin-right: 16px;
     margin-bottom: 0;
     width: 805px;
     height: 458px;
@@ -265,7 +266,7 @@ body {
     flex-direction: column;
 
     padding-right: 0;
-    padding-left: 16px;
+    padding-left: 0;
     max-width: 390px;
     max-height: 458px;
   }
