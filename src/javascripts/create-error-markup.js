@@ -1,4 +1,4 @@
-import { refs } from './refs';
+import { refs } from '../JS/catalog/components/refs';
 
 let errorMarkupCreated = false;
 
@@ -21,4 +21,4 @@ export const createErrorMarkup = () => {
   refs.paginationContainer.classList.add('is-hidden');
 
   errorMarkupCreated = true;
-}
+};

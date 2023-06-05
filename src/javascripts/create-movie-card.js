@@ -1,5 +1,5 @@
-import { refs } from './refs';
-import defaultImg from '../../../images/default.jpg';
+import { refs } from '../JS/catalog/components/refs';
+import defaultImg from '../images/default.jpg';
 
 export function createMovieCard(data) {
   const markup = data.results
