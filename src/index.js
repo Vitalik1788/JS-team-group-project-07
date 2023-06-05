@@ -1,1 +1,1 @@
-import './JS/upcoming/upcoming';
+import './upcoming/upcoming';

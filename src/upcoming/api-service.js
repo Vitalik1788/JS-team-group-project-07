@@ -1,6 +1,6 @@
 import axios from 'axios';
 // import { API_KEY } from '../fetch/api_key';
-import { API_BAERER } from '../../fetch/api_key';
+import { API_BAERER } from '../fetch/api_key';
 
 const upcomingMoviesApi = axios.create({
   baseURL: 'https://api.themoviedb.org/3/movie/upcoming',
