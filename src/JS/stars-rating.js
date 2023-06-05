@@ -1,4 +1,6 @@
-// ! Call function starsRating(ratingValue) to connect the Script. Transmit rating value as an argument.
+/* У своєму скрипті, що рендерить інфу з TMDB API імпортуйте та викличте функцію starsRating(ratingValue) для підключення скрипту з зірковим рейтингом. У якості аргумента передайте значення рейтингу. 
+	Import and call the function starsRating(ratingValue) to connect the Script. Transmit rating value as an argument.
+*/
 
 const starsContainer = document.querySelector('.stars-container');
 const mask = document.querySelector('#star-fill--partly');
