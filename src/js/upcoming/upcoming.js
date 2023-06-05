@@ -12,7 +12,6 @@ window.addEventListener('DOMContentLoaded', handleUpcoming);
 async function handleUpcoming() {
   try {
     const upcomingMovies = await getUpcomingMovies();
-    // console.log(upcomingMovies);
     const randomMovie = getRandomItem(upcomingMovies);
     console.log(randomMovie);
     const markup = careateUpcomingMarkup(randomMovie);

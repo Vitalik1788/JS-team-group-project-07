@@ -11,6 +11,7 @@ export function careateUpcomingMarkup(film) {
     vote_average,
     genre_ids,
     overview,
+    id,
   } = film;
 
   const transformedDate = release_date.replaceAll('-', '.');
@@ -69,16 +70,12 @@ export function careateUpcomingMarkup(film) {
               </li>
               <li class="metrics-list__item">
                 <p class="metrics-text">Genre</p>
-                <p class="metrics-text">
-                  ${trimedGenres}
-                </p>
+                <p class="metrics-text">${trimedGenres}</p>
               </li>
             </ul>
           </div>
           <h4 class="upcoming-card__subtitle metrics-text">ABOUT</h4>
-            <p class="upcoming-card__text" >
-            ${overview}
-            </p>
-          <button class="btn" type="button">Add to my library</button>
+            <p class="upcoming-card__text">${overview}</p>
+          <button class="btn" type="button" data-id=${id} data-add>Add to my library</button>
         </div>`;
 }
