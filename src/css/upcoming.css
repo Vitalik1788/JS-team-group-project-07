@@ -1,3 +1,12 @@
+:root {
+  --accent-color: #f87719;
+  --background-dark-color: #111111;
+  --secondary-black-color: #282828;
+  --grey-color: #b7b7b7;
+  --primary-text-color: #fff;
+  --secondary-text-color: #f8f8f8;
+}
+
 body {
   margin: 0;
 }
@@ -7,9 +16,11 @@ body {
   padding-bottom: 20px;
   padding-left: 0;
   padding-right: 0;
+  min-height: 757px;
 
-  /* color: #F8F8F8; */
-  color: #282828;
+  /* color: var(--secondary-black-color); */
+  color: var(--secondary-text-color);
+  background-color: var(--secondary-black-color);
   font-family: 'Roboto';
 }
 
@@ -21,7 +32,8 @@ body {
   font-size: 16px;
   line-height: calc(19 / 16);
 
-  color: #111111;
+  /* color: var(--background-dark-color); */
+  color: var(--primary-text-color);
   text-transform: uppercase;
 }
 
@@ -80,7 +92,8 @@ body {
   font-weight: 500;
   font-size: 20px;
   line-height: calc(23 / 20);
-  color: #111111;
+  /* color: var(--background-dark-color); */
+  color: var(--primary-text-color);
 }
 
 .metrics-list__item {
@@ -97,8 +110,10 @@ body {
 
   font-size: 14px;
   line-height: calc(16 / 14);
-  color: #282828;
-  background-color: #f8f8f8;
+  /* color: var(--secondary-black-color); */
+  color: var(--background-dark-color);
+  /* background-color: var(--secondary-text-color); */
+  background-color: var(--primary-text-color);
   border-radius: 5px;
 }
 
@@ -112,24 +127,28 @@ body {
 .metrics-text {
   font-size: 16px;
   line-height: 19px;
+  color: var(--primary-text-color);
 }
 
 .metrics-text:first-child {
-  color: #111111;
+  /* color: var(--background-dark-color); */
+  color: var(--grey-color);
 }
 
 .metrics-text--date {
-  color: #f87719;
+  color: var(--accent-color);
 }
 
 .metrics-text--vote {
-  color: #f8f8f8;
+  color: var(--secondary-text-color);
+  /* color: var(--background-dark-color); */
 }
 
 .upcoming-card__subtitle {
   margin-bottom: 16px;
   font-weight: 500;
-  color: #111111;
+  /* color: var(--background-dark-color); */
+  color: var(--grey-color);
 }
 
 .upcoming-card__text {
@@ -147,10 +166,11 @@ body {
   font-family: 'Roboto';
   font-weight: 500;
 
-  color: #111111;
-  background-color: #f87719;
+  color: var(--background-dark-color);
+  background-color: var(--accent-color);
   background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-  border: 1px solid #fff;
+  /* border: 1px solid var(--primary-text-color); */
+  border: 1px solid var(--primary-text-color);
   border-radius: 74px;
 
   cursor: pointer;
@@ -158,16 +178,15 @@ body {
 }
 
 .btn:hover {
-  color: #f87719;
-  background-color: #fff;
+  color: var(--accent-color);
+  background-color: var(--primary-text-color);
   background-image: unset;
-  border-color: #f87719;
+  border-color: var(--accent-color);
 }
 
 @media screen and (min-width: 768px) {
   .upcoming-container {
-    /* padding-left: 0;
-    padding-right: 0; */
+    min-height: 757px;
   }
 
   .upcoming__title {
@@ -213,6 +232,7 @@ body {
   .upcoming-container {
     padding-top: 30px;
     padding-bottom: 30px;
+    min-height: 518px;
   }
 
   .upcoming__title {
