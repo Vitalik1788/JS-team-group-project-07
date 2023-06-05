@@ -1,0 +1,43 @@
+<section class="section-catalog">
+  <div class="main-container">
+    <form class="search-form" id="movieSearchForm">
+      <input
+        type="text"
+        id="movieInput"
+        class="search-input"
+        placeholder="Search"
+      />
+      <button type="button" class="cancel-button" aria-label="Clear input area">
+        <svg class="cancel-icon">
+          <use href="./images/sprite-catalog.svg#icon-cancel"></use>
+        </svg>
+      </button>
+      <button type="submit" class="search-button" aria-label="Search button">
+        <svg class="search-icon">
+          <use href="./images/sprite-catalog.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <div class="error-information is-hidden">
+      <p class="information">
+        OOPS... We are very sorry! We don’t have any results matching your
+        search.
+      </p>
+    </div>
+
+    <ul class="movie-list" id="movieList"></ul>
+    <br /><br /><br /><br /><br />
+
+    <button class="next-button arrow-button" type="button">
+      <svg class="arrow-right-icon">
+        <use href="./images/sprite-catalog.svg#icon-arrow"></use>
+      </svg>
+    </button>
+    <button class="prev-button arrow-button" type="button">
+      <svg class="arrow-left-icon">
+        <use href="./images/sprite-catalog.svg#icon-arrow"></use>
+      </svg>
+    </button>
+  </div>
+</section>

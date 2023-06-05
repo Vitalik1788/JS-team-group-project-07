@@ -65,8 +65,8 @@ button {
 }
 @media screen and (min-width: 1280px) {
   .main-container {
-    width: 1280px;
-    padding-left: 32px;
-    padding-right: 32px;
+    width: 1247px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 }
