@@ -1,15 +1,14 @@
-.main-container {
-  padding-left: 20px;
-  padding-right: 20px;
-}
+/* .main-container {
+  padding-left: 10px;
+  padding-right: 10px;
+} */
 
 /*HERO*/
 .hero-container {
   /*delete margin*/
   /* margin-top: 25px; */
 
-  background-color: rgb(0, 0, 0);
-
+  background-color: #111111;
   background-size: cover;
   background-position: 25%;
   background-repeat: no-repeat;
@@ -18,8 +17,13 @@
 }
 
 .hero-container-bg {
-  background-image: linear-gradient(to right, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0) 50%),
+  background-image: linear-gradient(to right, #111111 20%, #111111 50%),
     url(../images/default-bgimage.jpg);
+}
+
+.css-library-hero-container {
+  background-image: linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%),
+    url(../images/library-image-background.jpg);
 }
 
 .hero-info-wrap {
@@ -77,6 +81,12 @@
   /* Safari and Chrome */
 }
 
+.css-library-hero-overview {
+  margin-top: 0;
+  height: auto;
+  width: 249px;
+}
+
 .hero-btn-wrap {
   padding-top: 20px;
   display: flex;
@@ -85,31 +95,29 @@
 
 .css-btn-trailer {
 display: flex;
-flex-direction: row;
-align-items: flex-start;
+font-size: 16px;
 padding: 12px 24px;
-gap: 10px;
 background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
 border-radius: 74px; 
 }
 
 .css-bnt-info {
-  display: flex;
-flex-direction: row;
-align-items: flex-start;
+display: flex;
+font-size: 16px;
 padding: 12px 24px;
-gap: 10px;
 border: 1px solid #FFFFFF;
 border-radius: 74px;
 background: black;
 color: #FFFFFF;
 }
 
+
+
 /*----HERO END------*/
 
 @media screen and (min-width: 320px) {
   .main-container {
-    width: 320px;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -117,14 +125,14 @@ color: #FFFFFF;
 
 @media screen and (min-width: 768px) {
   .main-container {
-    width: 768px;
-    padding-left: 32px;
-    padding-right: 32px;
+    width: 100vw;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   .hero-container {
     background-position: 180px;
-    background-color: rgb(0, 0, 0);
+    background-color:#111111;
     height: 372px;
   }
 
@@ -134,26 +142,56 @@ color: #FFFFFF;
   }
 
   .hero-film-overview {
+    width: 300px;
+  }
+
+  .css-library-hero-info-wrap {
+    padding-top: 62px;
+    padding-left: 32px;
     width: 357px;
+  }
+
+  .css-library-hero-title {
+    width: 357px;
+    font-size: 44px;
+    line-height: 52px;
+  }
+  .hero-film-overview {
+    width: 295px;
+  }
+
+  .css-library-hero-overview {
+    width: 327px;
   }
 
 }
 
 @media screen and (min-width: 1280px) {
   .main-container {
-    width: 1280px;
+    width: 100vw;
     padding-left: 32px;
     padding-right: 32px;
   }
 
   .hero-container {
-    background-color: rgb(0, 0, 0);
+    background-color: #111111;
     height: 660px;
   }
 
   .hero-info-wrap {
-    padding-left: 134px;
-    padding-top: 178px;
+    padding-left: 135px;
+    padding-top: 118px;
+  }
+
+  .hero-film-title {
+    width: 600px;
+    font-size: 64px;
+    line-height: 75px;
+  }
+
+  .css-library-hero-info-wrap {
+    padding-top: 169px;
+    padding-left: 117px;
   }
 
   .hero-film-overview {
@@ -163,4 +201,18 @@ color: #FFFFFF;
     font-size: 16px;
     line-height: 19px;
   }
+  .css-library-hero-title {
+    width: 464px;
+    margin-bottom: 16px;
+    font-size: 64px;
+    line-height: 75px;
+  }
+
+  .css-library-hero-overview {
+    margin-top: 0;
+    height: auto;
+    width: 464px;
+  }
 }
+
+
