@@ -1,5 +1,6 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
-@import './header.css'; 
+@import './stars-rating.css';
+@import './header.css';
 @import './hero.css';
 @import './weekly-trands.css';
 @import './footer.css';

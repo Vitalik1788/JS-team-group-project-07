@@ -1,0 +1,39 @@
+.star-template--hidden {
+  width: 0;
+  height: 0;
+}
+
+.stars-container {
+  width: 110px;
+  height: 16px;
+}
+
+.stars-absent {
+  margin-block: 0;
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: calc(16 / 14);
+  color: #b7b7b7;
+}
+
+.stars-list {
+  display: flex;
+  gap: 5px;
+
+  width: calc(18px * 5 + 5px * 4);
+  margin-block: 0;
+  padding-left: 0;
+
+  background-color: #3418b2;
+}
+
+.stars-list__item {
+  list-style: none;
+}
+
+.stars-list__img {
+  display: block;
+  width: 18px;
+  height: 16px;
+}
