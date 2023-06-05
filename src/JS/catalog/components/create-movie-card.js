@@ -8,7 +8,7 @@ export function createMovieCard(data) {
         ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
         : `${defaultImg}`;
 
-      return `<li class="card-item item">
+      return `<li class="card-item">
             <img class="film-poster" src="${imageSrc}" alt="${
         movie.original_title
       }" />
