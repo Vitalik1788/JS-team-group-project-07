@@ -1,0 +1,144 @@
+body {
+  background-color: #111111;
+}
+.section {
+  display: flex;
+  align-items: center;
+}
+.item {
+  list-style: none;
+}
+.weekly-trends-section-text {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 1.19;
+}
+.see-all-link {
+  font-family: 'Roboto';
+  font-weight: 500;
+
+  color: #f87719;
+}
+.section-title {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: inherit;
+  line-height: inherit;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  gap: 15px;
+
+  /* ?????????????????????????????????????????????????????????? */
+  margin-bottom: 30px;
+}
+.card-item {
+  position: relative;
+  overflow: hidden;
+  width: 280px;
+  height: 406px;
+  border-radius: 5px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+}
+/* // .film-poster {
+//   border-radius: 5px;
+// } */
+.film-title {
+  text-transform: uppercase;
+  color: #ffffff;
+}
+.film-description,
+.film-rating {
+  color: #b7b7b7;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
+  );
+  /* // border-radius: 5px; */
+  padding: 12px;
+  display: flex;
+  align-items: flex-end;
+}
+.film-info {
+  /* // margin-top: 342px; */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.film-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+  .weekly-trends-section-text {
+    margin-top: 54px;
+    font-size: 24px;
+    line-height: 1.16;
+  }
+
+  .card-item {
+    width: 224px;
+    height: 325px;
+  }
+  /* // .film-info {
+  //   margin-top: 265px;
+  // } */
+  .cards-list {
+    /* ???????????????????????????????????? */
+    margin-bottom: 44px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .weekly-trends-section-text {
+    margin-top: 80px;
+    margin-bottom: 28px;
+    font-size: 28px;
+    line-height: 1.17;
+  }
+
+  .card-item {
+    width: 395px;
+    height: 574px;
+    font-size: 20px;
+    line-height: 1.15;
+    
+  }
+  .film-poster {
+    width: 100%;
+    height: auto;
+  }
+  .film-title {
+    margin-bottom: 8px;
+  }
+  /* // .film-info {
+  //   margin-top: 480px;
+  // } */
+  .cards-list {
+    /* ???????????????????????????????????? */
+    margin-bottom: 60px;
+  }
+  .overlay {
+    padding: 20px;
+  }
+}

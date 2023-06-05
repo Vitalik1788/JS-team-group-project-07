@@ -20,7 +20,7 @@ body {
 
   /* color: var(--secondary-black-color); */
   color: var(--secondary-text-color);
-  background-color: var(--secondary-black-color);
+  background-color: var(--background-dark-color);
   font-family: 'Roboto';
 }
 

@@ -1,0 +1,58 @@
+<section class="section-catalog">
+  <div class="main-container">
+    <form class="search-form" id="movieSearchForm">
+      <input
+        type="text"
+        id="movieInput"
+        class="search-input"
+        placeholder="Search"
+      />
+      <button type="button" class="cancel-button" aria-label="Clear input area">
+        <svg class="cancel-icon">
+          <use href="./images/sprite-catalog.svg#icon-cancel"></use>
+        </svg>
+      </button>
+      <button type="submit" class="search-button" aria-label="Search button">
+        <svg class="search-icon">
+          <use href="./images/sprite-catalog.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+
+    <div class="error-container"></div>
+
+    <ul class="movie-list" id="movieList"></ul>
+
+    <div class="pagination-wrapper">
+      <button class="prev-button arrow-button" type="button">
+        <svg class="arrow-left-icon">
+          <use href="./images/sprite-catalog.svg#icon-arrow"></use>
+        </svg>
+      </button>
+      <ul class="pagination-pages-list">
+        <li class="pagination-item">
+          <button type="button" class="pagination-button">01</button>
+        </li>
+        <!-- <li class="pagination-item">
+          <button type="button" class="pagination-button">02</button>
+        </li>
+        <li class="pagination-item">
+          <button type="button" class="pagination-button">03</button>
+        </li>
+
+        <li class="pagination-item">
+          <button type="button">...</button>
+        </li> -->
+
+        <!-- <li class="pagination-item">
+          <button type="button" class="pagination-button">24</button>
+        </li> -->
+      </ul>
+      <button class="next-button arrow-button" type="button">
+        <svg class="arrow-right-icon">
+          <use href="./images/sprite-catalog.svg#icon-arrow"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>

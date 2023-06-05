@@ -1,0 +1,166 @@
+.main-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/*HERO*/
+.hero-container {
+  /*delete margin*/
+  /* margin-top: 25px; */
+
+  background-color: rgb(0, 0, 0);
+
+  background-size: cover;
+  background-position: 25%;
+  background-repeat: no-repeat;
+
+  height: 380px;
+}
+
+.hero-container-bg {
+  background-image: linear-gradient(to right, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0) 50%),
+    url(../images/default-bgimage.jpg);
+}
+
+.hero-info-wrap {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  padding-top: 48px;
+  padding-right: 60px;
+}
+
+.hero-film-title {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  /* identical to box height */
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.hero-film-stars {
+  display: block;
+  height: 20px;
+  width: 130px;
+  background-image: url(../images/stars.png);
+  background-position: center;
+}
+
+.hero-film-overview {
+  width: 177px;
+  height: 66px;
+  margin-top: 20px;
+  overflow: auto;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  align-items: center;
+
+  color: #F8F8F8;
+
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.hero-film-overview::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
+}
+
+.hero-btn-wrap {
+  padding-top: 20px;
+  display: flex;
+  gap: 8px;
+}
+
+.css-btn-trailer {
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 12px 24px;
+gap: 10px;
+background: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+border-radius: 74px; 
+}
+
+.css-bnt-info {
+  display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 12px 24px;
+gap: 10px;
+border: 1px solid #FFFFFF;
+border-radius: 74px;
+background: black;
+color: #FFFFFF;
+}
+
+/*----HERO END------*/
+
+@media screen and (min-width: 320px) {
+  .main-container {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .main-container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .hero-container {
+    background-position: 180px;
+    background-color: rgb(0, 0, 0);
+    height: 372px;
+  }
+
+  .hero-info-wrap {
+    padding-left: 36px;
+    padding-top: 32px;
+  }
+
+  .hero-film-overview {
+    width: 357px;
+  }
+
+}
+
+@media screen and (min-width: 1280px) {
+  .main-container {
+    width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .hero-container {
+    background-color: rgb(0, 0, 0);
+    height: 660px;
+  }
+
+  .hero-info-wrap {
+    padding-left: 134px;
+    padding-top: 178px;
+  }
+
+  .hero-film-overview {
+    margin-top: 28px;
+    width: 367px;
+    height: 77px;
+    font-size: 16px;
+    line-height: 19px;
+  }
+}
