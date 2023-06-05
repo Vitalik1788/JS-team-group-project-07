@@ -1,3 +1,30 @@
+.container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media screen and (min-width: 320px) {
+  .main-container {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width: 768px) {
+  .main-container {
+    width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .main-container {
+    width: 1280px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
 header {
   position: relative;
 }
@@ -117,7 +144,6 @@ header {
 .current__nav-link {
   color: #f87719;
 }
-
 /*  MOBILE MENU NAVIGATION BLOCK */
 
 @media screen and (min-width: 768px) {
@@ -284,7 +310,7 @@ header {
   background-repeat: no-repeat;
   cursor: pointer;
   fill: #595959;
-  background-image: url("../images/ball.svg");
+  background-image: url('../images/ball.svg');
   background-size: contain;
 }
 @media screen and (min-width: 768px) {
