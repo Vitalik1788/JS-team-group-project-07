@@ -1,4 +1,5 @@
 // Импорты
+
 import { refs } from './catalog/components/refs';
 import ApiService from './catalog/components/api_service';
 import { createMovieCard } from './catalog/components/create-movie-card';
