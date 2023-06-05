@@ -1,3 +1,5 @@
+import { roundToTen } from './helpers';
+
 export function careateUpcomingMarkup(film) {
   const {
     backdrop_path,
@@ -37,52 +39,46 @@ export function careateUpcomingMarkup(film) {
   return `
         <div class='upcoming-card__figure'>
           <div class='upcoming-card__layout'></div>
-          <img
-            src="https://image.tmdb.org/t/p/original${imgPath}"
-            alt="${title}"
-            loading='lazy'
-            class='upcoming-card__img'
-          > 
+            <img
+              src="https://image.tmdb.org/t/p/original${imgPath}"
+              alt="${title}"
+              loading='lazy'
+              class='upcoming-card__img'
+            > 
           </div>
         </div>
-
-          <div class='upcoming-card__body'>
-            <h3 class="upcoming-card__title">${title}</h3>
-
-            <div class='metrics-list__main-container'>
-                <ul class="list metrics-list">
-                  <li class="metrics-list__item">
-                    <p class="metrics-text">Release date</p>
-                    <p class="metrics-text metrics-text--date">${transformedDate}</p>
-                  </li>
-                  <li class="metrics-list__item">
-                    <p class="metrics-text">Vote / Votes</p>
-                    <p class="metrics-text metrics-text--vote">
-                      <span class="vote-wrapper">${vote_average}</span>
-                      /
-                      <span class="vote-wrapper">${vote_count}</span>
-                    </p>
-                  </li>
-                  <li class="metrics-list__item">
-                    <p class="metrics-text">Popularity</p>
-                    <p class="metrics-text">${roundedPopularity}</p>
-                  </li>
-                  <li class="metrics-list__item">
-                    <p class="metrics-text">Genre</p>
-                    <p class="metrics-text">
-                      ${trimedGenres}
-                    </p>
-                  </li>
-                </ul>
-            </div>
-            <h4 class="upcoming-card__subtitle metrics-text">ABOUT</h4>
-              <p class="upcoming-card__text" >
-              ${overview}
-              </p>
-            <button class="btn" type="button">Add to my library</button>
-          </div>`;
-}
-
-function roundToTen(number) {
-  return Math.floor(number * 10) / 10;
+        <div class='upcoming-card__body'>
+          <h3 class="upcoming-card__title">${title}</h3>
+          <div class='metrics-list__main-container'>
+            <ul class="list metrics-list">
+              <li class="metrics-list__item">
+                <p class="metrics-text">Release date</p>
+                <p class="metrics-text metrics-text--date">${transformedDate}</p>
+              </li>
+              <li class="metrics-list__item">
+                <p class="metrics-text">Vote / Votes</p>
+                <p class="metrics-text metrics-text--vote">
+                  <span class="vote-wrapper">${vote_average}</span>
+                  /
+                  <span class="vote-wrapper">${vote_count}</span>
+                </p>
+              </li>
+              <li class="metrics-list__item">
+                <p class="metrics-text">Popularity</p>
+                <p class="metrics-text">${roundedPopularity}</p>
+              </li>
+              <li class="metrics-list__item">
+                <p class="metrics-text">Genre</p>
+                <p class="metrics-text">
+                  ${trimedGenres}
+                </p>
+              </li>
+            </ul>
+          </div>
+          <h4 class="upcoming-card__subtitle metrics-text">ABOUT</h4>
+            <p class="upcoming-card__text" >
+            ${overview}
+            </p>
+          <button class="btn" type="button">Add to my library</button>
+        </div>`;
 }
