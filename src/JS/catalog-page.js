@@ -4,10 +4,9 @@ import { refs } from './catalog/components/refs';
 import ApiService from './catalog/components/api_service';
 
 
-import { createMovieCard } from "./catalog/components/create-movie-card";
-import { createErrorMarkup } from "./catalog/components/create-error-markup";
-// import { createMovieCard } from 'catalog/components/create-error-markup';
-// import { createErrorMarkup } from './catalog/components/create-error-markup';
+import createMovieCard from "../js/catalog/components/create-movie-card";
+import createErrorMarkup from "./catalog/components/create-error-markup";
+
 
 // Змінні
 const apiService = new ApiService();
