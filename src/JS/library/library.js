@@ -97,8 +97,10 @@ function createLIibraryMovieCard() {
   console.log(library);
   if (library === null || library.length === 0  ) {
     console.log('qqqqqqqqqqqqqq');
-    libraryRef.innerHTML = `<div>
-        <p style="color: white;"> OOPS... We are very sorry! You don’t have any movies at your library.</p>
+    libraryRef.innerHTML = `<div class="library-info">
+        <p class="library-info-info" style="color: white;"> OOPS... </p>
+        <p class="library-info-info" style="color: white;"> We are very sorry!</p>
+        <p class="library-info-info" style="color: white;"> You don’t have any movies at your library.</p>
         </div>`;
   } else {
     const markup = JSON.parse(localStorage.getItem('library'))
