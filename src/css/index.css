@@ -1,13 +1,11 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 @import './dropdown.css';
-@import './stars-rating.css';
-@import './header.css'; 
+@import './header.css';
 @import './hero.css';
 @import './weekly-trands.css';
 @import './upcoming.css';
 @import './footer.css';
-
-
+@import './stars-rating.css';
 
 .main-container {
   padding-left: 20px;
