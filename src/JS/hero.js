@@ -1,3 +1,5 @@
+import starsRating from './stars-rating';
+
 const API_KEY = '58fde9f9a3392c3dbee86a1f2142354e';
 const RANDOM_NUMBER = Math.floor(Math.random() * (19 - 0 + 1)) + 0;
 const axios = require('axios').default;
@@ -32,6 +34,8 @@ function heroInfoShow() {
     createHeroMarkUp(filmPictureUrl, filmName, filmOverview); //функція розмітки hero
     createSuccessFetchBtnMurkUp(); // функція додавання кнопок при успішному запиту
     createDataSet(filmId, filmRating); // функція додавання дата-атрибутів при успішному запиту для трейлеру, зірочок рейтингу і таке інше
+
+    starsRating({ voteAverage: filmRating, isHero: true });
   });
 }
 
