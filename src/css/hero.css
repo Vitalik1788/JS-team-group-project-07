@@ -34,6 +34,11 @@
   padding-right: 60px;
 }
 
+.css-library-hero-info-wrap {
+  padding-top: 40px;
+  padding-left: 20px;
+}
+
 .hero-film-title {
   font-family: 'Roboto';
   font-style: normal;
@@ -85,6 +90,9 @@
   margin-top: 0;
   height: auto;
   width: 249px;
+  font-family: 'Roboto';  
+  font-size: 14px;
+  line-height: 16px;
 }
 
 .hero-btn-wrap {
@@ -122,6 +130,16 @@ color: #FFFFFF;
     margin-right: auto;
   }
 }
+
+
+@media screen and (min-width: 320px) and (max-width:767px){
+  .css-library-hero-title {
+    max-width: 235px;
+    font-size: 32px;
+    line-height: 1.19;
+  }
+}  
+
 
 @media screen and (min-width: 768px) {
   .main-container {
