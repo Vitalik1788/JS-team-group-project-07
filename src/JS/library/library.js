@@ -3,60 +3,54 @@ import defaultImg from '../../images/default.jpg';
 
 const libraryRef = document.querySelector('.library-card-list');
 
-let library = [];
+
 const btnLib = document.querySelector('.btn');
 
 try {
-  tcreateLIibraryMovieCard();
+  createLIibraryMovieCard();
 } catch (error) {
   console.log(error);
 }
 
+if (btnLib) {
+  btnLib.addEventListener('click', handleFilm);
+}
 
-
-btnLib.addEventListener('click', function (event) {
+export function handleFilm(event) {
   const id = event.currentTarget.dataset.id;
   console.log(btnLib);
   console.log(event);
-console.log((btnLib.hasAttribute('data-add')));
+  console.log(btnLib.hasAttribute('data-add'));
   if (btnLib.hasAttribute('data-add')) {
     console.log('data-add');
     btnLib.removeAttribute('data-add');
-    
-  
+
     btnLib.setAttribute('data-remove', '');
-  
+
     btnLib.textContent = 'Remove from my library';
     checkMoviCard(id);
-  } else 
-   if(btnLib.hasAttribute('data-remove')) {
+  } else if (btnLib.hasAttribute('data-remove')) {
     console.log('data-remove');
     btnLib.removeAttribute('data-remove');
-  
+
     btnLib.setAttribute('data-add', '');
-  
+
     btnLib.textContent = 'Add to my library';
     deleteCardLibrary(id);
   }
-
-  
-});
-
+}
 
 /////// ПРОВЕРКА НАЛИЧИЯ ID В LOCAL STORAGE /////////
 
 export function checkMoviCard(id) {
-  const libraryItem = localStorage.getItem('library');
+  const libraryList = JSON.parse(localStorage.getItem('library'));
 
-  const libraryList = JSON.parse(libraryItem);
-
-  if (libraryItem === null) {
+  if (libraryList === null) {
     getMovi(id);
 
     console.log('cccccccccc');
   } else {
-    const findMovi = libraryList.map(x => x.data);
-    const findMoviId = findMovi.find(x => x.id === Number(id));
+    const findMoviId = libraryList.find(x => x.id === Number(id));
 
     if (findMoviId !== undefined) {
       return;
@@ -70,7 +64,8 @@ export function checkMoviCard(id) {
 /////// ПОЛУЧЕНИЯ ОТ СЕРВЕРА ФИЛЬМА ПО ID ///////
 
 async function getMovi(id) {
-  const moviObj = await API.getMoviById(id);
+  const res = await API.getMoviById(id);
+  const moviObj = res.data;
   addCardLibrary(moviObj);
   console.log('gggggggggggg');
 }
@@ -78,6 +73,8 @@ async function getMovi(id) {
 ///// ФУНКЦИЯ ДОБАВЛЕНИЯ В LOCAL STORAGE ///////
 
 function addCardLibrary(moviObj) {
+  let library = [];
+  console.log(library);
   library.push(moviObj);
   console.log(library);
   localStorage.setItem('library', JSON.stringify(library));
@@ -87,19 +84,18 @@ function addCardLibrary(moviObj) {
 ///// ФУНКЦИЯ УДАЛЕНИЯ ИЗ LOCAL STORAGE ///////
 
 export function deleteCardLibrary(id) {
-  const libraryItem = localStorage.getItem('library');
-  const libraryList = JSON.parse(libraryItem);
+  const libraryList = JSON.parse(localStorage.getItem('library'));
   const deletedItem = libraryList.find(x => x === id);
   library.pop(deletedItem);
   console.log(library.length);
-  localStorage.setItem('library', JSON.stringify(library))
-  location. reload();
+  localStorage.setItem('library', JSON.stringify(library));
+  createLIibraryMovieCard();
 }
 
 function createLIibraryMovieCard() {
-    library = JSON.parse(localStorage.getItem('library'))
-    console.log(library);
-  if (library.length === 0  || library === null ) {
+  library = JSON.parse(localStorage.getItem('library'));
+  console.log(library);
+  if (library === null || library.length === 0  ) {
     console.log('qqqqqqqqqqqqqq');
     libraryRef.innerHTML = `<div>
         <p style="color: white;"> OOPS... We are very sorry! You don’t have any movies at your library.</p>
@@ -107,26 +103,26 @@ function createLIibraryMovieCard() {
   } else {
     const markup = JSON.parse(localStorage.getItem('library'))
       .map(movie => {
-        const imageSrc = movie.data.poster_path
-          ? `https://image.tmdb.org/t/p/w500${movie.data.poster_path}`
+        const imageSrc = movie.poster_path
+          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
           : `${defaultImg}`;
 
         return `<li class="card-item item">
               <img class="film-poster" src="${imageSrc}" alt="${
-          movie.data.original_title
+          movie.original_title
         }" />
               <div class="overlay">
                 <div class="film-info">
                   <p class="film-title">${
-                    movie.data.original_title || movie.name
+                    movie.original_title || movie.name
                   }</p>
                   <div class="film-details">
                      <span class="film-description">${
-                       new Date(movie.data.release_date).getFullYear() ||
-                       new Date(movie.data.first_air_date).getFullYear()
+                       new Date(movie.release_date).getFullYear() ||
+                       new Date(movie.first_air_date).getFullYear()
                      } </span>
                     <span class="film-rating">${Math.round(
-                      movie.data.vote_average
+                      movie.vote_average
                     )}</span>
                   </div>
                 </div>
@@ -138,13 +134,6 @@ function createLIibraryMovieCard() {
     libraryRef.innerHTML = markup;
   }
 }
-
-
-
-
-
-
-
 
 /////////////////////////////////////////////////////
 // const btnLib = document.querySelector('.btn');
@@ -162,12 +151,6 @@ function createLIibraryMovieCard() {
 //   //   deleteCardLibrary(id);
 //   // }
 // });
-
-
-
-
-
-
 
 /////////////////////////////////////////
 // async function getMovi(id) {
