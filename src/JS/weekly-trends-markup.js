@@ -1,4 +1,5 @@
 import { validateGenres } from './weekly-trends-genres';
+import starsRating from './stars-rating';
 
 export function createMarkup(films) {
   const markup = films.map(
@@ -32,7 +33,11 @@ export function createMarkup(films) {
                 <p class="film-title">${title}</p>
                 <div class="film-details">
                   <span class="film-description">${genres} | ${releaseDate}</span>
-                  <span class="film-rating">${vote_average}</span>
+                  <div class="stars-container">${starsRating({
+                    voteAverage: vote_average,
+                    isHero: false,
+                  })}</div>
+									<span class="film-rating">${vote_average}</span>;
                 </div>
               </div>
             </div>
