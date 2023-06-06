@@ -51,6 +51,7 @@ h6 {
 .modal__close-icon {
   width: 25px;
   height: 25px;
+  
 }
 .modal__close-btn:focus,
 .modal__close-btn:hover {
@@ -75,7 +76,7 @@ h6 {
   margin-top: 22px;
 }
 .modal-film-title {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -101,7 +102,7 @@ h6 {
 }
 
 .modal-film-info-label {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -109,7 +110,7 @@ h6 {
   color: #b7b7b7;
 }
 .modal-film-info-desc {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -118,7 +119,7 @@ h6 {
   color: #ffffff;
 }
 .desc-voted {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
@@ -137,21 +138,80 @@ h6 {
   margin-bottom: 16px;
 }
 .film-info__desc--normal-text {
-  width: 92px;
+  width: 170px;
+  overflow-wrap: break-woicord;
 }
 .modal-film__description {
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
   color: #f8f8f8;
 }
-
+.modal-btn-add-libr {
+  font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: normal;
+  color: #fff;
+  outline: none;
+  border: none;
+  position: relative;
+  z-index: 2;
+  padding: 12px 24px;
+  border-radius: 74px;
+  background-color: #111111;
+  background-image: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%), linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+  background-size: 100% 2px;
+  background-position: 0 100%, 0 0;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+}
+.modal-btn-add-libr:before,
+.modal-btn-add-libr:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 21px;
+  border: 2px solid #FFC226;
+  border-right: none;
+  border-radius: 74px 0 0 74px;
+}
+.modal-btn-add-libr:after {
+  border: 2px solid #F84119;
+  border-left: none;
+  left: auto;
+  right: 0;
+  border-radius: 0 74px 74px 0;
+}
+.modal-btn-add-libr span {
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color:#ffffff;
+}
+.modal-btn-add-libr:hover,
+.modal-btn-add-libr:focus {
+  background: #ffffff;
+  
+}
+.modal-btn-add-libr:hover .btn-mod-text{
+  -webkit-text-fill-color: #F87719;
+}
+.modal-btn-add-libr:hover:before,
+.modal-btn-add-libr:hover:after{
+  border: 0px;
+}
 @media screen and (min-width: 320px) {
   .modal-about-film {
     width: 280px;
-    max-height: 847px;
   }
   .modal-wrapper-img {
     width: 248px;
@@ -166,12 +226,12 @@ h6 {
     padding-top: 3px;
     padding-left: 44px;
     padding-right: 44px;
-    padding-bottom: 0px;
+    padding-bottom: 44px;
   }
   .modal-about-film {
     top: 50%;
     width: 704px;
-    height: 488px;
+    
   }
   .modal__close-btn {
     margin-top: 20px;
@@ -200,7 +260,7 @@ h6 {
     margin-bottom: 20px;
   }
   .container-film-descr {
-    width: 301px;
+    width: 350px;
     height: 140px;
     margin-bottom: 24px;
   }
@@ -243,7 +303,7 @@ h6 {
     line-height: 19px;
   }
   .container-film-descr {
-    width: 331px;
+    width: 360px;
     height: 159px;
     margin-bottom: 36px;
   }
@@ -252,7 +312,7 @@ h6 {
     line-height: 19px;
   }
   .film-info__desc--normal-text {
-    width: 150px;
+    width: 180px;
   }
   .modal-film__description {
     font-size: 14px;
