@@ -46,8 +46,6 @@ class MovieModal {
   }
 
   refreshData(data) {
-   
-
     this.refs.posterPath.src = data.poster_path? `https://image.tmdb.org/t/p/w500${data.poster_path}`:`${defaultImg}`;
     this.refs.title.textContent = `${data.title}`;
     this.refs.voteAverage.textContent = `${roundToTen(data.vote_average)}`;
