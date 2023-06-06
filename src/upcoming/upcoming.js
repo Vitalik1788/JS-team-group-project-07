@@ -26,8 +26,8 @@ async function handleUpcoming() {
     window.addEventListener('resize', debouncedImgHandler);
     //
   } catch (error) {
-    console.log('error:', error);
-    console.log('error code:', error.code);
+    // console.log('error:', error);
+    // console.log('error code:', error.code);
     // updateUpcoming(failMarkup)
     ('ERR_BAD_REQUEST');
   }
