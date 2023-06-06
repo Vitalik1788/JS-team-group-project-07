@@ -6,9 +6,9 @@
 @import './upcoming.css';
 @import './footer.css';
 @import './library.css';
+@import './movie-modal.css';
 
 @import './stars-rating.css';
-
 
 .main-container {
   padding-left: 20px;

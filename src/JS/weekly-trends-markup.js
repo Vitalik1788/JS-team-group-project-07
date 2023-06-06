@@ -1,5 +1,6 @@
 import { validateGenres } from './weekly-trends-genres';
 import starsRating from './stars-rating';
+import { openModalAboutFilm } from './movieModal';
 
 export function createMarkup(films) {
   const markup = films.map(
@@ -50,5 +51,14 @@ export function createMarkup(films) {
     document
       .querySelector('.cards-list')
       .insertAdjacentHTML('beforeend', finalMarkup);
+
+    const filmCards = document.querySelectorAll('.card-item');
+    filmCards.forEach(card => {
+      card.addEventListener('click', async () => {
+        const movieId = card.getAttribute('data-id');
+        await openModalAboutFilm(movieId);
+        console.log(movieId);
+      });
+    });
   });
 }
