@@ -1,5 +1,6 @@
 import { refs } from '../JS/catalog/components/refs';
 import defaultImg from '../images/default.jpg';
+import starsRating from '../JS/stars-rating';
 
 export function createMovieCard(data) {
   const markup = data.results
@@ -20,9 +21,11 @@ export function createMovieCard(data) {
         new Date(movie.release_date).getFullYear() ||
         new Date(movie.first_air_date).getFullYear()
       } </span>
-                  <span class="film-rating">${Math.round(
-                    movie.vote_average
-                  )}</span>
+      <div class="stars-container">${starsRating({
+        voteAverage: movie.vote_average,
+        isHero: false,
+      })}</div>            
+			<span class="film-rating">${movie.vote_average.toFixed(1)}</span>
                 </div>
               </div>
             </div>

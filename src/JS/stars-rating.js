@@ -7,26 +7,20 @@ const mask = document.querySelector('.mask');
 let maskCounter = 0;
 
 const starBg = {
-  filled: '<use href="#star" fill="url(#star-fill--complete)" />',
-  masked: `<use href="#star" mask="url(#star-fill--partly${maskCounter})" fill="url(#star-fill--complete)" /><use href="#star" fill="none" stroke="url(#star-stroke)" />`,
-  empty: '<use href="#star" fill="none" />',
+  filled: '<use href="#star" fill="url(#star-fill--complete)"></use>',
+  masked: '',
+  empty: '<use href="#star" fill="none"></use>',
 };
-
-// starsRating({ voteAverage: 9.2, isHero: true });
-// starsRating({ voteAverage: 5, isHero: true });
-// starsRating({ voteAverage: 3.4, isHero: true });
-// starsRating({ voteAverage: 7, isHero: true });
-// starsRating({ voteAverage: 10, isHero: true });
 
 export default function starsRating({ voteAverage, isHero }) {
   const starsValue = convertRatingToStars(Number(voteAverage));
 
-  starBg.masked = `<use href="#star" mask="url(#star-fill--partly${maskCounter})" fill="url(#star-fill--complete)" /><use href="#star" fill="none" stroke="url(#star-stroke)" />`;
+  starBg.masked = `<use href="#star" mask="url(#star-fill--partly${maskCounter})" fill="url(#star-fill--complete)"></use><use href="#star" fill="none" stroke="url(#star-stroke)"></use>`;
 
   addMaskId(maskCounter, starsValue);
-  placeMarkup(starsValue, isHero);
-
   maskCounter++;
+
+  return placeMarkup(starsValue, isHero);
 }
 
 function convertRatingToStars(voteAverage) {
@@ -55,23 +49,20 @@ function addMaskId(maskId, starsValue) {
 }
 
 function placeMarkup(starsValue, isHero) {
-  if (isHero) {
-    starsContainer.insertAdjacentHTML('beforeend', markupRender(starsValue));
+  if (!isHero) return markupRender(starsValue);
 
-    const refsHero = {
-      starsList: document.querySelector('.stars-list'),
-      starsListImg: document.querySelectorAll('.stars-list__img'),
-    };
+  starsContainer.insertAdjacentHTML('beforeend', markupRender(starsValue));
 
-    starsContainer.classList.add('stars-container--hero');
-    refsHero.starsList.classList.add('stars-list--hero');
-    refsHero.starsListImg.forEach(item =>
-      item.classList.add('stars-list__img--hero')
-    );
-  } else {
-    // console.log(markupRender(starsValue));
-    return markupRender(starsValue);
-  }
+  const refsHero = {
+    starsList: document.querySelector('.stars-list'),
+    starsListImg: document.querySelectorAll('.stars-list__img'),
+  };
+
+  starsContainer.classList.add('stars-container--hero');
+  refsHero.starsList.classList.add('stars-list--hero');
+  refsHero.starsListImg.forEach(item =>
+    item.classList.add('stars-list__img--hero')
+  );
 }
 
 function markupRender(starsValue) {
