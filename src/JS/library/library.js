@@ -9,10 +9,10 @@ const btnLib = document.querySelector('.btn');
 
 window.addEventListener('DOMContentLoaded', () => {
   const library = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  createLibraryMarkup(library);
+  if(libraryRef) createLibraryMarkup(library);
 });
 
-btnLib?.addEventListener('click', handleFilm);
+// btnLib?.addEventListener('click', handleFilm);
 
 export function handleFilm(e) {
   const id = e.target.dataset.id;
@@ -25,17 +25,17 @@ export function handleFilm(e) {
     // btnLib.removeAttribute('data-add');
     // btnLib.setAttribute('data-remove', '');
     // btnLib.textContent = 'Remove from my library';
-    setBtnProp(btnLib, addOps);
+    setBtnProp(e.target, addOps);
 
     addFilmToLibrary(id);
 
     //
-  } else if (btnLib.hasAttribute('data-remove')) {
+  } else if (e.target.hasAttribute('data-remove')) {
     console.log('data-remove');
 
-    btnLib.removeAttribute('data-remove');
-    btnLib.setAttribute('data-add', '');
-    btnLib.textContent = 'Add to my library';
+    e.target.removeAttribute('data-remove');
+    e.target.setAttribute('data-add', '');
+    e.target.textContent = 'Add to my library';
 
     deleteCardLibrary(id);
   }
