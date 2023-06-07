@@ -97,10 +97,9 @@ function createLIibraryMovieCard() {
   console.log(library);
   if (library === null || library.length === 0  ) {
     console.log('qqqqqqqqqqqqqq');
-    libraryRef.innerHTML = `<div class="library-info">
-        <p class="library-info-info" style="color: white;"> OOPS... </p>
-        <p class="library-info-info" style="color: white;"> We are very sorry!</p>
-        <p class="library-info-info" style="color: white;"> You don’t have any movies at your library.</p>
+    libraryRef.innerHTML = `<div class="library-info library-info-container">
+        <p class="library-info-text" style="color: white;"> OOPS... <br> We are very sorry!<br>
+        You don’t have any movies at your library.</p>
         </div>`;
   } else {
     const markup = JSON.parse(localStorage.getItem('library'))
@@ -136,6 +135,13 @@ function createLIibraryMovieCard() {
     libraryRef.innerHTML = markup;
   }
 }
+
+
+// `<div class="library-info library-info-container">
+//         <p class="library-info-text" style="color: white;"> OOPS... </p>
+//         <p class="library-info-text" style="color: white;"> We are very sorry!</p>
+//         <p class="library-info-text" style="color: white;"> You don’t have any movies at your library.</p>
+//         </div>`;
 
 /////////////////////////////////////////////////////
 // const btnLib = document.querySelector('.btn');

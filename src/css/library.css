@@ -1,27 +1,71 @@
 
 
 .library-card-list {
+    text-align: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: 160px;
-    mask-repeat: 32px;
-    margin-left: 32px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .library-info {
-    width: 584px;
+    margin-left: auto;
+    margin-right: auto;
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.library-info-info {
-    font-family: 'Roboto';
-font-style: normal;
-font-weight: 400;
-font-size: 32px;
-line-height: 36px;
+
+
+
+
+
+@media screen and (min-width: 320px) {
+    
+    .library-info-text {
+        
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .library-info-container {
+       
+        width: 280px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .library-info-text {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .library-info-container {
+        width: 438px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .library-info-text {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 32px;
+        line-height: 36px;
+    }
+    .library-info-container {
+        width: 584px;
+    }
 }

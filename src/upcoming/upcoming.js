@@ -36,3 +36,6 @@ async function handleUpcoming() {
 function updateUpcoming(markup = '') {
   upcomingEl.innerHTML = markup;
 }
+
+
+console.log('qweqweqweqweqewqwe');
