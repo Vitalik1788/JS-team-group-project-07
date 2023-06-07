@@ -33,6 +33,7 @@ function playTrailer(movieId) {
         modalContent.innerHTML = '';
         modal.style.display = 'none';
         video.src = ''; // Зупиняємо відтворення трейлера
+        enableScroll(); // Увімкнути скролінг сторінки
       });
 
       const modalContent = document.querySelector('.modal-content');
@@ -42,13 +43,20 @@ function playTrailer(movieId) {
 
       const modal = document.getElementById('modal');
       modal.style.display = 'block';
+      disableScroll(); 
     })
     .catch(() => {
       showModalError();
     });
 }
 
+function disableScroll() {
+  document.body.style.overflow = 'hidden';
+}
 
+function enableScroll() {
+  document.body.style.overflow = '';
+}
 
 function showModalError() {
   const modalContent = document.querySelector('.modal-content');
@@ -71,6 +79,7 @@ function showModalError() {
   const closeButton = modalContent.querySelector('.close-button');
   closeButton.addEventListener('click', () => {
     modal.style.display = 'none';
+    enableScroll(); 
   });
 
   closeButton.classList.add('close-button'); // Додати клас до кнопки
@@ -103,5 +112,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   closeButton.addEventListener('click', () => {
     modal.style.display = 'none';
+    enableScroll(); 
   });
 });
