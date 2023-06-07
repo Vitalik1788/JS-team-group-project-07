@@ -13,7 +13,7 @@ async function handleUpcoming() {
   try {
     const upcomingMovies = await getUpcomingMovies();
     const randomMovie = getRandomItem(upcomingMovies);
-    console.log(randomMovie);
+    // console.log(randomMovie);
     const markup = careateUpcomingMarkup(randomMovie);
     updateUpcoming(markup);
     // handleUpcomingImg(randomMovie);
@@ -26,8 +26,7 @@ async function handleUpcoming() {
     window.addEventListener('resize', debouncedImgHandler);
     //
   } catch (error) {
-    // console.log('error:', error);
-    // console.log('error code:', error.code);
+    console.error('error:', error);
     // updateUpcoming(failMarkup)
     ('ERR_BAD_REQUEST');
   }

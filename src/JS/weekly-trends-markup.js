@@ -1,4 +1,6 @@
 import { validateGenres } from './weekly-trends-genres';
+import starsRating from './stars-rating';
+import { openModalAboutFilm } from './movieModal';
 
 export function createMarkup(films) {
   const markup = films.map(
@@ -32,7 +34,11 @@ export function createMarkup(films) {
                 <p class="film-title">${title}</p>
                 <div class="film-details">
                   <span class="film-description">${genres} | ${releaseDate}</span>
-                  <span class="film-rating">${vote_average}</span>
+                  <div class="stars-container">${starsRating({
+                    voteAverage: vote_average,
+                    isHero: false,
+                  })}</div>
+									<!-- <span class="film-rating">${vote_average}</span> -->
                 </div>
               </div>
             </div>
@@ -45,5 +51,14 @@ export function createMarkup(films) {
     document
       .querySelector('.cards-list')
       .insertAdjacentHTML('beforeend', finalMarkup);
+
+    const filmList = document.querySelector('.listListener');
+
+    filmList.addEventListener('click', event => {
+      const li = event.target.closest('.card-item');
+
+      const movieId = li.getAttribute('data-id');
+      openModalAboutFilm(movieId);
+    });
   });
 }
