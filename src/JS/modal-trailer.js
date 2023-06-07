@@ -1,3 +1,5 @@
+import defaultImgTr from '../images/IMG9881.png';
+const imageSrc = defaultImgTr;
 
 function playTrailer(movieId) {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=41b8f9437bf3f899281f8a3f9bdc0891&language=en-US`;
@@ -46,13 +48,15 @@ function playTrailer(movieId) {
     });
 }
 
+
+
 function showModalError() {
   const modalContent = document.querySelector('.modal-content');
   modalContent.innerHTML = `
       <div class="error-content">
         <p class="error-message">OOPS... <br>We are very sorry!<br>
         But we couldn’t find the trailer.</p>
-        <img class="error-image" src='../images/IMG9881.jpeg' alt="Error image">
+         <img class="error-image" src='${imageSrc}' alt="Error!">
         <button class="close-button">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.5 10.5" width="10.5px" height="10.5px">
             <path fill="#FFFFFF" d="M9.2,1.3L8.2,0.3L5.25,3.25L2.3,0.3L1.3,1.3L4.25,4.25L1.3,7.2L2.3,8.2L5.25,5.25L8.2,8.2L9.2,7.2L6.25,4.25z"/>
@@ -86,15 +90,16 @@ window.addEventListener('DOMContentLoaded', () => {
     if (currentButton) {
       const movieId = currentButton.getAttribute('trailer-id');
       playTrailer(movieId);
-    } 
-    
+    }
   });
 
   document.addEventListener('keydown', event =>
-    event.key === 'Escape' ? (modal.style.display = 'none') : null);
-  
+    event.key === 'Escape' ? (modal.style.display = 'none') : null
+  );
+
   window.addEventListener('click', event =>
-    event.target === modal ? (modal.style.display = 'none') : null);
+    event.target === modal ? (modal.style.display = 'none') : null
+  );
 
   closeButton.addEventListener('click', () => {
     modal.style.display = 'none';
