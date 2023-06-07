@@ -162,7 +162,7 @@ header {
     width: 64%;
     height: 100vh;
     z-index: 10;
-    transition: left 0.3s ease-in-out;
+    transition: all 0.5s ease-in;
     background-color: #171717;
     border-radius: 0px 8px 8px 0px;
   }
@@ -215,7 +215,7 @@ header {
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
-  color: #b7b7b7;
+  color: #595959;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -312,7 +312,7 @@ header {
   background-repeat: no-repeat;
   cursor: pointer;
   fill: #595959;
-  background-image: url("../images/ball.svg");
+  background-image: url('../images/ball.svg');
   background-size: contain;
 }
 @media screen and (min-width: 768px) {
@@ -362,3 +362,185 @@ header {
 }
 
 /* Switcher change header */
+body {
+  transition: all 0.5s ease-in;
+}
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+  transition: all 0.5s ease-in;
+}
+body.light .modal-btn-add-libr {
+  background-color: #ffffff;
+  color: #000000;
+}
+body.light .modal-btn-add-libr:hover,
+body.light .modal-btn-add-libr:focus {
+  background-color: #000;
+}
+body.light .btn-mod-text span {
+  color: #000000;
+}
+h3.section-title {
+  transition: all 0.5s ease-in;
+}
+body.light h3.section-title {
+  color: #111;
+}
+body.light h3.upcoming-card__title {
+  color: #111;
+}
+body.light p.metrics-text {
+  color: #111;
+}
+body.light h4.metrics-text {
+  color: #111;
+}
+
+body.light .upcoming-container {
+  background-color: #ffffff;
+  transition: background-color 1s ease-in;
+}
+
+body.light h3.upcoming__title {
+  color: #111;
+}
+body.light .footer {
+  background-color: #ffffff;
+  transition: all 0.5s ease-in;
+}
+/* Header */
+.header__container {
+  transition: all 0.5s ease-in;
+}
+body.light .header__container {
+  background-color: #ffffff;
+  transition: all 0.5s ease-in;
+}
+
+body.light .search-input {
+  border: 1px solid #595959;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: all 0.5s ease-in;
+}
+.section-catalog {
+  transition: all 0.5s ease-in;
+}
+body.light .section-catalog {
+  background-color: #fff;
+}
+body.light .section-catalog {
+  background-color: #fff;
+}
+
+body.light a {
+  color: #f87719;
+}
+
+body.light p {
+  color: #000000;
+}
+
+body.light h2 {
+  color: #000000;
+}
+
+body.light .logo-text {
+  color: #000000;
+}
+
+body.light .header__nav-link {
+  color: #595959;
+}
+
+body.light .header__nav-link:hover,
+body.light .header__nav-link:focus {
+  color: #f87719;
+}
+
+body.light .current__nav-link {
+  color: #f87719;
+}
+
+/* mobile */
+
+@media screen and (max-width: 767px) {
+  body.light .header__nav {
+    background-color: #ffffff;
+    transition: all 0.5s ease-in;
+  }
+}
+body.light .mobile-menu__link.current__nav-link {
+  color: #f87719;
+}
+
+body.light .mobile-menu__link {
+  color: #595959;
+}
+
+body.light .mobile-menu__link:hover,
+body.light .mobile-menu__link:focus {
+  color: #f87719;
+}
+
+body.light #menu-button {
+  color: #595959;
+}
+
+body.light #menu-button:hover,
+body.light #menu-button:focus {
+  color: #f87719;
+}
+
+body.light #overlay {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* MODAL WINDOW */
+body.light .modal-about-film {
+  background-color: #ffffff;
+}
+
+body.light .modal-about-film a {
+  color: #f87719;
+}
+
+body.light .modal-about-film p {
+  color: #000000;
+}
+body.light .film-title p {
+  color: #fff;
+}
+
+body.light h2.modal-about-film,
+body.light h3.modal-about-film,
+body.light h4.modal-about-film,
+body.light h5.modal-about-film {
+  color: #000000;
+}
+
+body.light span.modal-about-film {
+  color: #000000;
+}
+
+body.light .modal-about-film .stats__vote {
+  background-color: #f8f8f8;
+}
+
+body.light svg.modal-about-film {
+  fill: #000000;
+}
+
+body.light div.modal-about-film {
+  color: #000000;
+}
+body.light h3.modal-film-title {
+  color: #000;
+}
+body.light span.btn-mod-text {
+  -webkit-text-fill-color: #111;
+}
+body.light .film-title {
+  color: #ffffff;
+}

@@ -51,7 +51,6 @@ h6 {
 .modal__close-icon {
   width: 25px;
   height: 25px;
-  
 }
 .modal__close-btn:focus,
 .modal__close-btn:hover {
@@ -151,10 +150,10 @@ h6 {
 }
 .modal-btn-add-libr {
   font-family: 'Roboto', sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
   cursor: pointer;
   font-size: 17px;
   font-weight: normal;
@@ -166,7 +165,8 @@ line-height: 16px;
   padding: 12px 24px;
   border-radius: 74px;
   background-color: #111111;
-  background-image: linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%), linear-gradient(141.22deg, #FFC226 9.4%, #F84119 91.91%);
+  background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%),
+    linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   background-size: 100% 2px;
   background-position: 0 100%, 0 0;
   background-repeat: no-repeat;
@@ -181,12 +181,12 @@ line-height: 16px;
   top: 0;
   bottom: 0;
   width: 21px;
-  border: 2px solid #FFC226;
+  border: 2px solid #ffc226;
   border-right: none;
   border-radius: 74px 0 0 74px;
 }
 .modal-btn-add-libr:after {
-  border: 2px solid #F84119;
+  border: 2px solid #f84119;
   border-left: none;
   left: auto;
   right: 0;
@@ -195,18 +195,17 @@ line-height: 16px;
 .modal-btn-add-libr span {
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color:#ffffff;
+  -webkit-text-fill-color: #ffffff;
 }
 .modal-btn-add-libr:hover,
 .modal-btn-add-libr:focus {
   background: #ffffff;
-  
 }
-.modal-btn-add-libr:hover .btn-mod-text{
-  -webkit-text-fill-color: #F87719;
+.modal-btn-add-libr:hover .btn-mod-text {
+  -webkit-text-fill-color: #f87719;
 }
 .modal-btn-add-libr:hover:before,
-.modal-btn-add-libr:hover:after{
+.modal-btn-add-libr:hover:after {
   border: 0px;
 }
 @media screen and (min-width: 320px) {
@@ -231,7 +230,6 @@ line-height: 16px;
   .modal-about-film {
     top: 50%;
     width: 704px;
-    
   }
   .modal__close-btn {
     margin-top: 20px;
