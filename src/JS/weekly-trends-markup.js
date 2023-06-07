@@ -38,7 +38,7 @@ export function createMarkup(films) {
                     voteAverage: vote_average,
                     isHero: false,
                   })}</div>
-									<span class="film-rating">${vote_average}</span>;
+									<!-- <span class="film-rating">${vote_average}</span> -->
                 </div>
               </div>
             </div>
