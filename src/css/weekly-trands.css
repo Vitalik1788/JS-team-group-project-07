@@ -51,6 +51,7 @@ body {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.6;
+  cursor: pointer;
 }
 /* // .film-poster {
 //   border-radius: 5px;
