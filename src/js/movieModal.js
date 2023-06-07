@@ -130,7 +130,7 @@ function instanceModalHTML() {
           <div class="container-film-descr">
             <p class="modal-film__description" id="modal-film-description"></p>
           </div>
-          <button class="modal-btn-add-libr btn"  type="button" id="modal-film-add-or-rm">Add to my library</button>
+          <button class="modal-btn-add-libr"  type="button" id="modal-film-add-or-rm">Add to my library</button>
           </button>
         </div>
       </div>
