@@ -5,3 +5,4 @@ import { showWeeklyTrends } from './JS/weekly-trends-main.js';
 window.addEventListener('load', showWeeklyTrends);
 import './JS/library/library';
 import './upcoming/upcoming';
+import './JS/modal-trailer';

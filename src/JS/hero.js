@@ -1,4 +1,5 @@
 import starsRating from './stars-rating';
+import { getMovieId } from './modal-trailer';
 
 const API_KEY = '58fde9f9a3392c3dbee86a1f2142354e';
 const RANDOM_NUMBER = Math.floor(Math.random() * (19 - 0 + 1)) + 0;
@@ -12,7 +13,6 @@ const refs = {
   heroFilmDataEl: document.querySelector('.hero-info-wrap'), //це елемент, на який вішаються дата-атрибути ID та vote_average
 };
 
-// console.log(refs.heroFilmDataEl);
 
 window.addEventListener('load', heroInfoShow);
 
@@ -29,10 +29,8 @@ function heroInfoShow() {
     const filmId = filmInfo.id;
     const filmRating = filmInfo.vote_average;
 
-    console.log(filmInfo, filmId, filmRating);
-
     createHeroMarkUp(filmPictureUrl, filmName, filmOverview); //функція розмітки hero
-    createSuccessFetchBtnMurkUp(); // функція додавання кнопок при успішному запиту
+    createSuccessFetchBtnMurkUp(filmId); // функція додавання кнопок при успішному запиту
     createDataSet(filmId, filmRating); // функція додавання дата-атрибутів при успішному запиту для трейлеру, зірочок рейтингу і таке інше
 
     starsRating({ voteAverage: filmRating, isHero: true });
@@ -87,11 +85,13 @@ function createDefaultBtnMarkUp() {
 }
 
 //функція додавання кнопок при успішному запиту
-function createSuccessFetchBtnMurkUp() {
+function createSuccessFetchBtnMurkUp(filmId) {
   const heroTrailertBtn = document.createElement('button');
   heroTrailertBtn.textContent = 'Watch Trailer';
-  heroTrailertBtn.classList.add('css-btn-trailer');
+  heroTrailertBtn.classList.add('css-btn-trailer', 'watch-trailer-button');
   heroTrailertBtn.setAttribute('type', 'button');
+  heroTrailertBtn.setAttribute('trailer-id', `${filmId}`);
+
   refs.heroBtnDiv.append(heroTrailertBtn);
 
   const heroDetailstBtn = document.createElement('button');
@@ -100,6 +100,9 @@ function createSuccessFetchBtnMurkUp() {
   heroDetailstBtn.setAttribute('type', 'button');
   refs.heroBtnDiv.append(heroDetailstBtn);
 }
+
+
+
 
 //функція для створення дата-атрибутів для використання
 function createDataSet(id, rating) {
