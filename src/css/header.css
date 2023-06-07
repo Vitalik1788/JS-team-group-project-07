@@ -367,7 +367,7 @@ header {
 
 /* Switcher change header */
 
-/* body {
+body {
   transition: all 0.5s ease-in;
 }
 body.light {
@@ -415,7 +415,7 @@ body.light .footer {
   transition: all 0.5s ease-in;
 }
 /* Header */
-/* .header__container {
+.header__container {
   transition: all 0.5s ease-in;
 }
 body.light .header__container {
@@ -466,11 +466,11 @@ body.light .header__nav-link:focus {
 
 body.light .current__nav-link {
   color: #f87719;
-} */
+}
 
 /* mobile */
 
-/* @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   body.light .header__nav {
     background-color: #ffffff;
     transition: all 0.5s ease-in;
@@ -500,12 +500,12 @@ body.light #menu-button:focus {
 
 body.light #overlay {
   background: rgba(0, 0, 0, 0.2);
-} */
+}
 
 /* MODAL WINDOW */
-/* body.light .modal-about-film {
+body.light .modal-about-film {
   background-color: #ffffff;
-}
+} 
 
 body.light .modal-about-film a {
   color: #f87719;
@@ -548,5 +548,4 @@ body.light span.btn-mod-text {
 }
 body.light .film-title {
   color: #ffffff;
-} 
-
+}  
