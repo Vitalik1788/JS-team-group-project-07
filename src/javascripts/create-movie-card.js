@@ -25,7 +25,7 @@ export function createMovieCard(data) {
         voteAverage: movie.vote_average,
         isHero: false,
       })}</div>            
-			<span class="film-rating">${movie.vote_average.toFixed(1)}</span>
+			<!-- <span class="film-rating">${movie.vote_average.toFixed(1)}</span> -->
                 </div>
               </div>
             </div>

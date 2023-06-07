@@ -24,7 +24,10 @@ export default function starsRating({ voteAverage, isHero }) {
 }
 
 function convertRatingToStars(voteAverage) {
-  if (!voteAverage || voteAverage <= 0 || voteAverage > 10) return 0;
+  if (!voteAverage || voteAverage <= 0 || voteAverage > 10) {
+    return 0;
+  }
+
   return Number((voteAverage / 2).toFixed(1));
 }
 
@@ -49,7 +52,9 @@ function addMaskId(maskId, starsValue) {
 }
 
 function placeMarkup(starsValue, isHero) {
-  if (!isHero) return markupRender(starsValue);
+  if (!isHero) {
+    return markupRender(starsValue);
+  }
 
   starsContainer.insertAdjacentHTML('beforeend', markupRender(starsValue));
 
@@ -66,7 +71,9 @@ function placeMarkup(starsValue, isHero) {
 }
 
 function markupRender(starsValue) {
-  if (!starsValue) return '<p class="stars-absent">Not rated yet</p>';
+  if (!starsValue) {
+    return '<p class="stars-absent">Not rated yet</p>';
+  }
 
   const starsCountFilled = Number.parseInt(starsValue);
   const starsCountMasked = starsValue - starsCountFilled === 0 ? 0 : 1;
