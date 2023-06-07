@@ -36,11 +36,10 @@
     font-size: 24px;
     line-height: 1.16;
     color: #FFFFFF;
-    padding: 150px 50px;
   }
 
   .error-image {
-    margin-left: 20px;
+   
   }
 
   .close-button {
@@ -68,7 +67,7 @@
       width: 100%;
       height: 0;
 
-      min-height: 300px; /* Замініть значення на ваш розмір */
+      min-height: 300px; 
     }
 
     .modal-content iframe[src^="https://www.youtube.com/embed/"] {
