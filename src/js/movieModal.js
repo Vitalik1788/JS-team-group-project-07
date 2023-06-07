@@ -1,5 +1,6 @@
 import MovieDetailProviver from './movieDetailProvider.js';
 import { roundToTen, findFilmAtStorage } from '../upcoming/helpers.js';
+import { handleFilm } from './library/library.js';
 import { API_KEY } from '../fetch/api_key';
 import defaultImg from '../images/default.jpg';
 
@@ -29,6 +30,7 @@ class MovieModal {
     };
 
     this.refs.modalCloseBtn.addEventListener('click', () => this.hide());
+    this.refs.modalAddOrRemoveBtn.addEventListener('click', event=> handleFilm(event));
     document.addEventListener('keydown', event => event.key === 'Escape' ? this.hide() : null);
     window.addEventListener('click', event => event.target === this.refs.modal ? this.hide() : null);
 
@@ -128,7 +130,7 @@ function instanceModalHTML() {
           <div class="container-film-descr">
             <p class="modal-film__description" id="modal-film-description"></p>
           </div>
-          <button class="btn modal-btn-add-libr"  type="button" id="modal-film-add-or-rm">Add to my library</button>
+          <button class="modal-btn-add-libr btn"  type="button" id="modal-film-add-or-rm">Add to my library</button>
           </button>
         </div>
       </div>
