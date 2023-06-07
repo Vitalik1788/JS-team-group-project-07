@@ -38,4 +38,3 @@ function updateUpcoming(markup = '') {
 }
 
 
-console.log('qweqweqweqweqewqwe');

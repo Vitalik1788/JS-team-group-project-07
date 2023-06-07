@@ -100,8 +100,9 @@ function createLIibraryMovieCard() {
     libraryRef.innerHTML = `<div class="library-info library-info-container">
         <p class="library-info-text" style="color: white;"> OOPS... <br> We are very sorry!<br>
         You don’t have any movies at your library.</p>
-        <button class="btn-search-movie" type="button">Search movie</button>
-        </div>`;
+        <button class="btn btn-search-movie " type="button">Search movie</button>
+        </div>
+        `;
   } else {
     const markup = JSON.parse(localStorage.getItem('library'))
       .map(movie => {
