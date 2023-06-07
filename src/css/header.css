@@ -505,7 +505,7 @@ body.light #overlay {
 /* MODAL WINDOW */
 body.light .modal-about-film {
   background-color: #ffffff;
-}
+} 
 
 body.light .modal-about-film a {
   color: #f87719;
@@ -548,5 +548,4 @@ body.light span.btn-mod-text {
 }
 body.light .film-title {
   color: #ffffff;
-}
-
+}  
