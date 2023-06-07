@@ -5,7 +5,7 @@ export async function getGenres() {
     const genres = await axios.get(
       'https://api.themoviedb.org/3/genre/movie/list?api_key=41b8f9437bf3f899281f8a3f9bdc0891'
     );
-    localStorage.setItem('genres', JSON.stringify(genres.data.genres)); // Зберегти масив у localStorage
+    localStorage.setItem('genres', JSON.stringify(genres.data.genres));
     return genres;
   } catch (error) {
     onError(error);
@@ -21,12 +21,11 @@ export async function validateGenres(genresArray, genresData) {
     });
     let genresString = '';
     if (genresNames.length > 2) {
-      genresString = genresNames.slice(0, 2).join(', ') + ' and other';
+      genresString = genresNames.slice(0, 2).join(', ');
     } else {
       genresString = genresNames.join(', ');
     }
 
-    console.log(genresString);
     return genresString;
   } catch (error) {
     onError(error);

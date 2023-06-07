@@ -54,20 +54,20 @@ function addMaskId(maskId, starsValue) {
 function placeMarkup(starsValue, isHero) {
   if (!isHero) {
     return markupRender(starsValue);
+  } else {
+    starsContainer.insertAdjacentHTML('beforeend', markupRender(starsValue));
+
+    const refsHero = {
+      starsList: document.querySelector('.stars-list'),
+      starsListImg: document.querySelectorAll('.stars-list__img'),
+    };
+
+    starsContainer.classList.add('stars-container--hero');
+    refsHero.starsList.classList.add('stars-list--hero');
+    refsHero.starsListImg.forEach(item =>
+      item.classList.add('stars-list__img--hero')
+    );
   }
-
-  starsContainer.insertAdjacentHTML('beforeend', markupRender(starsValue));
-
-  const refsHero = {
-    starsList: document.querySelector('.stars-list'),
-    starsListImg: document.querySelectorAll('.stars-list__img'),
-  };
-
-  starsContainer.classList.add('stars-container--hero');
-  refsHero.starsList.classList.add('stars-list--hero');
-  refsHero.starsListImg.forEach(item =>
-    item.classList.add('stars-list__img--hero')
-  );
 }
 
 function markupRender(starsValue) {

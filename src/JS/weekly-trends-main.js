@@ -5,17 +5,18 @@ import { getGenres } from './weekly-trends-genres.js';
 const refs = {
   trendsList: document.querySelector('.cards-list'),
 };
-getGenres();
+//getGenres();
 export function showWeeklyTrends() {
   const screenWidth = window.innerWidth;
   const numMovies = screenWidth < 768 ? 1 : 3;
-
+  getGenres();
   getTrendyFilms().then(({ data }) => {
     const films = data.results.slice(0, numMovies);
 
-    createMarkup(films).then(() => {
-      console.log(data);
-    });
+    createMarkup(films)
+    // .then(() => {
+    //   console.log(data);
+    // });
   });
 }
 

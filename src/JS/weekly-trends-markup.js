@@ -52,13 +52,13 @@ export function createMarkup(films) {
       .querySelector('.cards-list')
       .insertAdjacentHTML('beforeend', finalMarkup);
 
-    const filmCards = document.querySelectorAll('.card-item');
-    filmCards.forEach(card => {
-      card.addEventListener('click', async () => {
-        const movieId = card.getAttribute('data-id');
-        await openModalAboutFilm(movieId);
-        console.log(movieId);
-      });
+    const filmList = document.querySelector('.listListener');
+
+    filmList.addEventListener('click', event => {
+      const li = event.target.closest('.card-item');
+
+      const movieId = li.getAttribute('data-id');
+      openModalAboutFilm(movieId);
     });
   });
 }

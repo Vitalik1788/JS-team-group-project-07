@@ -6,3 +6,4 @@ window.addEventListener('load', showWeeklyTrends);
 import './JS/library/library';
 import './upcoming/upcoming';
 import './JS/modal-trailer';
+import './JS/global-listener';

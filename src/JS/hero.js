@@ -13,12 +13,10 @@ const refs = {
   heroFilmDataEl: document.querySelector('.hero-info-wrap'), //це елемент, на який вішаються дата-атрибути ID та vote_average
 };
 
-
 window.addEventListener('load', heroInfoShow);
 
 function heroInfoShow() {
   getFilmInfo().then(({ data }) => {
-    console.log(data);
 
     // Змінні усієї інформації фільму
     const filmInfo = data.results[RANDOM_NUMBER];
@@ -57,7 +55,7 @@ async function getFilmInfo() {
 
 //базова розмітка при успішному запиту
 function createHeroMarkUp(picturePath, filmName, filmDescription) {
-  refs.heroDiv.style.backgroundImage = `linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 42.02%), 
+  refs.heroDiv.style.backgroundImage = `linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%), 
   url(${picturePath})`;
   refs.heroTitle.textContent = `${filmName}`;
   refs.heroOverview.textContent = `${filmDescription}`;
@@ -98,11 +96,10 @@ function createSuccessFetchBtnMurkUp(filmId) {
   heroDetailstBtn.textContent = 'More Details';
   heroDetailstBtn.classList.add('css-bnt-info');
   heroDetailstBtn.setAttribute('type', 'button');
+  heroDetailstBtn.setAttribute('data-id', filmId);
+
   refs.heroBtnDiv.append(heroDetailstBtn);
 }
-
-
-
 
 //функція для створення дата-атрибутів для використання
 function createDataSet(id, rating) {
