@@ -1,145 +1,93 @@
 [
     {
       "id": 1,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_1.png",
+      "name_ua": "Віталій Тарасенко",
       "role_en": "Team Lead",
-      "role_ua": "Керівник команди",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": " "
     },
     {
       "id": 2,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_2.png",
+      "name_ua": "Назар Крюк",
       "role_en": "Scrum master",
-      "role_ua": "Скрам-майстер",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": " "
     },
     {
       "id": 3,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_3.png",
+      "name_ua": "Олександр Дросюк",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Header section"
     },
     {
       "id": 4,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_4.png",
+      "name_ua": "Станіслав",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Hero section"
     },
     {
       "id": 5,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_5.png",
+      "name_ua": "Оля Пруська",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Weekly trends section"
     },
     {
       "id": 6,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_6.png",
+      "name_ua": "Владислав Слободенюк",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Upcoming this mounth section"
     },
     {
       "id": 7,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_7.png",
+      "name_ua": "Андрій Крук",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Catalog section"
     },
     {
       "id": 8,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_8.png",
+      "name_ua": "Нікіта Черненко",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Library section"
     },
     {
       "id": 9,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": " ./src/images/footer/image_9.png",
+      "name_ua": "Дмитро Нестеренко",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Footer section"
     },
     {
       "id": 10,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_10.png",
+      "name_ua": "Євгенія",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Trailer in hero section"
     },
     {
       "id": 11,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_11.png",
+      "name_ua": "Анна Обруч",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " " 
+      "about_en": "Modal" 
     },
     {
       "id": 12,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_12.png",
+      "name_ua": "Андрій Тсокур",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Rating Stars"
     },
     {
       "id": 13,
-      "image": " ",
-      "name_en": " ",
-      "name_ua": " ",
+      "image": "./src/images/footer/image_13.png",
+      "name_ua": "Артем Ярмуш",
       "role_en": "Developer",
-      "role_ua": "Розробник",
-      "about_ua": " ",
-      "about_en": " ",
-      "link": " "
+      "about_en": "Buttons"
     }
   ]
