@@ -17,7 +17,6 @@ window.addEventListener('load', heroInfoShow);
 
 function heroInfoShow() {
   getFilmInfo().then(({ data }) => {
-    console.log(data);
 
     // Змінні усієї інформації фільму
     const filmInfo = data.results[RANDOM_NUMBER];
