@@ -38,13 +38,13 @@ function addMaskId(maskId, starsValue) {
 
   if (maskId === 0) {
     mask.innerHTML = `
-		<rect x="0" y="0" width="18" height="16" fill="white" />
-		<rect x="${maskShare}%" y="0" width="18" height="16" fill="black" />`;
+		<rect x="0" y="0" width="18" height="18" fill="white" />
+		<rect x="${maskShare}%" y="0" width="18" height="18" fill="black" />`;
   } else {
     const newMask = `
 		<mask id="star-fill--partly${maskId}" class="mask">
-			<rect x="0" y="0" width="18" height="16" fill="white" />
-			<rect x="${maskShare}%" y="0" width="18" height="16" fill="black" />
+			<rect x="0" y="0" width="18" height="18" fill="white" />
+			<rect x="${maskShare}%" y="0" width="18" height="18" fill="black" />
 		</mask>`;
 
     lastMask.insertAdjacentHTML('beforebegin', newMask);
@@ -98,7 +98,7 @@ function starsRender(starsCount, starsType) {
   for (let i = 1; i <= starsCount; i++) {
     markup += `
 			<li class="stars-list__item">
-				<svg class="stars-list__img" viewBox="0 0 18 16">
+				<svg class="stars-list__img" viewBox="0 0 18 18">
 					${starsType}
 				</svg>
 			</li>`;
