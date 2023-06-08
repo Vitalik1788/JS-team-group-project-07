@@ -12,7 +12,7 @@ export function createMarkup(films) {
       genre_ids,
       vote_average,
     }) => {
-      const genresPromise = validateGenres(
+      const genres = validateGenres(
         genre_ids,
         JSON.parse(localStorage.getItem('genres'))
       );
@@ -25,7 +25,7 @@ export function createMarkup(films) {
         releaseDate = release_date.split('-')[0];
       }
 
-      const genres = await genresPromise;
+      //const genres = await genresPromise;
 
       return `<li class="card-item item" data-id="${id}">
             <img class="film-poster" src="https://image.tmdb.org/t/p/original/${posterPath}" alt="${title} poster" />

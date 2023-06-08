@@ -1,6 +1,6 @@
 import { roundToTen, findFilmAtStorage } from './helpers';
 import { STORAGE_KEY } from '../fetch/api_key';
-
+import { validateGenres } from '../javascript/weekly-trends-genres';
 export function careateUpcomingMarkup(film) {
   const {
     backdrop_path,
@@ -25,12 +25,22 @@ export function careateUpcomingMarkup(film) {
   const transformedDate = release_date.replaceAll('-', '.');
   const roundedPopularity = roundToTen(popularity);
 
-  const trimedGenres = trimGenreList(['comedy', 'action', 'thriller']);
+  // const trimedGenres = trimGenreList(['comedy', 'action', 'thriller']);
 
-  function trimGenreList(genres) {
-    if (genres.length > 2) return `${genres.slice(0, 2).join(', ')}, ...`;
-    else return `${genres.join(', ')}`;
-  }
+  // function trimGenreList(genres) {
+  //   if (genres.length > 2) return `${genres.slice(0, 2).join(', ')}, ...`;
+  //   else return `${genres.join(', ')}`;
+  // }
+
+
+  const genres = validateGenres(
+    genre_ids,
+    JSON.parse(localStorage.getItem('genres'))
+  );
+  //console.log(genresPromise)
+  //const genres = await genresPromise;
+  //const genres = Promise.resolve(genresPromise).then(result => result);
+  //console.log(genres);
 
   return `
         <div class='upcoming-card__figure'>
@@ -65,7 +75,7 @@ export function careateUpcomingMarkup(film) {
               </li>
               <li class="metrics-list__item">
                 <p class="metrics-text">Genre</p>
-                <p class="metrics-text">${trimedGenres}</p>
+                <p class="metrics-text">${genres}</p>
               </li>
             </ul>
           </div>

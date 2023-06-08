@@ -11,8 +11,8 @@ export async function createMovieCard(data) {
     const imageSrc = movie.poster_path
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
       : `${defaultImg}`;
-    const genresPromise = validateGenres(movie.genre_ids, genresData);
-    const genres = await genresPromise;
+    const genres = validateGenres(movie.genre_ids, genresData);
+    //const genres = await genresPromise;
     return `<li class="card-item" data-id="${movie.id}">
         <img class="film-poster" src="${imageSrc}" alt="${
       movie.original_title || movie.name
