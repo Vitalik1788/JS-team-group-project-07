@@ -382,9 +382,19 @@ body.light .modal-btn-add-libr {
 body.light .modal-btn-add-libr:hover,
 body.light .modal-btn-add-libr:focus {
   background-color: #000;
+  -webkit-text-fill-color: #f87719;
 }
 body.light .btn-mod-text span {
   color: #000000;
+}
+body.light .modal__close-btn {
+  background-color: transparent;
+}
+body.light .modal__close-icon {
+  stroke: #000;
+}
+body.light .modal__close-icon:hover {
+  stroke: #f87719;
 }
 h3.section-title {
   transition: all 0.5s ease-in;
@@ -505,7 +515,7 @@ body.light #overlay {
 /* MODAL WINDOW */
 body.light .modal-about-film {
   background-color: #ffffff;
-} 
+}
 
 body.light .modal-about-film a {
   color: #f87719;
@@ -548,4 +558,4 @@ body.light span.btn-mod-text {
 }
 body.light .film-title {
   color: #ffffff;
-}  
+}
