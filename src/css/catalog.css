@@ -1,0 +1,484 @@
+/*=============================================STYLES=============================================*/
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.is-hidden {
+  position: absolute;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.section-catalog {
+  background-color: #111111;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  gap: 16px;
+}
+
+.search-input {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+
+  border-radius: 8px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  color: #b7b7b7;
+}
+
+.search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #ffffff;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  border-radius: 50%;
+}
+
+.search-button:hover,
+.search-button:focus {
+  transition: all 1s;
+  background: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border: 1px solid #f87719;
+}
+
+.search-icon {
+  width: 18px;
+  height: 18px;
+  fill: transparent;
+  stroke: #ffffff;
+}
+
+.search-button:hover .search-icon,
+.search-button:focus .search-icon {
+  transition: all 1s;
+  stroke: #f87719;
+}
+
+.cancel-button:hover .cancel-icon,
+.cancel-button:focus .cancel-icon {
+  transition: all 1s;
+  stroke: #282828;
+}
+
+.cancel-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #ffffff;
+}
+
+.error-container {
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 48px;
+
+  text-align: center;
+}
+
+.error-information {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.error-container div {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.arrow-button {
+  width: 20px;
+  height: 20px;
+
+  background-color: transparent;
+
+  cursor: pointer;
+}
+
+.arrow-left-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-right-icon {
+  width: 20px;
+  height: 20px;
+  rotate: 180deg;
+}
+
+.pagination-pages-list {
+  display: flex;
+  gap: 8px;
+}
+
+.card-item {
+  position: relative;
+  overflow: hidden;
+  width: 280px;
+  height: 406px;
+  border-radius: 5px;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.film-poster {
+  width: 100%;
+  height: 100%;
+}
+
+.film-title {
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.film-description,
+.film-rating {
+  color: #b7b7b7;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 63.48%,
+    rgba(0, 0, 0, 0.9) 92.16%
+  );
+  /* // border-radius: 5px; */
+  padding: 12px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.film-info {
+  /* // margin-top: 342px; */
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.film-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination-dots {
+  font-weight: 400;
+  font-size: 10px;
+
+  width: 8px;
+  height: 10px;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+/*=============================================MOBILE=============================================*/
+
+@media screen and (min-width: 320px) {
+  .section-catalog {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .search-form {
+    margin-bottom: 16px;
+  }
+
+  .search-input {
+    width: 224px;
+    padding: 12px 20px;
+  }
+
+  .cancel-button {
+    width: 18px;
+    height: 18px;
+
+    position: absolute;
+    right: 77px;
+    top: 13px;
+
+    background-color: transparent;
+    color: #ffffff;
+
+    cursor: pointer;
+  }
+
+  .search-button {
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+  }
+
+  .movie-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+  }
+
+  .pagination-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+  }
+
+  .pagination-item {
+    display: flex;
+    align-items: center;
+  }
+
+  .pagination-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 24px;
+    height: 24px;
+
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1;
+    border-radius: 50%;
+    background: #111111;
+    border: 1px solid;
+    color: #b7b7b7;
+    cursor: pointer;
+  }
+  .pagination-button.is-active {
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+    border: none;
+  }
+
+  .pagination-button:hover,
+  .pagination-button:focus {
+    transition: all 1s;
+
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+    border: none;
+  }
+}
+
+/*=============================================TABLET=============================================*/
+
+@media screen and (min-width: 768px) {
+  .section-catalog {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .search-form {
+    margin-bottom: 36px;
+  }
+
+  .search-input {
+    width: 204px;
+    padding: 14px 20px;
+  }
+
+  .cancel-button {
+    top: 15px;
+    right: 300px;
+  }
+
+  .search-button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .movie-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    column-gap: 16px;
+    row-gap: 32px;
+
+    margin-bottom: 44px;
+  }
+
+  .item {
+    width: 224px;
+    height: 325px;
+
+    margin-bottom: 0;
+  }
+
+  .pagination-wrapper {
+    gap: 12px;
+  }
+
+  .pagination-button {
+    width: 40px;
+    height: 40px;
+
+    font-size: 14px;
+  }
+
+  .pagination-dots {
+    width: 12px;
+    height: 14px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  .arrow-button {
+    width: 28px;
+    height: 28px;
+
+    background-color: transparent;
+
+    cursor: pointer;
+  }
+
+  .arrow-left-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .arrow-right-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .pagination-pages-list {
+    display: flex;
+    gap: 16px;
+  }
+
+  .error-container {
+    width: 513px;
+    margin-top: 80px;
+  }
+
+  .error-information {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+
+    color: #ffffff;
+  }
+
+  .error-container div {
+    gap: 5px;
+  }
+
+  .card-item {
+    width: 224px;
+    height: 325px;
+  }
+}
+
+/*=============================================DESKTOP=============================================*/
+
+@media screen and (min-width: 1280px) {
+  .section-catalog {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .search-form {
+    margin-bottom: 48px;
+  }
+
+  .search-input {
+    font-size: 16px;
+    line-height: 1.18;
+
+    width: 334px;
+    padding: 14px 24px;
+  }
+
+  .search-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  .search-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cancel-button {
+    top: 15px;
+    right: 500px;
+  }
+
+  .movie-list {
+    margin-bottom: 60px;
+  }
+
+  .item {
+    width: 395px;
+    height: 574px;
+  }
+
+  .card-item {
+    width: 395px;
+    height: 574px;
+    font-size: 20px;
+    line-height: 1.15;
+  }
+
+  .film-title {
+    margin-bottom: 8px;
+  }
+
+  .overlay {
+    padding: 20px;
+  }
+
+  .error-container {
+    width: 684px;
+  }
+
+  .error-container div {
+    gap: 10px;
+  }
+
+  .error-information {
+    font-size: 32px;
+    line-height: 1.12;
+  }
+}
