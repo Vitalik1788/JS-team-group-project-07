@@ -1,2 +1,2 @@
 import './JS/header';
-import './JS/library/library'
+import './JS/library/library';
