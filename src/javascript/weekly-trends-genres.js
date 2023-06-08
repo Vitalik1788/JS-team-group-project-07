@@ -12,7 +12,7 @@ export async function getGenres() {
   }
 }
 
-export async function validateGenres(genresArray, genresData) {
+export function validateGenres(genresArray, genresData) {
   try {
     const allGenres = Array.from(genresData);
     const genresNames = genresArray.map(genreId => {
