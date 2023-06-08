@@ -8,7 +8,7 @@ import defaultImg from '../images/default.jpg';
 const movieDetailProviver = new MovieDetailProviver(API_KEY);
 let modalInstance = null;
 
-class MovieModal {
+export class MovieModal {
   constructor() {
     if (modalInstance !== null) return modalInstance;
 

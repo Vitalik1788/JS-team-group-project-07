@@ -6,7 +6,6 @@ import { validateGenres } from '../weekly-trends-genres';
 import { openModalAboutFilm } from '../movieModal';
 
 
-
 const libraryRef = document.querySelector('.library');
 const btnLib = document.getElementById('loadMore');
 
@@ -109,17 +108,20 @@ export async function addFilmToLibrary(id) {
 ///// ФНКЦИЯ УДАЛЕНИЯ ИЗ LOCAL STORAGE ///////
 
 export function deleteCardLibrary(id) {
-  console.log(id);
+  console.log('in coming', id);
   const libraryList = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  const itemToDelete = libraryList.find(film => film.id === id);
-  console.log(id);
+  const itemToDelete = libraryList.findIndex(film => film.id === Number(id));
+  console.log(itemToDelete);
 
-  libraryList.pop(itemToDelete);
+  libraryList.splice(itemToDelete, 1);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryList));
 
   if (location.pathname === '/library.html') {
     libraryRef.innerHTML = '';
     createLibraryMarkup(libraryList);
+    const modal = document.querySelector('[data-modal]');
+    modal.classList.add('modal-film-is-hidden');
+    body.classList.remove('body--modal-open');
   }
 }
 
