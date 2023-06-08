@@ -33,7 +33,7 @@ function playTrailer(movieId) {
         modalContent.innerHTML = '';
         modal.style.display = 'none';
         video.src = ''; // Зупиняємо відтворення трейлера
-        enableScroll(); // Увімкнути скролінг сторінки
+        enableScroll(); // Вмикаємо скролінг сторінки
       });
 
       const modalContent = document.querySelector('.modal-content');
@@ -55,7 +55,7 @@ function disableScroll() {
 }
 
 function enableScroll() {
-  document.body.style.overflow = '';
+  document.body.style.overflow = 'auto';
 }
 
 function showModalError() {
@@ -75,6 +75,8 @@ function showModalError() {
 
   const modal = document.getElementById('modal');
   modal.style.display = 'block';
+  disableScroll();
+  
 
   const closeButton = modalContent.querySelector('.close-button');
   closeButton.addEventListener('click', () => {
