@@ -1,1 +1,0 @@
-{"mappings":"oeAAAA,EAAA,S","sources":["src/library.js"],"sourcesContent":["import './JS/header';\nimport './JS/library/library';\n"],"names":["parcelRequire"],"version":3,"file":"library.f2d9175f.js.map"}

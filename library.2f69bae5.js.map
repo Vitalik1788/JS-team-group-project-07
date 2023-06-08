@@ -1,1 +1,0 @@
-{"mappings":"gfAAAA,EAAA,S","sources":["src/library.js"],"sourcesContent":["import './JS/header';\nimport './JS/library/library';\n"],"names":["parcelRequire"],"version":3,"file":"library.2f69bae5.js.map"}
