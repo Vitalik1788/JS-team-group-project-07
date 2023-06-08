@@ -1,111 +1,119 @@
 :root {
-    --accent-color: #f87719;
-    --background-dark-color: #111111;
-    --secondary-black-color: #282828;
-    --grey-color: #b7b7b7;
-    --primary-text-color: #fff;
-    --secondary-text-color: #f8f8f8;
-  }
+  --accent-color: #f87719;
+  --background-dark-color: #111111;
+  --secondary-black-color: #282828;
+  --grey-color: #b7b7b7;
+  --primary-text-color: #fff;
+  --secondary-text-color: #f8f8f8;
+}
+
+.library-page {
+  padding-top: 40px;
+}
 
 .library-card-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 160px;
-    margin-right: 32px;
-    gap: 16px
-    
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 160px;
+  margin-right: 32px;
+  gap: 16px;
 }
 
 .library-info {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-item {
-    margin-bottom: 32px;
-    
-
+  margin-bottom: 32px;
 }
 
 .btn-search-movie {
-align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-
+  align-self: center;
+  text-decoration: none;
 }
-.lib-btn-cont{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.lib-btn-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .library-info-text {
-    color: #fff;
+  color: #fff;
 }
 
-
-
-
 @media screen and (min-width: 320px) {
-    
-    .library-info-text {
-        
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 28px;
-    }
-
-    .library-info-container {
-        width: 280px;
-    }
-    .btn-search-movie {
-        width: 121px;
-        height: 38px;
-        margin-top: 20px;
-    }
+  .library-info-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
   }
 
-  @media screen and (min-width: 768px) {
-    
-    .library-info-text {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
-    }
-    
-    .library-info-container {
-        width: 438px;
-    }
-    .btn-search-movie{
-        width: 128px;
-        height: 40px;
-        margin-top: 24px;
-    }
+  .library-info-container {
+    width: 280px;
+  }
+  .btn-search-movie {
+    width: 121px;
+    height: 38px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .library-page {
+    padding-top: 60px;
+  }
+
+  .library-info-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .library-info-container {
+    width: 438px;
+  }
+  .btn-search-movie {
+    width: 128px;
+    height: 40px;
+    margin-top: 24px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
-    .library-info-text {
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 32px;
-        line-height: 36px;
-    }
-    .library-info-container {
-        width: 584px;
-    }
-    .btn-search-movie{
-        width: 158px;
-        height: 52px;
-        margin-top: 28px;
-    }
+  .library-page {
+    padding-top: 80px;
+  }
+  .library-info-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .library-info-container {
+    width: 584px;
+  }
+  .btn-search-movie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 158px;
+    height: 52px;
+    margin-top: 28px;
+  }
 }
