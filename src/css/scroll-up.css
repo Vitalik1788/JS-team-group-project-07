@@ -1,0 +1,53 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-up__container {
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 500ms, opacity 500ms;
+}
+
+.scroll-up__container::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  display: block;
+  width: 40px;
+  height: 40px;
+
+  background-color: white;
+  border-radius: 50%;
+
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
+  -webkit-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
+  -moz-box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
+}
+
+.scroll-up__container--shown {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 500ms, opacity 500ms, transform 500ms;
+  cursor: pointer;
+}
+
+.scroll-up__container--shown:hover,
+.scroll-up__container--shown:focus {
+  transform: scale(1.2);
+}
+
+.scroll-up__icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+
+  fill: #f87719;
+  z-index: 100000;
+}
