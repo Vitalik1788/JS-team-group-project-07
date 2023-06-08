@@ -1,10 +1,10 @@
 import MovieDetailProviver from './movieDetailProvider.js';
 import { roundToTen, findFilmAtStorage } from '../upcoming/helpers.js';
 import { handleFilm } from './library/library.js';
-import { API_KEY } from '../fetch/api_key';
+import { API_KEY , STORAGE_KEY} from '../fetch/api_key';
 import defaultImg from '../images/default.jpg';
 
-const STORAGE_KEY = 'my_film';
+// const STORAGE_KEY = 'my_film';
 const movieDetailProviver = new MovieDetailProviver(API_KEY);
 let modalInstance = null;
 
@@ -57,21 +57,27 @@ class MovieModal {
     this.refs.description.textContent = `${data.overview}`;
   }
 
-  refreshBtn(movieId, btnAttribute){
+  refreshBtn(movieId, btnAttribute, btnText){
     this.refs.modalAddOrRemoveBtn.setAttribute('data-id', movieId);
     this.refs.modalAddOrRemoveBtn.setAttribute('data-'+btnAttribute,'');
+    this.refs.modalAddOrRemoveBtn.textContent = btnText;
   }
 }
 
 //use this method to open a modal.
 export function openModalAboutFilm(movieId) {
   const modal = new MovieModal();
-  const btnAttribute = findFilmAtStorage(STORAGE_KEY, movieId) ? 'remove' : 'add';
+  
+  const isSaved = findFilmAtStorage(STORAGE_KEY, movieId)
+  const btnAttribute = isSaved ? 'remove' : 'add';
+  const btnText = isSaved ? 'Remove from my library' : 'Add to my library';
+
   movieDetailProviver
     .getMovieDetails(movieId)
     .then(response => {
       modal.refreshData(response.data);
-      modal.refreshBtn(movieId, btnAttribute);
+      modal.refreshBtn(movieId, btnAttribute, btnText);
+
       modal.show();
     })
     .catch(error => {
