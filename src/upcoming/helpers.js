@@ -8,5 +8,5 @@ export function roundToTen(number) {
 
 export function findFilmAtStorage(key, id) {
   const savedFilms = JSON.parse(localStorage.getItem(key));
-  return savedFilms?.find(film => film.id === id) || null;
+  return savedFilms?.find(film => film.id === Number(id)) || null;
 }
