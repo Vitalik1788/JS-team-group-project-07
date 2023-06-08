@@ -5,7 +5,7 @@ import { STORAGE_KEY } from '../../fetch/api_key';
 
 const libraryRef = document.querySelector('.library-card-list');
 const btnLib = document.querySelector('.btn');
-console.log(document.querySelector('.btn'));
+// console.log(document.querySelector('.btn'));
 
 window.addEventListener('DOMContentLoaded', () => {
   const library = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -21,22 +21,22 @@ btnLib?.addEventListener('click', function (event) {
   firstEl += 6;
   totalElementInList += 6;
 });
-console.log(btnLib);
+// console.log(btnLib);
 
 let totalElementInList = 0;
 let firstEl = 0;
 function getLibrarylistInParts(library) {
   const totalLiberyLength = library.length;
-  console.log(totalLiberyLength);
+  // console.log(totalLiberyLength);
 
   lostEl = firstEl + 6;
-  console.log(firstEl);
-  console.log(lostEl);
-  console.log(totalLiberyLength);
-  console.log(totalLiberyLength - totalElementInList);
+  // console.log(firstEl);
+  // console.log(lostEl);
+  // console.log(totalLiberyLength);
+  // console.log(totalLiberyLength - totalElementInList);
 
   const libraryInParts = library.slice(firstEl, lostEl);
-  console.log(libraryInParts);
+  // console.log(libraryInParts);
   if (totalLiberyLength - totalElementInList <= 6) {
     createLibraryMarkup(libraryInParts);
   } else {
@@ -51,7 +51,7 @@ function getLibrarylistInParts(library) {
 export function handleFilm(e) {
   const id = e.target.dataset.id;
   // console.log('btnLib', btnLib);
-  console.log(e.target);
+  // console.log(e.target);
 
   if (e.target.hasAttribute('data-add')) {
     console.log('data-add');
