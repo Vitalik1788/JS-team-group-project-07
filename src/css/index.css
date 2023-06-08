@@ -10,6 +10,7 @@
 @import './movie-modal.css';
 @import './modal-trailer.css';
 @import './stars-rating.css';
+@import './scroll-up.css';
 
 .main-container {
   padding-left: 20px;
