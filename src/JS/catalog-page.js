@@ -1,4 +1,4 @@
-// Импорты
+// Імпорти
 import { refs } from './catalog/components/refs';
 import ApiService from './catalog/components/api_service';
 import { createErrorMarkup } from '../javascripts/create-error-markup';
@@ -6,10 +6,13 @@ import { createMovieCard } from '../javascripts/create-movie-card';
 
 // Змінні
 const apiService = new ApiService();
+
+const wrapper = document.querySelector('.pagination-wrapper');
+
 let currentPage = 1;
 let totalPages = 0;
 
-// Слушатели событий
+// Слухачі подій
 
 refs.searchForm.addEventListener('submit', getInputValue);
 refs.cancelBtn.addEventListener('click', clearInputValue);
@@ -27,7 +30,7 @@ refs.cancelBtn.classList.add('is-hidden');
 
 renderWeeklyTrends(currentPage);
 
-// Функции
+// Функції
 
 function renderWeeklyTrends(page) {
   apiService.getMovies(page).then(handleMoviesData).catch(handleError);
@@ -73,8 +76,9 @@ async function searchMovies() {
   try {
     const data = await apiService.getMovies();
     if (data.total_results === 0) {
-      handleEmptyResults();
+      handleEmptyQuery();
     } else {
+      wrapper.classList.remove('is-hidden');
       totalPages = data.total_pages;
       apiService.total = data.total_results;
       createMovieCard(data);
@@ -85,11 +89,6 @@ async function searchMovies() {
   } catch (error) {
     handleError(error);
   }
-}
-
-function handleEmptyResults() {
-  refs.catalogList.innerHTML = '';
-  createErrorMarkup();
 }
 
 function onInput(e) {
@@ -105,27 +104,7 @@ function clearInputValue() {
   refs.searchInput.value = '';
 }
 
-function updateNextButtonState(totalPages) {
-  if (currentPage === totalPages) {
-    refs.nextPageBtn.setAttribute('disabled', 'disabled');
-  } else {
-    refs.nextPageBtn.removeAttribute('disabled');
-  }
-}
-
-function onNextPage() {
-  currentPage += 1;
-  apiService.incrementPage();
-  renderWeeklyTrends(currentPage);
-}
-
-function onPrevPage() {
-  if (currentPage > 1) {
-    currentPage -= 1;
-    apiService.decrementPage();
-    renderWeeklyTrends(currentPage);
-  }
-}
+// Пагінація
 
 function createPaginationButtons(totalPages, page) {
   let liTag = '';
@@ -184,7 +163,6 @@ function createPaginationButtons(totalPages, page) {
   }
 
   refs.paginationContainer.innerHTML = liTag;
-  console.log(totalPages);
   return liTag;
 }
 
@@ -196,5 +174,27 @@ function onPageButtonClick(event) {
       apiService.page = newPage;
       renderWeeklyTrends(currentPage);
     }
+  }
+}
+
+function updateNextButtonState(totalPages) {
+  if (currentPage === totalPages) {
+    refs.nextPageBtn.setAttribute('disabled', 'disabled');
+  } else {
+    refs.nextPageBtn.removeAttribute('disabled');
+  }
+}
+
+function onNextPage() {
+  currentPage += 1;
+  apiService.incrementPage();
+  renderWeeklyTrends(currentPage);
+}
+
+function onPrevPage() {
+  if (currentPage > 1) {
+    currentPage -= 1;
+    apiService.decrementPage();
+    renderWeeklyTrends(currentPage);
   }
 }

@@ -55,6 +55,7 @@ ul {
 
 .search-button:hover,
 .search-button:focus {
+  transition: all 1s;
   background: #ffffff;
   border-width: 1px;
   border-style: solid;
@@ -70,11 +71,13 @@ ul {
 
 .search-button:hover .search-icon,
 .search-button:focus .search-icon {
+  transition: all 1s;
   stroke: #f87719;
 }
 
 .cancel-button:hover .cancel-icon,
 .cancel-button:focus .cancel-icon {
+  transition: all 1s;
   stroke: #282828;
 }
 
@@ -261,13 +264,6 @@ ul {
     gap: 4px;
   }
 
-  .pagination-button.is-active {
-    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
-    border: none;
-
-    color: #ffffff;
-  }
-
   .pagination-item {
     display: flex;
     align-items: center;
@@ -285,10 +281,22 @@ ul {
     font-size: 10px;
     line-height: 1;
     border-radius: 50%;
-    background: transparent;
+    background: #111111;
     border: 1px solid;
     color: #b7b7b7;
     cursor: pointer;
+  }
+  .pagination-button.is-active {
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+    border: none;
+  }
+
+  .pagination-button:hover,
+  .pagination-button:focus {
+    transition: all 1s;
+
+    background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+    border: none;
   }
 }
 
