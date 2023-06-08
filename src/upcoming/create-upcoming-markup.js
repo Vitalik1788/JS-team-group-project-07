@@ -1,6 +1,5 @@
 import { roundToTen, findFilmAtStorage } from './helpers';
 import { STORAGE_KEY } from '../fetch/api_key';
-// const STORAGE_KEY = 'my_film'; // should be localStorage key
 
 export function careateUpcomingMarkup(film) {
   const {
@@ -16,12 +15,11 @@ export function careateUpcomingMarkup(film) {
     id,
   } = film;
 
-  // localStorage.setItem('my_film', JSON.stringify([film]));
-
   const isSaved = findFilmAtStorage(STORAGE_KEY, id);
-  console.log('myIsSaved', isSaved);
+  // console.log('myIsSaved', isSaved);
 
   const btnAttribute = isSaved ? 'remove' : 'add';
+  const btnText = isSaved ? 'Remove from my library' : 'Add to my library';
   //
   const imgPath = window.screen.width < 768 ? poster_path : backdrop_path;
   const transformedDate = release_date.replaceAll('-', '.');
@@ -33,16 +31,6 @@ export function careateUpcomingMarkup(film) {
     if (genres.length > 2) return `${genres.slice(0, 2).join(', ')}, ...`;
     else return `${genres.join(', ')}`;
   }
-
-  //
-  const fragment = document.createDocumentFragment();
-
-  const log = document.querySelector('.upcoming-card');
-  const myRules =
-    document.styleSheets[document.styleSheets.length - 1].cssRules;
-  const mediaList = myRules[0]; // a CSSMediaRule representing the media query.
-  // console.log(mediaList);
-  // log.textContent += ` ${mediaList.media.mediaText}`;
 
   return `
         <div class='upcoming-card__figure'>
@@ -83,6 +71,6 @@ export function careateUpcomingMarkup(film) {
           </div>
           <h4 class="upcoming-card__subtitle metrics-text">ABOUT</h4>
             <p class="upcoming-card__text">${overview}</p>
-          <button class="btn" type="button" data-id=${id} data-${btnAttribute}>Add to my library</button>
+          <button class="btn" type="button" data-id=${id} data-${btnAttribute}>${btnText}</button>
         </div>`;
 }

@@ -6,7 +6,7 @@ export function roundToTen(number) {
   return Math.floor(number * 10) / 10;
 }
 
-export function findFilmAtStorage(key = 'my_film', id) {
+export function findFilmAtStorage(key, id) {
   const savedFilms = JSON.parse(localStorage.getItem(key));
-  return savedFilms?.find(film => film.id === id);
+  return savedFilms?.find(film => film.id === id) || null;
 }
