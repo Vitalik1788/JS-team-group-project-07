@@ -42,11 +42,8 @@ function getLibrarylistInParts(libraryData) {
 
 export function handleFilm(e) {
   const id = e.target.dataset.id;
-  // console.log('btnLib', btnLib);
-  console.log(e.target);
 
   if (e.target.hasAttribute('data-add')) {
-    console.log('data-add');
 
     // btnLib.removeAttribute('data-add');
     // btnLib.setAttribute('data-remove', '');
@@ -57,7 +54,6 @@ export function handleFilm(e) {
 
     //
   } else if (e.target.hasAttribute('data-remove')) {
-    console.log('data-remove');
 
     e.target.removeAttribute('data-remove');
     e.target.setAttribute('data-add', '');
@@ -86,7 +82,6 @@ function setBtnProp(el, props) {
 /////// ПОЛУЧЕНИЯ ОТ СЕРВЕРА ФИЛЬМА ПО ID ///////
 
 async function getMovieById(id) {
-  console.log(id);
   const responce = await API.getMoviById(id);
   return responce.data;
 }
@@ -94,7 +89,6 @@ async function getMovieById(id) {
 ///// ФУНКЦИЯ ДОБАВЛЕНИЯ В LOCAL STORAGE ///////
 
 export async function addFilmToLibrary(id) {
-  console.log(id);
   const libraryList = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
   const isAtLibrary = libraryList?.find(x => x.id === Number(id));
 
@@ -108,10 +102,8 @@ export async function addFilmToLibrary(id) {
 ///// ФНКЦИЯ УДАЛЕНИЯ ИЗ LOCAL STORAGE ///////
 
 export function deleteCardLibrary(id) {
-  console.log('in coming', id);
   const libraryList = JSON.parse(localStorage.getItem(STORAGE_KEY));
   const itemToDelete = libraryList.findIndex(film => film.id === Number(id));
-  console.log(itemToDelete);
 
   libraryList.splice(itemToDelete, 1);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryList));
@@ -145,7 +137,6 @@ async function createLibraryMarkup(libraryInParts) {
 
     const markup = await Promise.all(
       libraryInParts.map(async movie => {
-        console.log(movie.id);
         const imageSrc = movie.poster_path
           ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
           : `${defaultImg}`;
