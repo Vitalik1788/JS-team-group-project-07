@@ -41,7 +41,7 @@ export function createMarkup(films) {
     )
     .join('');
 
-  refsInputPlace.insertAdjacentHTML('beforeend', markup);
+  if (refsInputPlace) refsInputPlace.insertAdjacentHTML('beforeend', markup);
 }
 
 filmList.addEventListener('click', event => {

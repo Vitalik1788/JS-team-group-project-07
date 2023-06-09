@@ -9,9 +9,8 @@ const libraryRef = document.querySelector('.library');
 const btnLib = document.getElementById('loadMore');
 const filmList = document.querySelector('.listListener');
 
-
 const library = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-window.addEventListener('DOMContentLoaded', () => {  
+window.addEventListener('DOMContentLoaded', () => {
   getLibrarylistInParts(library);
 });
 
@@ -41,11 +40,9 @@ export function handleFilm(e) {
   const id = e.target.dataset.id;
 
   if (e.target.hasAttribute('data-add')) {
-    
     setBtnProp(e.target, addOps);
 
     addFilmToLibrary(id);
-
   } else if (e.target.hasAttribute('data-remove')) {
     e.target.removeAttribute('data-remove');
     e.target.setAttribute('data-add', '');
@@ -69,12 +66,10 @@ function setBtnProp(el, props) {
   el.textContent = btnText;
 }
 
-
 async function getMovieById(id) {
   const responce = await API.getMoviById(id);
   return responce.data;
 }
-
 
 export async function addFilmToLibrary(id) {
   const libraryList = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -86,7 +81,6 @@ export async function addFilmToLibrary(id) {
   libraryList.push(movieObj);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryList));
 }
-
 
 export function deleteCardLibrary(id) {
   const libraryList = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -121,16 +115,15 @@ async function createLibraryMarkup(libraryInParts) {
     const genresPromise = validateGenres(genreIds, genresData);
     const genres = await genresPromise;
 
-    const markup = 
-      libraryInParts.map(movie => {
-        const imageSrc = movie.poster_path
-          ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-          : `${defaultImg}`;
+    const markup = libraryInParts.map(movie => {
+      const imageSrc = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+        : `${defaultImg}`;
 
-        return `<li class="card-item item" data-id="${movie.id}">
+      return `<li class="card-item item" data-id="${movie.id}">
               <img class="film-poster" src="${imageSrc}" alt="${
-          movie.original_title
-        }" />
+        movie.original_title
+      }" />
               <div class="overlay">
                 <div class="film-info">
                   <p class="film-title">${
@@ -138,9 +131,9 @@ async function createLibraryMarkup(libraryInParts) {
                   }</p>
                   <div class="film-details">
                     <span class="film-description">${genres} | ${
-          new Date(movie.release_date).getFullYear() ||
-          new Date(movie.first_air_date).getFullYear()
-        }</span>
+        new Date(movie.release_date).getFullYear() ||
+        new Date(movie.first_air_date).getFullYear()
+      }</span>
                     <div class="stars-container">${starsRating({
                       voteAverage: movie.vote_average,
                       isHero: false,
@@ -149,10 +142,9 @@ async function createLibraryMarkup(libraryInParts) {
                 </div>
               </div>
             </li>`;
-      })
-    
+    });
 
-    libraryRef.insertAdjacentHTML('beforeend', markup.join(''));
+    if (libraryRef) libraryRef.insertAdjacentHTML('beforeend', markup.join(''));
   }
 }
 
