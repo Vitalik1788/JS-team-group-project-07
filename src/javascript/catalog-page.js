@@ -38,6 +38,10 @@ function renderWeeklyTrends(page) {
 
 function handleMoviesData(data) {
   totalPages = data.total_pages;
+  if (totalPages > 30) {
+    totalPages = 30;
+  }
+
   createMovieCard(data);
   updateNextButtonState(data.total_pages);
   createPaginationButtons(totalPages, currentPage);
@@ -80,8 +84,13 @@ async function searchMovies() {
     if (data.total_results === 0) {
       handleEmptyQuery();
     } else {
-      wrapper.classList.remove('is-hidden');
       totalPages = data.total_pages;
+
+      if (totalPages > 30) {
+        totalPages = 30;
+      }
+
+      wrapper.classList.remove('is-hidden');
       apiService.total = data.total_results;
       createMovieCard(data);
       currentPage = data.page;
@@ -187,10 +196,13 @@ function updateNextButtonState(totalPages) {
 }
 
 function onNextPage() {
-  currentPage += 1;
-  apiService.incrementPage();
-  renderWeeklyTrends(currentPage);
+  if (currentPage < totalPages) {
+    currentPage += 1;
+    apiService.incrementPage();
+    renderWeeklyTrends(currentPage);
+  }
 }
+
 
 function onPrevPage() {
   if (currentPage > 1) {
