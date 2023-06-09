@@ -5,7 +5,6 @@ import { STORAGE_KEY } from '../../fetch/api_key';
 import { validateGenres } from '../weekly-trends-genres';
 import { openModalAboutFilm } from '../movieModal';
 
-
 const libraryRef = document.querySelector('.library');
 const btnLib = document.getElementById('loadMore');
 
@@ -44,7 +43,6 @@ export function handleFilm(e) {
   const id = e.target.dataset.id;
 
   if (e.target.hasAttribute('data-add')) {
-
     // btnLib.removeAttribute('data-add');
     // btnLib.setAttribute('data-remove', '');
     // btnLib.textContent = 'Remove from my library';
@@ -54,7 +52,6 @@ export function handleFilm(e) {
 
     //
   } else if (e.target.hasAttribute('data-remove')) {
-
     e.target.removeAttribute('data-remove');
     e.target.setAttribute('data-add', '');
     e.target.textContent = 'Add to my library';
@@ -108,12 +105,12 @@ export function deleteCardLibrary(id) {
   libraryList.splice(itemToDelete, 1);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(libraryList));
 
-  if (location.pathname === '/library.html') {
+  if (window.location.href.includes('library')) {
     libraryRef.innerHTML = '';
     createLibraryMarkup(libraryList);
     const modal = document.querySelector('[data-modal]');
     modal.classList.add('modal-film-is-hidden');
-    body.classList.remove('body--modal-open');
+    document.body.classList.remove('body--modal-open');
   }
 }
 
@@ -166,7 +163,8 @@ async function createLibraryMarkup(libraryInParts) {
       })
     );
 
-    libraryRef.innerHTML += markup.join('');
+    // libraryRef.innerHTML += markup.join('');
+    libraryRef.insertAdjacentHTML('beforeend', markup.join(''));
 
     const filmList = document.querySelector('.listListener');
 
