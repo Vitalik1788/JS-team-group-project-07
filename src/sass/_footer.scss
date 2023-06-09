@@ -1,8 +1,8 @@
 .footer {
     padding: 30px 0;
     text-align: center;
-    background: #F7F7F7;
-    color: #545454;
+    background: #111111;
+    color: #B7B7B7;
 }
 
 .footer__text {
@@ -10,11 +10,12 @@
     line-height: 1.19;
 }
 
-<<<<<<< Updated upstream
+
 .footer__lang {
     display: none;
 }
-=======
+
+
 .modal__title {
     margin-bottom: 10px;
 }
@@ -34,7 +35,7 @@
     
     border-radius: 4px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 5px;
-    color: $text-color;
+    color: #545454;
     &:hover {
         box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 10px;
         background-position: right center;
@@ -78,7 +79,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, .5);
     z-index: 20;
-    transition: $cubic all;
+    transition: 250ms cubic-bezier(0.8, 0.4, 0.3, 0.9) all;
 }
 
 .modal {
@@ -97,7 +98,7 @@
     text-align: center;
     border-radius: 3px;
     background-color: #fff;
-    transition: $cubic all;
+    transition: 250ms cubic-bezier(0.8, 0.4, 0.3, 0.9) all;
 
     @media screen and (min-width: 320px) and (max-width: 768px){
         width: 75vw;
@@ -132,7 +133,7 @@
 
 .js-open-modal {
     display: inline-block;
-    color: $text-color;
+    color: #B7B7B7;
     text-decoration: underline;
 }
->>>>>>> Stashed changes
+
