@@ -20,7 +20,7 @@ div.stars-container > p.stars-absent {
   justify-content: flex-end;
   align-items: flex-end;
 
-  min-width: 111px;
+  max-width: 111px;
   padding-bottom: 5px;
   padding-left: 5px;
 }
@@ -28,7 +28,7 @@ div.stars-container > p.stars-absent {
 .stars-container--hero {
   justify-content: flex-start;
 
-  min-width: 140px;
+  max-width: 140px;
   padding-bottom: 0;
   padding-left: 0;
 }
@@ -37,14 +37,14 @@ div.stars-container > p.stars-absent {
   display: flex;
   gap: 4px;
 
-  width: calc(18px * 5 + 4px * 4);
+  max-width: calc(18px * 5 + 4px * 4);
   margin-block: 0;
   padding-left: 0;
 }
 
 .stars-list--hero {
   gap: 5px;
-  width: calc(24px * 5 + 5px * 4);
+  max-width: calc(24px * 5 + 5px * 4);
 }
 
 .stars-list__item {
@@ -53,7 +53,7 @@ div.stars-container > p.stars-absent {
 
 .stars-list__img {
   display: block;
-  width: 18px;
+  max-width: 18px;
   height: 18px;
 }
 
