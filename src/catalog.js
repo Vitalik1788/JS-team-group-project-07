@@ -1,3 +1,4 @@
+import './javascript/loader';
 import './javascript/header';
 import './javascript/hero';
 import './javascript/catalog-page';
