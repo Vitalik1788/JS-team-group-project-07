@@ -1,4 +1,4 @@
-import defaultImgTr from '../images/IMG9881.png';
+import defaultImgTr from '../images/default.jpg';
 const imageSrc = defaultImgTr;
 
 function playTrailer(movieId) {
