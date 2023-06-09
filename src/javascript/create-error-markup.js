@@ -3,8 +3,6 @@ import { refs } from './catalog/components/refs';
 let errorMarkupCreated = false;
 
 export const createErrorMarkup = () => {
-  const wrapper = document.querySelector('.pagination-wrapper')
-
   if (errorMarkupCreated) {
     return; // Если функция уже вызвана, выходим из неё
   }
@@ -19,7 +17,5 @@ export const createErrorMarkup = () => {
   newErrorContainer.innerHTML = errorMarkup;
 
   refs.errorContainer.appendChild(newErrorContainer);
-  refs.errorContainer.classList.remove('is-hidden');
-  wrapper.classList.add('is-hidden')
   errorMarkupCreated = true;
 };
