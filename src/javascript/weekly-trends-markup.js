@@ -4,30 +4,23 @@ import { openModalAboutFilm } from './movieModal';
 
 export function createMarkup(films) {
   const markup = films.map(
-    async ({
-      id,
-      poster_path,
-      release_date,
-      title,
-      genre_ids,
-      vote_average,
-    }) => {
-      const genres = validateGenres(
-        genre_ids,
-        JSON.parse(localStorage.getItem('genres'))
-      );
-      const posterPath = `https://image.tmdb.org/t/p/original/${poster_path}`;
+      ({ id, poster_path, release_date, title, genre_ids, vote_average }) => {
+        const genres = validateGenres(
+          genre_ids,
+          JSON.parse(localStorage.getItem('genres'))
+        );
+        const posterPath = `https://image.tmdb.org/t/p/original/${poster_path}`;
 
-      let releaseDate = '';
-      if (release_date === 'undefind') {
-        releaseDate = 'Date unknown';
-      } else {
-        releaseDate = release_date.split('-')[0];
-      }
+        let releaseDate = '';
+        if (release_date === 'undefind') {
+          releaseDate = 'Date unknown';
+        } else {
+          releaseDate = release_date.split('-')[0];
+        }
 
-      //const genres = await genresPromise;
+        //const genres = await genresPromise;
 
-      return `<li class="card-item item" data-id="${id}">
+        return `<li class="card-item item" data-id="${id}">
             <img class="film-poster" src="https://image.tmdb.org/t/p/original/${posterPath}" alt="${title} poster" />
             <div class="overlay">
               <div class="film-info">
@@ -43,22 +36,19 @@ export function createMarkup(films) {
               </div>
             </div>
           </li>`;
-    }
-  );
+      }
+    ).join('');
 
-  return Promise.all(markup).then(results => {
-    const finalMarkup = results.join('');
-    document
-      .querySelector('.cards-list')
-      .insertAdjacentHTML('beforeend', finalMarkup);
+  document.querySelector('.cards-list').insertAdjacentHTML('beforeend', markup);
 
-    const filmList = document.querySelector('.listListener');
-
-    filmList.addEventListener('click', event => {
-      const li = event.target.closest('.card-item');
-
-      const movieId = li.getAttribute('data-id');
-      openModalAboutFilm(movieId);
-    });
-  });
+  
 }
+
+const filmList = document.querySelector('.listListener');
+
+filmList.addEventListener('click', event => {
+  const li = event.target.closest('.card-item');
+
+  const movieId = li.getAttribute('data-id');
+  openModalAboutFilm(movieId)
+})
