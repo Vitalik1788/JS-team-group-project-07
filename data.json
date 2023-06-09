@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "image": "./src/images/footer/image_1.png",
+      "name": "Віталій Тарасенко",
+      "role": "Team Lead",
+      "about": ""
+    },
+    {
+      "id": 2,
+      "image": "./src/images/footer/image_2.png",
+      "name": "Назар Крюк",
+      "role": "Scrum master",
+      "about": ""
+    },
+    {
+      "id": 3,
+      "image": "./src/images/footer/image_3.png",
+      "name": "Олександр Дросюк",
+      "role": "Developer",
+      "about": "Header section"
+    },
+    {
+      "id": 4,
+      "image": "./src/images/footer/image_4.png",
+      "name": "Станіслав",
+      "role": "Developer",
+      "about": "Hero section"
+    },
+    {
+      "id": 5,
+      "image": "./src/images/footer/image_5.png",
+      "name": "Оля Пруська",
+      "role": "Developer",
+      "about": "Weekly trends section"
+    },
+    {
+      "id": 6,
+      "image": "./src/images/footer/image_6.png",
+      "name": "Владислав Слободенюк",
+      "role": "Developer",
+      "about": "Upcoming this mounth section"
+    },
+    {
+      "id": 7,
+      "image": "./src/images/footer/image_7.png",
+      "name": "Андрій Крук",
+      "role": "Developer",
+      "about": "Catalog section"
+    },
+    {
+      "id": 8,
+      "image": "./src/images/footer/image_8.png",
+      "name": "Нікіта Черненко",
+      "role": "Developer",
+      "about": "Library section"
+    },
+    {
+      "id": 9,
+      "image": " ./src/images/footer/image_9.png",
+      "name": "Дмитро Нестеренко",
+      "role": "Developer",
+      "about": "Footer section"
+    },
+    {
+      "id": 10,
+      "image": "./src/images/footer/image_10.png",
+      "name": "Євгенія",
+      "role": "Developer",
+      "about": "Trailer in hero section"
+    },
+    {
+      "id": 11,
+      "image": "./src/images/footer/image_11.png",
+      "name": "Анна Обруч",
+      "role": "Developer",
+      "about": "Modal" 
+    },
+    {
+      "id": 12,
+      "image": "./src/images/footer/image_12.png",
+      "name": "Андрій Тсокур",
+      "role": "Developer",
+      "about": "Rating Stars"
+    },
+    {
+      "id": 13,
+      "image": "./src/images/footer/image_13.png",
+      "name": "Артем Ярмуш",
+      "role": "Developer",
+      "about": "Buttons"
+    }
+  ]
