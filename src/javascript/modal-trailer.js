@@ -1,5 +1,5 @@
+import defaultImgTr from '../images/default.jpg';
 const imageSrc = defaultImgTr;
-let modalOpen = false;
 
 function playTrailer(movieId) {
   const apiUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=41b8f9437bf3f899281f8a3f9bdc0891&language=en-US`;
@@ -28,7 +28,12 @@ function playTrailer(movieId) {
         `;
 
       closeButton.addEventListener('click', () => {
-        closeModal();
+        const modal = document.getElementById('modal');
+        const modalContent = document.querySelector('.modal-content');
+        modalContent.innerHTML = '';
+        modal.style.display = 'none';
+        video.src = ''; // Зупиняємо відтворення трейлера
+        enableScroll(); // Вмикаємо скролінг сторінки
       });
 
       const modalContent = document.querySelector('.modal-content');
@@ -37,7 +42,8 @@ function playTrailer(movieId) {
       modalContent.appendChild(closeButton);
 
       const modal = document.getElementById('modal');
-      openModal();
+      modal.style.display = 'block';
+      disableScroll(); 
     })
     .catch(() => {
       showModalError();
@@ -67,33 +73,21 @@ function showModalError() {
       </div>
     `;
 
-  openModal();
+  const modal = document.getElementById('modal');
+  modal.style.display = 'block';
+  disableScroll();
+  
 
   const closeButton = modalContent.querySelector('.close-button');
   closeButton.addEventListener('click', () => {
-    closeModal();
+    modal.style.display = 'none';
+    enableScroll(); 
   });
 
   closeButton.classList.add('close-button'); // Додати клас до кнопки
 
   const errorContent = modalContent.querySelector('.error-content');
   errorContent.classList.add('error-content'); // Додати клас до контейнера з текстом та картинкою
-}
-
-function openModal() {
-  const modal = document.getElementById('modal');
-  modal.style.display = 'block';
-  disableScroll();
-  modalOpen = true;
-}
-
-function closeModal() {
-  const modal = document.getElementById('modal');
-  const modalContent = document.querySelector('.modal-content');
-  modalContent.innerHTML = '';
-  modal.style.display = 'none';
-  enableScroll();
-  modalOpen = false;
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -110,19 +104,16 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && modalOpen) {
-      closeModal();
-    }
-  });
+  document.addEventListener('keydown', event =>
+    event.key === 'Escape' ? (modal.style.display = 'none') : null
+  );
 
-  window.addEventListener('click', event => {
-    if (event.target === modal && modalOpen) {
-      closeModal();
-    }
-  });
+  window.addEventListener('click', event =>
+    event.target === modal ? (modal.style.display = 'none') : null
+  );
 
   closeButton.addEventListener('click', () => {
-    closeModal();
+    modal.style.display = 'none';
+    enableScroll(); 
   });
 });
