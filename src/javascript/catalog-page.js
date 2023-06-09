@@ -69,6 +69,8 @@ function getInputValue(e) {
 
 function handleEmptyQuery() {
   refs.catalogList.innerHTML = '';
+  refs.errorContainer.classList.remove('is-hidden');
+  wrapper.classList.add('is-hidden');
   createErrorMarkup();
 }
 
@@ -110,6 +112,7 @@ function createPaginationButtons(totalPages, page) {
   let liTag = '';
   let afterPage = page + 1;
   let beforePage = page - 1;
+  let active = '';
 
   if (totalPages > 5) {
     if (page > 2) {
@@ -180,8 +183,6 @@ function onPageButtonClick(event) {
 function updateNextButtonState(totalPages) {
   if (currentPage === totalPages) {
     refs.nextPageBtn.setAttribute('disabled', 'disabled');
-  } else {
-    refs.nextPageBtn.removeAttribute('disabled');
   }
 }
 
