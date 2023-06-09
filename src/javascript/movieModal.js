@@ -29,7 +29,9 @@ export class MovieModal {
     };
 
     this.refs.modalCloseBtn.addEventListener('click', () => this.hide());
-    this.refs.modalAddOrRemoveBtn.addEventListener('click', event =>handleFilm(event));
+    this.refs.modalAddOrRemoveBtn.addEventListener('click', event =>
+      handleFilm(event)
+    );
     document.addEventListener('keydown', event =>
       event.key === 'Escape' ? this.hide() : null
     );
