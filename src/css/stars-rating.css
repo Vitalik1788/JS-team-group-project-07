@@ -20,7 +20,7 @@ div.stars-container > p.stars-absent {
   justify-content: flex-end;
   align-items: flex-end;
 
-  min-width: 111px;
+  width: 111px;
   padding-bottom: 5px;
   padding-left: 5px;
 }
@@ -28,7 +28,7 @@ div.stars-container > p.stars-absent {
 .stars-container--hero {
   justify-content: flex-start;
 
-  min-width: 140px;
+  width: 140px;
   padding-bottom: 0;
   padding-left: 0;
 }
