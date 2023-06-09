@@ -1,17 +1,16 @@
 import MovieDetailProviver from './movieDetailProvider.js';
 import { roundToTen, findFilmAtStorage } from '../upcoming/helpers.js';
 import { handleFilm } from './library/library.js';
-import { API_KEY , STORAGE_KEY} from '../fetch/api_key';
+import { API_KEY, STORAGE_KEY } from '../fetch/api_key';
 import defaultImg from '../images/default.jpg';
 
 // const STORAGE_KEY = 'my_film';
 const movieDetailProviver = new MovieDetailProviver(API_KEY);
 let modalInstance = null;
 
-class MovieModal {
+export class MovieModal {
   constructor() {
-    if (modalInstance !== null)
-      return modalInstance;
+    if (modalInstance !== null) return modalInstance;
 
     this.body = document.querySelector('body');
     this.body.insertAdjacentHTML('beforeend', instanceModalHTML());
@@ -30,9 +29,13 @@ class MovieModal {
     };
 
     this.refs.modalCloseBtn.addEventListener('click', () => this.hide());
-    this.refs.modalAddOrRemoveBtn.addEventListener('click', event=> handleFilm(event));
-    document.addEventListener('keydown', event => event.key === 'Escape' ? this.hide() : null);
-    window.addEventListener('click', event => event.target === this.refs.modal ? this.hide() : null);
+    this.refs.modalAddOrRemoveBtn.addEventListener('click', event =>handleFilm(event));
+    document.addEventListener('keydown', event =>
+      event.key === 'Escape' ? this.hide() : null
+    );
+    window.addEventListener('click', event =>
+      event.target === this.refs.modal ? this.hide() : null
+    );
 
     modalInstance = this;
   }
@@ -48,18 +51,22 @@ class MovieModal {
   }
 
   refreshData(data) {
-    this.refs.posterPath.src = data.poster_path? `https://image.tmdb.org/t/p/w500${data.poster_path}`:`${defaultImg}`;
+    this.refs.posterPath.src = data.poster_path
+      ? `https://image.tmdb.org/t/p/w500${data.poster_path}`
+      : `${defaultImg}`;
     this.refs.title.textContent = `${data.title}`;
     this.refs.voteAverage.textContent = `${roundToTen(data.vote_average)}`;
     this.refs.voteCount.textContent = `${data.vote_count}`;
     this.refs.popularity.textContent = `${roundToTen(data.popularity)}`;
-    this.refs.genre.textContent = `${data.genres.map(genre => genre.name).join(', ')}`;
+    this.refs.genre.textContent = `${data.genres
+      .map(genre => genre.name)
+      .join(', ')}`;
     this.refs.description.textContent = `${data.overview}`;
   }
 
-  refreshBtn(movieId, btnAttribute, btnText){
+  refreshBtn(movieId, btnAttribute, btnText) {
     this.refs.modalAddOrRemoveBtn.setAttribute('data-id', movieId);
-    this.refs.modalAddOrRemoveBtn.setAttribute('data-'+btnAttribute,'');
+    this.refs.modalAddOrRemoveBtn.setAttribute('data-' + btnAttribute, '');
     this.refs.modalAddOrRemoveBtn.textContent = btnText;
   }
 }
@@ -67,8 +74,8 @@ class MovieModal {
 //use this method to open a modal.
 export function openModalAboutFilm(movieId) {
   const modal = new MovieModal();
-  
-  const isSaved = findFilmAtStorage(STORAGE_KEY, movieId)
+
+  const isSaved = findFilmAtStorage(STORAGE_KEY, movieId);
   const btnAttribute = isSaved ? 'remove' : 'add';
   const btnText = isSaved ? 'Remove from my library' : 'Add to my library';
 

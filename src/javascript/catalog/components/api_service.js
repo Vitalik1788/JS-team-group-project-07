@@ -30,7 +30,6 @@ export default class ApiService {
       return movies;
     } catch (error) {
       console.error(error);
-      throw error;
     }
   }
 

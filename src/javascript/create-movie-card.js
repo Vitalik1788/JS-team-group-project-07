@@ -7,29 +7,39 @@ import { openModalAboutFilm } from './movieModal';
 export async function createMovieCard(data) {
   const genresData = JSON.parse(localStorage.getItem('genres'));
 
-  const markupPromises = data.results.map(async movie => {
-    const imageSrc = movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+  const markupPromises = data.results.map(async data => {
+    const {
+      poster_path,
+      id,
+      release_date,
+      genre_ids,
+      vote_average,
+      original_title,
+      original_name,
+      first_air_date,
+    } = data;
+    const imageSrc = poster_path
+      ? `https://image.tmdb.org/t/p/w500${poster_path}`
       : `${defaultImg}`;
-    const genres = validateGenres(movie.genre_ids, genresData);
-    //const genres = await genresPromise;
-    return `<li class="card-item" data-id="${movie.id}">
+    const genres = validateGenres(genre_ids, genresData);
+    // const genres = await genresPromise;
+    return `<li class="card-item" data-id="${id}">
         <img class="film-poster" src="${imageSrc}" alt="${
-      movie.original_title || movie.name
+      original_title || original_name
     }" />
         <div class="overlay">
           <div class="film-info">
-            <p class="film-title">${movie.original_title || movie.name}</p>
+            <p class="film-title">${original_title || original_name}</p>
             <div class="film-details">
               <span class="film-description">${genres} | ${
-      new Date(movie.release_date).getFullYear() ||
-      new Date(movie.first_air_date).getFullYear()
+      new Date(release_date).getFullYear() ||
+      new Date(first_air_date).getFullYear()
     }</span>
     <div class="stars-container">${starsRating({
-      voteAverage: movie.vote_average,
+      voteAverage: vote_average,
       isHero: false,
     })}</div>            
-      <!-- <span class="film-rating">${movie.vote_average.toFixed(1)}</span> -->
+      <!-- <span class="film-rating">${vote_average.toFixed(1)}</span> -->
             </div>
           </div>
         </div>

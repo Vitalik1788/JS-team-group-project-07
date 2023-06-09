@@ -1,3 +1,3 @@
 import './javascript/header';
 import './javascript/scroll-up';
-// import './javascript/library/library';
+import './javascript/library/library';
