@@ -2,8 +2,12 @@ import { validateGenres } from './weekly-trends-genres';
 import starsRating from './stars-rating';
 import { openModalAboutFilm } from './movieModal';
 
+const refsInputPlace = document.querySelector('.cards-list');
+const filmList = document.querySelector('.listListener');
+
 export function createMarkup(films) {
-  const markup = films.map(
+  const markup = films
+    .map(
       ({ id, poster_path, release_date, title, genre_ids, vote_average }) => {
         const genres = validateGenres(
           genre_ids,
@@ -18,8 +22,6 @@ export function createMarkup(films) {
           releaseDate = release_date.split('-')[0];
         }
 
-        //const genres = await genresPromise;
-
         return `<li class="card-item item" data-id="${id}">
             <img class="film-poster" src="https://image.tmdb.org/t/p/original/${posterPath}" alt="${title} poster" />
             <div class="overlay">
@@ -31,24 +33,20 @@ export function createMarkup(films) {
                     voteAverage: vote_average,
                     isHero: false,
                   })}</div>
-									<!-- <span class="film-rating">${vote_average}</span> -->
                 </div>
               </div>
             </div>
           </li>`;
       }
-    ).join('');
+    )
+    .join('');
 
-  document.querySelector('.cards-list').insertAdjacentHTML('beforeend', markup);
-
-  
+  refsInputPlace.insertAdjacentHTML('beforeend', markup);
 }
-
-const filmList = document.querySelector('.listListener');
 
 filmList.addEventListener('click', event => {
   const li = event.target.closest('.card-item');
 
   const movieId = li.getAttribute('data-id');
-  openModalAboutFilm(movieId)
-})
+  openModalAboutFilm(movieId);
+});
