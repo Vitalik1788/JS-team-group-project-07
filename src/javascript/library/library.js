@@ -100,7 +100,7 @@ export function deleteCardLibrary(id) {
 
 async function createLibraryMarkup(libraryInParts) {
   const genresData = JSON.parse(localStorage.getItem('genres'));
-  if (libraryInParts.length === 0) {
+  if (libraryRef && libraryInParts.length === 0) {
     libraryRef.innerHTML = `<div class="library-info library-info-container">
                               <p class="library-info-text">
                                 OOPS... <br> We are very sorry!<br>
