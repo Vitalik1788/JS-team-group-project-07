@@ -1,9 +1,10 @@
 import starsRating from './stars-rating';
 import { getMovieId } from './modal-trailer';
+import axios from 'axios';
+import { API_KEY } from '../fetch/api_key';
+import { getRandomItem } from '../upcoming/helpers';
 
-const API_KEY = '58fde9f9a3392c3dbee86a1f2142354e';
-const RANDOM_NUMBER = Math.floor(Math.random() * (19 - 0 + 1)) + 0;
-const axios = require('axios').default;
+// const RANDOM_NUMBER = Math.floor(Math.random() * (19 - 0 + 1)) + 0;
 
 const refs = {
   heroDiv: document.getElementById('hero-div'),
@@ -15,24 +16,16 @@ const refs = {
 
 window.addEventListener('load', heroInfoShow);
 
-function heroInfoShow() {
-  getFilmInfo().then(({ data }) => {
+async function heroInfoShow() {
+  try {
+    const films = await getFilmInfo();
 
-    // Змінні усієї інформації фільму
-    const filmInfo = data.results[RANDOM_NUMBER];
-    const filmPicturePath = filmInfo.backdrop_path;
-    const filmPictureUrl = `"https://image.tmdb.org/t/p/original/${filmPicturePath}"`;
-    const filmName = filmInfo.title;
-    const filmOverview = filmInfo.overview;
-    const filmId = filmInfo.id;
-    const filmRating = filmInfo.vote_average;
-
-    createHeroMarkUp(filmPictureUrl, filmName, filmOverview); //функція розмітки hero
-    createSuccessFetchBtnMurkUp(filmId); // функція додавання кнопок при успішному запиту
-    createDataSet(filmId, filmRating); // функція додавання дата-атрибутів при успішному запиту для трейлеру, зірочок рейтингу і таке інше
-
-    starsRating({ voteAverage: filmRating, isHero: true });
-  });
+    const filmInfo = getRandomItem(films.results);
+    createHeroMarkUp(filmInfo); //функція розмітки hero
+    //
+  } catch (error) {
+    onHeroFetchError(error);
+  }
 }
 
 //базовий фетч function getFilmInfo() {
@@ -42,23 +35,27 @@ function heroInfoShow() {
 // }
 
 async function getFilmInfo() {
-  try {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
-    );
-
-    return res;
-  } catch (error) {
-    onHeroFetchError(error);
-  }
+  const res = await axios.get(
+    `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+  );
+  return res.data;
 }
 
 //базова розмітка при успішному запиту
-function createHeroMarkUp(picturePath, filmName, filmDescription) {
+function createHeroMarkUp(film) {
+  const { backdrop_path, title, overview, id, vote_average } = film;
+
+  const filmPictureUrl = `https://image.tmdb.org/t/p/original/${backdrop_path}`;
+
   refs.heroDiv.style.backgroundImage = `linear-gradient(79.39deg, #111111 32.37%, rgba(17, 17, 17, 0) 72.02%), 
-  url(${picturePath})`;
-  refs.heroTitle.textContent = `${filmName}`;
-  refs.heroOverview.textContent = `${filmDescription}`;
+  url(${filmPictureUrl})`;
+  refs.heroTitle.textContent = title;
+  refs.heroOverview.textContent = overview;
+
+  createSuccessFetchBtnMurkUp(id); // функція додавання кнопок при успішному запиту
+  createDataSet(id, vote_average); // функція додавання дата-атрибутів при успішному запиту для трейлеру, зірочок рейтингу і таке інше
+
+  starsRating({ voteAverage: vote_average, isHero: true });
 }
 
 //базова розмітка при помилці
