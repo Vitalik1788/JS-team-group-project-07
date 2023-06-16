@@ -1,8 +1,8 @@
 import MovieDetailProviver from './movieDetailProvider.js';
 import { roundToTen, findFilmAtStorage } from '../upcoming/helpers.js';
-import { handleFilm } from './library/library.js';
-import { API_KEY, STORAGE_KEY } from '../fetch/api_key';
-import defaultImg from '../images/default.jpg';
+import { handleFilm } from '../library/library.js';
+import { API_KEY, STORAGE_KEY } from '../api-service/api_keys.js';
+import defaultImg from '../../images/default.jpg';
 
 // const STORAGE_KEY = 'my_film';
 const movieDetailProviver = new MovieDetailProviver(API_KEY);

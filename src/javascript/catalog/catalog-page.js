@@ -1,6 +1,6 @@
 // Імпорти
-import { refs } from './catalog/components/refs';
-import ApiService from './catalog/components/api_service';
+import { refs } from './refs';
+import ApiService from './api_service';
 import { createErrorMarkup } from './create-error-markup';
 import { createMovieCard } from './create-movie-card';
 
@@ -202,7 +202,6 @@ function onNextPage() {
     renderWeeklyTrends(currentPage);
   }
 }
-
 
 function onPrevPage() {
   if (currentPage > 1) {

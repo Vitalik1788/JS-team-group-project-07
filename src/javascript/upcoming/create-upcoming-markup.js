@@ -1,6 +1,6 @@
 import { roundToTen, findFilmAtStorage } from './helpers';
-import { STORAGE_KEY } from '../fetch/api_key';
-import { validateGenres } from '../javascript/weekly-trends-genres';
+import { STORAGE_KEY } from '../api-service/api_keys';
+import { validateGenres } from '../weekly-trends/weekly-trends-genres';
 export function careateUpcomingMarkup(film) {
   const {
     backdrop_path,
@@ -31,7 +31,6 @@ export function careateUpcomingMarkup(film) {
   //   if (genres.length > 2) return `${genres.slice(0, 2).join(', ')}, ...`;
   //   else return `${genres.join(', ')}`;
   // }
-
 
   const genres = validateGenres(
     genre_ids,

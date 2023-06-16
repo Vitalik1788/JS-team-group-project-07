@@ -1,6 +1,6 @@
 import { validateGenres } from './weekly-trends-genres';
-import starsRating from './stars-rating';
-import { openModalAboutFilm } from './movieModal';
+import starsRating from '../stars-rating';
+import { openModalAboutFilm } from '../modal/movieModal';
 
 const refsInputPlace = document.querySelector('.cards-list');
 const filmList = document.querySelector('.listListener');
