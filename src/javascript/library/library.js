@@ -1,9 +1,9 @@
 import API from './api-library';
 import defaultImg from '../../images/default.jpg';
 import starsRating from '../../javascript/stars-rating';
-import { STORAGE_KEY } from '../../fetch/api_key';
-import { validateGenres } from '../weekly-trends-genres';
-import { openModalAboutFilm } from '../movieModal';
+import { STORAGE_KEY } from '../api-service/api_keys';
+import { validateGenres } from '../weekly-trends/weekly-trends-genres';
+import { openModalAboutFilm } from '../modal/movieModal';
 
 const libraryRef = document.querySelector('.library');
 const btnLib = document.getElementById('loadMore');

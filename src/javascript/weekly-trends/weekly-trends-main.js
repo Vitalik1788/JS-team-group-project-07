@@ -12,8 +12,8 @@ export function showWeeklyTrends() {
   const numMovies = screenWidth < 768 ? 1 : 3;
   getGenres();
   getTrendyFilms().then(({ data }) => {
-    const films = data.results.slice(0, numMovies)    
-    createMarkup(films)   
+    const films = data.results.slice(0, numMovies);
+    createMarkup(films);
   });
 }
 

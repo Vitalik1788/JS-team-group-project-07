@@ -1,4 +1,4 @@
-import defaultImgTr from '../images/default.jpg';
+import defaultImgTr from '../../images/default.jpg';
 const imageSrc = defaultImgTr;
 let modalOpen = false;
 
