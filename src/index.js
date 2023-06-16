@@ -7,4 +7,4 @@ import './upcoming/upcoming';
 import './javascript/modal-trailer';
 import './javascript/global-listener';
 import './javascript/scroll-up';
-console.log('object');
+// console.log('object');
