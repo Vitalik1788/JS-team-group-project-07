@@ -1,11 +1,11 @@
 {
-  "name": "parcel-project-template",
+  "name": "cinemania",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Vitalik1788.github.io/JS-team-group-project-07",
+  "homepage": "https://vladislav-slobodenjuk.github.io/cinemania-team-07",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /JS-team-group-project-07/"
+    "build": "parcel build src/*.html --public-url /cinemania-team-07/"
   },
   "repository": {
     "type": "git",
