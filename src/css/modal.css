@@ -165,7 +165,31 @@
   background-image: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
 }
 
-.modal__button-external {
+.modal__button--filled {
+  width: 118px;
+  height: 36px;
+  padding: 12px;
+
+  border-radius: 74px;
+  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
+  background-color: transparent;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  color: #111111;
+
+  transition: background 250ms, color 250ms;
+  cursor: pointer;
+}
+
+.modal__button--filled:hover,
+.modal__button--filled:focus {
+  background: #ffffff;
+  color: #f87719;
+}
+
+.modal__button--outlined {
   width: 118px;
   height: 36px;
   padding: 12px;
@@ -183,8 +207,8 @@
   cursor: pointer;
 }
 
-.modal__button-external:hover,
-.modal__button-external:focus {
+.modal__button--outlined:hover,
+.modal__button--outlined:focus {
   outline-color: #ffffff;
   background-color: #ffffff;
   color: #f87719;
@@ -248,7 +272,12 @@
     height: 40px;
   }
 
-  .modal__button-external {
+  .modal__button--filled {
+    width: 138px;
+    height: 38px;
+  }
+
+  .modal__button--outlined {
     width: 138px;
     height: 38px;
   }
