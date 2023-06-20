@@ -171,7 +171,6 @@
   padding: 12px;
 
   border-radius: 74px;
-  background: linear-gradient(141.22deg, #ffc226 9.4%, #f84119 91.91%);
   background-color: transparent;
 
   font-size: 12px;
@@ -179,13 +178,13 @@
   line-height: 1;
   color: #111111;
 
-  transition: background 250ms, color 250ms;
+  transition: background-color 250ms, color 250ms;
   cursor: pointer;
 }
 
 .modal__button--filled:hover,
 .modal__button--filled:focus {
-  background: #ffffff;
+  background-color: #ffffff;
   color: #f87719;
 }
 
