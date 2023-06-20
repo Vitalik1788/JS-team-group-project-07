@@ -1,6 +1,6 @@
 import { getGenres } from './javascript/weekly-trends/weekly-trends-genres';
-// console.log('object');
 getGenres();
+
 import './javascript/loader';
 import './javascript/stars-rating';
 import './javascript/header/header';

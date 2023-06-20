@@ -1,8 +1,7 @@
-// all apis here
 import axios from 'axios';
 import { API_KEY } from './api_keys';
 
-console.log('should be to prevent bugs');
+// all apis here
 
 export async function getTrendyFilms() {
   const films = await axios.get(
@@ -10,6 +9,7 @@ export async function getTrendyFilms() {
   );
   return films;
 }
+
 export async function getGenresData() {
   const response = await axios.get(
     `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
