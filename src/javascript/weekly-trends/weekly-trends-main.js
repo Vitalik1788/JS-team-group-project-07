@@ -1,34 +1,36 @@
-import axios from 'axios';
-import './weekly-trends-markup.js';
-import { createMarkup } from './weekly-trends-markup.js';
-import { getGenres } from './weekly-trends-genres.js';
-const refs = {
-  trendsList: document.querySelector('.cards-list'),
-};
-window.addEventListener('load', showWeeklyTrends);
+import { createMarkup, insertMarkup } from './weekly-trends-markup.js';
+import debounce from 'lodash.debounce';
+import { onError } from './on-error.js';
+import { CardHandler } from './card-handler.js';
+import { getTrendyFilms } from '../api-service/api-service.js';
+import { openModalAboutFilm } from '../modal/movieModal.js';
 
-export function showWeeklyTrends() {
-  const screenWidth = window.innerWidth;
-  const numMovies = screenWidth < 768 ? 1 : 3;
-  getGenres();
-  getTrendyFilms().then(({ data }) => {
-    const films = data.results.slice(0, numMovies);
-    createMarkup(films);
-  });
-}
+window.addEventListener('DOMContentLoaded', showWeeklyTrends);
+window.addEventListener('resize', debounce(showWeeklyTrends, 200));
 
-async function getTrendyFilms() {
+const inputPlace = document.querySelector('.cards-list');
+const filmList = document.querySelector('.listListener');
+const cardHandler = new CardHandler();
+
+export async function showWeeklyTrends() {
+  cardHandler.setCurrentAmount();
+
+  if (cardHandler.prevAmount === cardHandler.currentAmount) return;
+
+  const numMovies = cardHandler.currentAmount;
   try {
-    const films = await axios.get(
-      'https://api.themoviedb.org/3/trending/all/week?api_key=41b8f9437bf3f899281f8a3f9bdc0891'
-    );
-
-    return films;
+    const { data } = await getTrendyFilms();
+    const films = data.results.slice(0, numMovies);
+    const markup = createMarkup(films);
+    //insert markup
+    insertMarkup(inputPlace, markup);
+    //add listeners
+    filmList.addEventListener('click', event => {
+      const li = event.target.closest('.card-item');
+      const movieId = li.getAttribute('data-id');
+      openModalAboutFilm(movieId);
+    });
   } catch (error) {
     onError(error);
   }
-}
-
-export function onError(error) {
-  console.log(` error  ${error}`);
 }

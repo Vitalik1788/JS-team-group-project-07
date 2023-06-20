@@ -1,3 +1,6 @@
+import { getGenres } from './javascript/weekly-trends/weekly-trends-genres';
+getGenres();
+
 import './javascript/loader';
 import './javascript/stars-rating';
 import './javascript/header/header';
@@ -7,4 +10,3 @@ import './javascript/upcoming/upcoming';
 import './javascript/modal/modal-trailer';
 import './javascript/global-listener';
 import './javascript/scroll-up';
-// console.log('object');
