@@ -10,7 +10,7 @@ export async function getGenres() {
   if (!genres) {
     try {
       genres = await getGenresData();
-    
+    console.log(genres)
       localStorage.setItem(GENRES_KEY, JSON.stringify(genres));
     } catch (error) {
       
@@ -19,12 +19,14 @@ export async function getGenres() {
   } else {
     genres = JSON.parse(genres);
   }
+  
   return genres;
 }
 
 export function validateGenres(genresArray, genresData) {
   try {
     const allGenres = Array.from(genresData);
+    
     const genresNames = genresArray.map(genreId => {
       const genre = allGenres.find(genre => genre.id === genreId);
       return genre ? genre.name : '';

@@ -7,12 +7,15 @@ import { GENRES_KEY } from '../api-service/api_keys';
 // const filmList = document.querySelector('.listListener');
 
 export function createMarkup(films) {
+  
+  const storage=JSON.parse(localStorage.getItem(GENRES_KEY));
+  // console.trace(storage)
   const markup = films
     .map(
       ({ id, poster_path, release_date, title, genre_ids, vote_average }) => {
         const genres = validateGenres(
           genre_ids,
-          JSON.parse(localStorage.getItem(GENRES_KEY))
+          storage
         );
         const posterPath = `https://image.tmdb.org/t/p/original/${poster_path}`;
 

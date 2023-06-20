@@ -1,4 +1,4 @@
 export function onError(error) {
-    console.log(` error  ${error}`);
+    console.trace(error);
   }
   
