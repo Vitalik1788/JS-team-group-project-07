@@ -1,15 +1,21 @@
-import { onError } from './weekly-trends-main';
-import axios from 'axios';
-import { STORAGE_KEY, API_KEY } from '../api-service/api_keys';
+import { onError } from './on-error';
+// import axios from 'axios';
+import { GENRES_KEY } from '../api-service/api_keys';
+import { getGenresData } from '../api-service/api-service';
+
 export async function getGenres() {
   
-  let genres = localStorage.getItem(STORAGE_KEY);
+  let genres = localStorage.getItem(GENRES_KEY);
+ 
   if (!genres) {
-    const response = await axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
-    );
-    genres - response.data.genres;
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(genres));
+    try {
+      genres = await getGenresData();
+    
+      localStorage.setItem(GENRES_KEY, JSON.stringify(genres));
+    } catch (error) {
+      
+      onError(error);
+    }
   } else {
     genres = JSON.parse(genres);
   }

@@ -1,9 +1,10 @@
+// import { openModalAboutFilm } from '../modal/movieModal';
+
 import { validateGenres } from './weekly-trends-genres';
 import starsRating from '../stars-rating';
-import { openModalAboutFilm } from '../modal/movieModal';
-
-const refsInputPlace = document.querySelector('.cards-list');
-const filmList = document.querySelector('.listListener');
+import { GENRES_KEY } from '../api-service/api_keys';
+// const refsInputPlace = document.querySelector('.cards-list');
+// const filmList = document.querySelector('.listListener');
 
 export function createMarkup(films) {
   const markup = films
@@ -11,7 +12,7 @@ export function createMarkup(films) {
       ({ id, poster_path, release_date, title, genre_ids, vote_average }) => {
         const genres = validateGenres(
           genre_ids,
-          JSON.parse(localStorage.getItem('genres'))
+          JSON.parse(localStorage.getItem(GENRES_KEY))
         );
         const posterPath = `https://image.tmdb.org/t/p/original/${poster_path}`;
 
@@ -40,13 +41,18 @@ export function createMarkup(films) {
       }
     )
     .join('');
-
-  if (refsInputPlace) refsInputPlace.insertAdjacentHTML('beforeend', markup);
+      return markup
+  // if (refsInputPlace) refsInputPlace.insertAdjacentHTML('beforeend', markup);
 }
+export function insertMarkup(inputPlace,markup){
+  if(inputPlace){
+    inputPlace.innerHTML=markup
+  }
 
-filmList.addEventListener('click', event => {
-  const li = event.target.closest('.card-item');
+}
+// filmList.addEventListener('click', event => {
+//   const li = event.target.closest('.card-item');
 
-  const movieId = li.getAttribute('data-id');
-  openModalAboutFilm(movieId);
-});
+//   const movieId = li.getAttribute('data-id');
+//   openModalAboutFilm(movieId);
+// });
