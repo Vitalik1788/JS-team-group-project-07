@@ -24,8 +24,8 @@ const cardHandler = new CardHandler();
 
 export async function showWeeklyTrends() {
   cardHandler.setCurrentAmount();
-  if (cardHandler.prevAmount === cardHandler.currentAmount) {
-    const numMovies = cardHandler.currentAmount;
+  if (cardHandler.prevAmount === cardHandler.currentAmount) return
+  const numMovies = cardHandler.currentAmount;
     try {
       const { data } = await getTrendyFilms();
       const films = data.results.slice(0, numMovies);
@@ -43,6 +43,5 @@ export async function showWeeklyTrends() {
       
       onError(error);
     }
-  }
 }
 
