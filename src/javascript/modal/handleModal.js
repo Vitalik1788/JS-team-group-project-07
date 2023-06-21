@@ -1,12 +1,10 @@
 import handleBackground from './handleBackground';
 
-const refs = {
-  modal: document.querySelector('.modal__backdrop'),
-};
+const modal = document.querySelector('.modal__backdrop');
 
 window.addEventListener('keydown', e => {
   if (e.code === 'KeyM') {
-    refs.modal.classList.toggle('modal__backdrop--hide');
+    modal.classList.toggle('modal__backdrop--hide');
     handleBackground();
   }
 });
