@@ -20,6 +20,10 @@
   backdrop-filter: blur(10px);
 }
 
+.modal__backdrop--hide {
+  display: none;
+}
+
 .modal__container {
   position: relative;
 
