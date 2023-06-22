@@ -8,5 +8,6 @@ import './javascript/hero/hero';
 import './javascript/weekly-trends/weekly-trends-main';
 import './javascript/upcoming/upcoming';
 import './javascript/modal/modal-trailer';
+import './javascript/modal/handleModal';
 import './javascript/global-listener';
 import './javascript/scroll-up';
