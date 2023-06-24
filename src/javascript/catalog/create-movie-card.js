@@ -1,4 +1,3 @@
-import { refs } from './refs';
 import defaultImg from '../../images/default.jpg';
 import starsRating from '../stars-rating';
 import { validateGenres } from '../weekly-trends/weekly-trends-genres';
@@ -7,7 +6,7 @@ import { openModalAboutFilm } from '../modal/movieModal';
 export async function createMovieCard(data) {
   const genresData = JSON.parse(localStorage.getItem('genres'));
 
-  const markupPromises = data.results.map(async data => {
+  const markupPromises = data.map(data => {
     const {
       poster_path,
       id,
@@ -46,10 +45,6 @@ export async function createMovieCard(data) {
       </li>`;
   });
 
-  const markup = await Promise.all(markupPromises);
-
-  refs.catalogList.innerHTML = markup.join('');
-
   const filmList = document.querySelector('.listListener');
 
   filmList.addEventListener('click', event => {
@@ -57,4 +52,6 @@ export async function createMovieCard(data) {
     const movieId = li.getAttribute('data-id');
     openModalAboutFilm(movieId);
   });
+
+  return markupPromises;
 }

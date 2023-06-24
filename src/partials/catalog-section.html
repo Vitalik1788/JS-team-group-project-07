@@ -7,7 +7,11 @@
         class="search-input"
         placeholder="Search"
       />
-      <button type="button" class="cancel-button" aria-label="Clear input area">
+      <button
+        type="button"
+        class="cancel-button is-hidden"
+        aria-label="Clear input area"
+      >
         <svg class="cancel-icon">
           <use href="./images/sprite-catalog.svg#icon-cancel"></use>
         </svg>
@@ -19,7 +23,7 @@
       </button>
     </form>
 
-    <div class="error-container"></div>
+    <div class="error-container is-hidden"></div>
 
     <ul class="movie-list listListener" id="movieList"></ul>
 
@@ -29,9 +33,7 @@
           <use href="./images/sprite-catalog.svg#icon-arrow"></use>
         </svg>
       </button>
-      <ul class="pagination-pages-list">
-  
-      </ul>
+      <ul class="pagination-pages-list"></ul>
       <button class="next-button arrow-button" type="button">
         <svg class="arrow-right-icon">
           <use href="./images/sprite-catalog.svg#icon-arrow"></use>
