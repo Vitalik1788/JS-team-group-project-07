@@ -11,23 +11,23 @@ export async function createPagination(query, data) {
     itemsPerPage: 20,
     visiblePages: 3,
     page: 1,
-    centerAlign: false,
+    centerAlign: true,
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
     template: {
-      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      page: '<a href="#" class="pagination-button">{{page}}</a>',
       currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        '<strong class="pagination-button is-active">{{page}}</strong>',
       moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
+        '<a href="#" class="arrow-button tui-{{type}}" style="border:none">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
         '</a>',
       disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}}" style="border:none; pointer-events: none;">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
         '</span>',
       moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip" style="border:none; pointer-events: none;">' +
         '<span class="tui-ico-ellip">...</span>' +
         '</a>',
     },

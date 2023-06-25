@@ -280,6 +280,7 @@ ul {
     font-weight: 400;
     font-size: 10px;
     line-height: 1;
+    text-decoration: none;
     border-radius: 50%;
     background: #111111;
     border: 1px solid;
