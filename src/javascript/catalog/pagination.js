@@ -27,7 +27,7 @@ export async function createPagination(query, data) {
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
         '</span>',
       moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip" style="border:none; pointer-events: none;">' +
+        '<a href="#" class="tui-{{type}}-is-ellip" style="border:none; position: relative; bottom: 25%; padding: 6px;">' +
         '<span class="tui-ico-ellip">...</span>' +
         '</a>',
     },
