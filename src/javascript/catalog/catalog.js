@@ -1,20 +1,16 @@
-// Імпорти
 import { refs } from './refs';
 import { getCatalogMovies } from './api_service';
 import { errorMarkup } from './create-error-markup';
 import { createMovieCard } from './create-movie-card';
+import { createPagination } from './pagination';
 
 const {
   searchForm,
   searchInput,
   catalogList,
   errorContainer,
-  searchBtn,
   cancelBtn,
   paginationContainer,
-  paginationButton,
-  nextPageBtn,
-  prevPageBtn,
 } = refs;
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -32,12 +28,9 @@ async function handleCatalogSection(query) {
   try {
     if (query === '') return updateErrorMarkup(errorMarkup());
 
-    const catalogMovies = await getCatalogMovies(query);
-
-    if (catalogMovies.length === 0) return updateErrorMarkup(errorMarkup());
-
+    const catalogMovies = await getCatalogMovies(query, 1);
+    createPagination(query, catalogMovies);
     const movies = await createMovieCard(catalogMovies);
-
     updateCatalogMarkup(movies);
 
     if (query && !errorContainer.classList.contains('is-hidden'))
@@ -47,7 +40,7 @@ async function handleCatalogSection(query) {
   }
 }
 
-function updateCatalogMarkup(markup = '') {
+export function updateCatalogMarkup(markup = '') {
   catalogList.innerHTML = markup.join('');
 }
 

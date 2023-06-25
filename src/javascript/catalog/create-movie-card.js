@@ -6,7 +6,7 @@ import { openModalAboutFilm } from '../modal/movieModal';
 export async function createMovieCard(data) {
   const genresData = JSON.parse(localStorage.getItem('genres'));
 
-  const markupPromises = data.map(data => {
+  const markupPromises = data.results.map(data => {
     const {
       poster_path,
       id,
@@ -38,7 +38,7 @@ export async function createMovieCard(data) {
       voteAverage: vote_average,
       isHero: false,
     })}</div>            
-      <!-- <span class="film-rating">${vote_average.toFixed(1)}</span> -->
+      <!-- <span class="film-rating">${vote_average}</span> -->
             </div>
           </div>
         </div>
