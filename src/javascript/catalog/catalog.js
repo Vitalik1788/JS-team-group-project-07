@@ -1,9 +1,11 @@
 import { refs } from './refs';
-// import { getCatalogMovies } from './api_service';
 import { getTrendyFilms, getSearchedMovies } from '../api-service/api-service';
 import { createErrorMarkup } from './create-error-markup';
-import { createMovieCard } from './create-movie-card';
 import { createPagination } from './pagination';
+import {
+  createMarkup,
+  insertMarkup,
+} from '../weekly-trends/weekly-trends-markup';
 
 const {
   searchForm,
@@ -19,17 +21,15 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 searchForm.addEventListener('submit', onSubmit);
-cancelBtn.addEventListener('click', clearInputValue);
 
 async function handleCatalogTrends() {
   try {
     const catalogMovies = await getTrendyFilms();
     createPagination('', catalogMovies);
 
-    // console.log(catalogMovies);
-    const movies = await createMovieCard(catalogMovies);
+    const movies = createMarkup(catalogMovies.results);
 
-    updateCatalogMarkup(movies);
+    insertMarkup(catalogList, movies);
   } catch (error) {
     console.error('error:', error);
   }
@@ -40,22 +40,10 @@ async function handleSearchedMovies(query) {
     const searchedMovies = await getSearchedMovies(query);
     createPagination('', searchedMovies);
 
-    const movies = await createMovieCard(searchedMovies);
+    const movies = createMarkup(searchedMovies.results);
 
-    updateCatalogMarkup(movies);
+    insertMarkup(catalogList, movies);
   } catch (error) {}
-}
-
-export function updateCatalogMarkup(markup = '') {
-  catalogList.innerHTML = markup.join('');
-}
-
-function updateErrorMarkup(markup = '') {
-  errorContainer.innerHTML = markup;
-
-  toggleErrorContainer();
-
-  clearCatalogList();
 }
 
 function getQuery() {
@@ -63,50 +51,49 @@ function getQuery() {
   return query;
 }
 
-function handleError(error) {
-  clearCatalogList();
-
-  createErrorMarkup();
-  console.error('An error occurred:', error);
-}
-
 function onSubmit(e) {
   e.preventDefault();
 
   handleSearchedMovies(getQuery());
 }
+// function handleError(error) {
+//   clearCatalogList();
 
-function handleEmptyQuery() {
-  clearCatalogList();
+//   createErrorMarkup();
+//   console.error('An error occurred:', error);
+// }
 
-  toggleErrorContainer();
-  paginationContainer.classList.add('is-hidden');
-  createErrorMarkup();
-}
+// function handleEmptyQuery() {
+//   clearCatalogList();
 
-function onInput(e) {
-  if (e.currentTarget.value.trim()) return toggleCancelButton();
+//   toggleErrorContainer();
+//   paginationContainer.classList.add('is-hidden');
+//   createErrorMarkup();
+// }
 
-  toggleCancelButton();
-}
+// function onInput(e) {
+//   if (e.currentTarget.value.trim()) return toggleCancelButton();
 
-function clearInputValue() {
-  toggleCancelButton();
-  searchInput.value = '';
-}
+//   toggleCancelButton();
+// }
 
-function toggleErrorContainer() {
-  errorContainer.classList.toggle('is-hidden');
-}
+// function clearInputValue() {
+//   toggleCancelButton();
+//   searchInput.value = '';
+// }
 
-function toggleCancelButton() {
-  cancelBtn.classList.toggle('is-hidden');
-}
+// function toggleErrorContainer() {
+//   errorContainer.classList.toggle('is-hidden');
+// }
 
-function hidePagination() {
-  paginationContainer.classList.remove('is-hidden');
-}
+// function toggleCancelButton() {
+//   cancelBtn.classList.toggle('is-hidden');
+// }
 
-function clearCatalogList() {
-  catalogList.innerHTML = '';
-}
+// function hidePagination() {
+//   paginationContainer.classList.remove('is-hidden');
+// }
+
+// function clearCatalogList() {
+//   catalogList.innerHTML = '';
+// }

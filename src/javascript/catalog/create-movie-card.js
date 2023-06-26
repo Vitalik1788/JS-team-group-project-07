@@ -3,7 +3,7 @@ import starsRating from '../stars-rating';
 import { validateGenres } from '../weekly-trends/weekly-trends-genres';
 import { openModalAboutFilm } from '../modal/movieModal';
 
-export async function createMovieCard(data) {
+export function createMovieCard(data) {
   const genresData = JSON.parse(localStorage.getItem('genres'));
 
   const markupPromises = data.results.map(data => {

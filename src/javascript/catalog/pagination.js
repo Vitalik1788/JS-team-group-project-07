@@ -1,8 +1,13 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { getTrendyFilms, getSearchedMovies } from '../api-service/api-service';
-import { createMovieCard } from './create-movie-card';
-import { updateCatalogMarkup } from './catalog';
+import {
+  createMarkup,
+  insertMarkup,
+} from '../weekly-trends/weekly-trends-markup';
+import { refs } from './refs';
+
+const { catalogList } = refs;
 
 export async function createPagination(query, data) {
   const container = document.getElementById('pagination');
@@ -41,14 +46,14 @@ export function setPage(paginate, query) {
     try {
       if (query === '') {
         const catalogMovies = await getTrendyFilms(page);
-        const trendsMovies = await createMovieCard(catalogMovies);
-        updateCatalogMarkup(trendsMovies);
+        const trendsMovies = createMarkup(catalogMovies.results);
+        insertMarkup(catalogList, trendsMovies);
         return;
       }
 
       const catalogMovies = await getSearchedMovies(query, page);
-      const searchedMovies = await createMovieCard(catalogMovies);
-      updateCatalogMarkup(searchedMovies);
+      const searchedMovies = createMarkup(catalogMovies.results);
+      insertMarkup(catalogList, searchedMovies);
     } catch (error) {
       console.error('An error occurred:', error);
     }
