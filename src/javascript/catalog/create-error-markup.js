@@ -18,7 +18,7 @@
 //   errorMarkupCreated = true;
 // };
 
-export function errorMarkup() {
+export function createErrorMarkup() {
   return `<p class="error-information">OOPS...</p>
   <p class="error-information">We are very sorry!</p>
   <p class="error-information">

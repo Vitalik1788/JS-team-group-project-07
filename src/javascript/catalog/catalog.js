@@ -1,7 +1,7 @@
 import { refs } from './refs';
 // import { getCatalogMovies } from './api_service';
 import { getTrendyFilms, getSearchedMovies } from '../api-service/api-service';
-import { errorMarkup } from './create-error-markup';
+import { createErrorMarkup } from './create-error-markup';
 import { createMovieCard } from './create-movie-card';
 import { createPagination } from './pagination';
 
@@ -24,6 +24,7 @@ cancelBtn.addEventListener('click', clearInputValue);
 async function handleCatalogTrends() {
   try {
     const catalogMovies = await getTrendyFilms();
+    createPagination('', catalogMovies);
 
     // console.log(catalogMovies);
     const movies = await createMovieCard(catalogMovies);
@@ -36,7 +37,8 @@ async function handleCatalogTrends() {
 
 async function handleSearchedMovies(query) {
   try {
-    const searchedMovies = await getSearchedMovies(query, 1);
+    const searchedMovies = await getSearchedMovies(query);
+    createPagination('', searchedMovies);
 
     const movies = await createMovieCard(searchedMovies);
 
