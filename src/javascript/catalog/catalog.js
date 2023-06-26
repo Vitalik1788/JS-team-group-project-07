@@ -1,5 +1,6 @@
 import { refs } from './refs';
-import { getCatalogMovies } from './api_service';
+// import { getCatalogMovies } from './api_service';
+import { getTrendyFilms, getSearchedMovies } from '../api-service/api-service';
 import { errorMarkup } from './create-error-markup';
 import { createMovieCard } from './create-movie-card';
 import { createPagination } from './pagination';
@@ -14,30 +15,33 @@ const {
 } = refs;
 
 window.addEventListener('DOMContentLoaded', () => {
-  handleCatalogSection();
+  handleCatalogTrends();
 });
 
 searchForm.addEventListener('submit', onSubmit);
 cancelBtn.addEventListener('click', clearInputValue);
-searchInput.addEventListener('input', () => {
-  getQuery;
-  onInput;
-});
 
-async function handleCatalogSection(query) {
+async function handleCatalogTrends() {
   try {
-    if (query === '') return updateErrorMarkup(errorMarkup());
+    const catalogMovies = await getTrendyFilms();
 
-    const catalogMovies = await getCatalogMovies(query, 1);
-    createPagination(query, catalogMovies);
+    // console.log(catalogMovies);
     const movies = await createMovieCard(catalogMovies);
-    updateCatalogMarkup(movies);
 
-    if (query && !errorContainer.classList.contains('is-hidden'))
-      return toggleErrorContainer();
+    updateCatalogMarkup(movies);
   } catch (error) {
     console.error('error:', error);
   }
+}
+
+async function handleSearchedMovies(query) {
+  try {
+    const searchedMovies = await getSearchedMovies(query, 1);
+
+    const movies = await createMovieCard(searchedMovies);
+
+    updateCatalogMarkup(movies);
+  } catch (error) {}
 }
 
 export function updateCatalogMarkup(markup = '') {
@@ -67,7 +71,7 @@ function handleError(error) {
 function onSubmit(e) {
   e.preventDefault();
 
-  handleCatalogSection(getQuery());
+  handleSearchedMovies(getQuery());
 }
 
 function handleEmptyQuery() {
