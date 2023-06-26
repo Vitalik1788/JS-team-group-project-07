@@ -13,7 +13,7 @@ const {
   catalogList,
   errorContainer,
   cancelBtn,
-  paginationContainer,
+  pagination,
 } = refs;
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -21,6 +21,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 searchForm.addEventListener('submit', onSubmit);
+searchInput.addEventListener('input', onInput);
+cancelBtn.addEventListener('click', onCancelBtn);
 
 async function handleCatalogTrends() {
   try {
@@ -31,14 +33,25 @@ async function handleCatalogTrends() {
 
     insertMarkup(catalogList, movies);
   } catch (error) {
-    console.error('error:', error);
+    handleErrorMarkup(errorContainer, createErrorMarkup());
   }
 }
 
 async function handleSearchedMovies(query) {
   try {
+    if (query === '')
+      return handleErrorMarkup(errorContainer, createErrorMarkup());
+
     const searchedMovies = await getSearchedMovies(query);
+
+    // console.log(searchedMovies.total_pages );
+
     createPagination('', searchedMovies);
+
+    if (searchedMovies.results.length === 0)
+      return handleErrorMarkup(errorContainer, createErrorMarkup());
+
+    hideError();
 
     const movies = createMarkup(searchedMovies.results);
 
@@ -52,48 +65,44 @@ function getQuery() {
 }
 
 function onSubmit(e) {
+  const searchInput = e.target.children[0];
   e.preventDefault();
 
   handleSearchedMovies(getQuery());
+
+  searchInput.value = '';
+  cancelBtn.classList.add('is-hidden');
 }
-// function handleError(error) {
-//   clearCatalogList();
 
-//   createErrorMarkup();
-//   console.error('An error occurred:', error);
-// }
+function handleErrorMarkup(inputPlace, markup = '') {
+  showError();
 
-// function handleEmptyQuery() {
-//   clearCatalogList();
+  inputPlace.innerHTML = markup;
+}
 
-//   toggleErrorContainer();
-//   paginationContainer.classList.add('is-hidden');
-//   createErrorMarkup();
-// }
+function showError() {
+  errorContainer.classList.remove('is-hidden');
 
-// function onInput(e) {
-//   if (e.currentTarget.value.trim()) return toggleCancelButton();
+  catalogList.innerHTML = '';
 
-//   toggleCancelButton();
-// }
+  pagination.classList.add('is-hidden');
+}
 
-// function clearInputValue() {
-//   toggleCancelButton();
-//   searchInput.value = '';
-// }
+function hideError() {
+  errorContainer.classList.add('is-hidden');
 
-// function toggleErrorContainer() {
-//   errorContainer.classList.toggle('is-hidden');
-// }
+  pagination.classList.remove('is-hidden');
+}
 
-// function toggleCancelButton() {
-//   cancelBtn.classList.toggle('is-hidden');
-// }
+function onInput(e) {
+  const input = e.currentTarget;
 
-// function hidePagination() {
-//   paginationContainer.classList.remove('is-hidden');
-// }
+  if (input.value !== '') return cancelBtn.classList.remove('is-hidden');
+  cancelBtn.classList.add('is-hidden');
+}
 
-// function clearCatalogList() {
-//   catalogList.innerHTML = '';
-// }
+function onCancelBtn() {
+  searchInput.value = '';
+
+  cancelBtn.classList.add('is-hidden');
+}

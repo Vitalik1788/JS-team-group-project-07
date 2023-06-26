@@ -11,6 +11,7 @@ const { catalogList } = refs;
 
 export async function createPagination(query, data) {
   const container = document.getElementById('pagination');
+  if (data.total_pages === 1) return container.classList.add('is-hidden');
   const options = {
     totalItems: data.total_results,
     itemsPerPage: 20,
