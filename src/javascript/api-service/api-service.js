@@ -12,15 +12,15 @@ export async function getGenresData() {
 
 // Get weekly trends
 
-const TrendsMoviesApi = axios.create({
+const tmdbApiInstance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   params: { language: 'en-US', page: '1', api_key: API_KEY },
 });
 
-export async function getTrendyFilms(page) {
+export async function getTrendyFilms(page = 1) {
   let url = '/trending/all/week';
 
-  const response = await TrendsMoviesApi.get(url, {
+  const response = await tmdbApiInstance.get(url, {
     params: {
       page,
     },
@@ -31,16 +31,16 @@ export async function getTrendyFilms(page) {
 
 // Get searched catalog movies
 
-const catalogSearchedMoviesApi = axios.create({
+const tmdbApiSearchedInstance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   params: { language: 'en-US', page: '1', query: '' },
   headers: { Authorization: `Bearer ${API_BAERER}` },
 });
 
-export async function getSearchedMovies(query, page) {
+export async function getSearchedMovies(query = '', page = 1) {
   let url = '/search/movie';
 
-  const response = await catalogSearchedMoviesApi.get(url, {
+  const response = await tmdbApiSearchedInstance.get(url, {
     params: {
       query,
       page,

@@ -5,5 +5,5 @@ export const refs = {
   errorContainer: document.querySelector('.error-container'),
   searchBtn: document.querySelector('.search-button'),
   cancelBtn: document.querySelector('.cancel-button'),
-  pagination: document.getElementById('pagination'),
+  paginationContainer: document.getElementById('pagination'),
 };

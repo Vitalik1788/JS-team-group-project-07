@@ -1,7 +1,10 @@
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+
 import { refs } from './refs';
 import { getTrendyFilms, getSearchedMovies } from '../api-service/api-service';
 import { createErrorMarkup } from './create-error-markup';
-import { createPagination } from './pagination';
+import { setPage, options } from './pagination';
 import {
   createMarkup,
   insertMarkup,
@@ -15,8 +18,10 @@ const {
   catalogList,
   errorContainer,
   cancelBtn,
-  pagination,
+  paginationContainer,
 } = refs;
+
+const paginationInstance = new Pagination(paginationContainer, options);
 
 // Слухачі
 
@@ -28,14 +33,16 @@ searchForm.addEventListener('submit', onSubmit);
 
 searchInput.addEventListener('input', onInput);
 
-cancelBtn.addEventListener('click', onCancelBtn);
+cancelBtn.addEventListener('click', onCancelBtnClick);
 
 // Запит на сервер: Тренди тижня => Пошук
 
 async function handleCatalogTrends() {
   try {
     const catalogMovies = await getTrendyFilms();
-    createPagination('', catalogMovies);
+
+    paginationInstance.reset(catalogMovies.total_results);
+    setPage(paginationInstance, '');
 
     const movies = createMarkup(catalogMovies.results);
 
@@ -47,19 +54,25 @@ async function handleCatalogTrends() {
 
 async function handleSearchedMovies(query) {
   try {
-    if (query === '')
-      return handleErrorMarkup(errorContainer, createErrorMarkup());
-
     const searchedMovies = await getSearchedMovies(query);
 
-    // console.log(searchedMovies.total_pages );
+    // if (searchedMovies.total_results <= 20) {
+    //   paginationContainer.classList.add('is-hidden');
+    //   console.log(paginationContainer.classList);
+    // }
 
-    createPagination(query, searchedMovies);
+    paginationInstance.reset(searchedMovies.total_results);
+    setPage(paginationInstance, query);
 
-    if (searchedMovies.results.length === 0)
-      return handleErrorMarkup(errorContainer, createErrorMarkup());
+    if (searchedMovies.results.length === 0 || query === '') {
+      const errorMarkup = createErrorMarkup();
 
-    hideError();
+      insertMarkup(errorContainer, errorMarkup);
+      showErrorMarkup();
+      return;
+    }
+
+    hideErrorMarkup();
 
     const movies = createMarkup(searchedMovies.results);
 
@@ -74,40 +87,33 @@ async function handleSearchedMovies(query) {
 // Обробка сабміту форми, отримання query
 
 function onSubmit(e) {
-  const searchFormInput = e.target.children[0];
   e.preventDefault();
+  const query = e.target.children.search.value.trim();
 
-  handleSearchedMovies(getQuery());
+  handleSearchedMovies(query);
 
-  searchFormInput.value = '';
+  clearSearchInput();
+}
+
+function clearSearchInput() {
+  searchInput.value = '';
   cancelBtn.classList.add('is-hidden');
 }
 
-function getQuery() {
-  const query = searchInput.value.trim();
-  return query;
-}
+// Обробка помилки: приховання та показ
 
-// Обробка помилки: Відмалювання, приховання та показ
-
-function handleErrorMarkup(inputPlace, markup = '') {
-  showError();
-
-  inputPlace.innerHTML = markup;
-}
-
-function showError() {
+function showErrorMarkup() {
   errorContainer.classList.remove('is-hidden');
 
   catalogList.innerHTML = '';
 
-  pagination.classList.add('is-hidden');
+  paginationContainer.classList.add('is-hidden');
 }
 
-function hideError() {
+function hideErrorMarkup() {
   errorContainer.classList.add('is-hidden');
 
-  pagination.classList.remove('is-hidden');
+  paginationContainer.classList.remove('is-hidden');
 }
 
 // Cancel Button
@@ -119,7 +125,7 @@ function onInput(e) {
   cancelBtn.classList.add('is-hidden');
 }
 
-function onCancelBtn() {
+function onCancelBtnClick() {
   searchInput.value = '';
 
   cancelBtn.classList.add('is-hidden');
