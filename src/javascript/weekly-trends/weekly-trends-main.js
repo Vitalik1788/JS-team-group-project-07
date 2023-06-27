@@ -19,7 +19,7 @@ export async function showWeeklyTrends() {
 
   const numMovies = cardHandler.currentAmount;
   try {
-    const { data } = await getTrendyFilms();
+    const data = await getTrendyFilms();
     const films = data.results.slice(0, numMovies);
     const markup = createMarkup(films);
     //insert markup

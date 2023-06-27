@@ -2,12 +2,17 @@
   <div class="main-container">
     <form class="search-form" id="movieSearchForm">
       <input
+        name="search"
         type="text"
         id="movieInput"
         class="search-input"
-        placeholder="Search"
+        placeholder="Film"
       />
-      <button type="button" class="cancel-button" aria-label="Clear input area">
+      <button
+        type="button"
+        class="cancel-button is-hidden"
+        aria-label="Clear input area"
+      >
         <svg class="cancel-icon">
           <use href="./images/sprite-catalog.svg#icon-cancel"></use>
         </svg>
@@ -19,24 +24,10 @@
       </button>
     </form>
 
-    <div class="error-container"></div>
+    <div class="error-container is-hidden"></div>
 
     <ul class="movie-list listListener" id="movieList"></ul>
 
-    <div class="pagination-wrapper">
-      <button class="prev-button arrow-button" type="button">
-        <svg class="arrow-left-icon">
-          <use href="./images/sprite-catalog.svg#icon-arrow"></use>
-        </svg>
-      </button>
-      <ul class="pagination-pages-list">
-  
-      </ul>
-      <button class="next-button arrow-button" type="button">
-        <svg class="arrow-right-icon">
-          <use href="./images/sprite-catalog.svg#icon-arrow"></use>
-        </svg>
-      </button>
-    </div>
+    <div id="pagination" class="tui-pagination pagination-wrapper"></div>
   </div>
 </section>

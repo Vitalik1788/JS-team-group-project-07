@@ -1,44 +1,54 @@
-export default class Pagination {
-  constructor() {
-    this.currentPage = 1;
-    this.totalPages = 0;
-    this.buttonsContainer = document.getElementById('buttons-container');
+import { getTrendyFilms, getSearchedMovies } from '../api-service/api-service';
+import {
+  createMarkup,
+  insertMarkup,
+} from '../weekly-trends/weekly-trends-markup';
+import { refs } from './refs';
 
-    // Создание кнопок
-    this.createButtons();
+const { catalogList } = refs;
 
-    // Установка обработчика клика на кнопку "Далее"
-    this.nextButton.addEventListener(
-      'click',
-      this.onNextButtonClick.bind(this)
-    );
-  }
+export const options = {
+  totalItems: 20,
+  itemsPerPage: 20,
+  visiblePages: 3,
+  page: 1,
+  centerAlign: true,
+  firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+  template: {
+    page: '<a href="#" class="pagination-button">{{page}}</a>',
+    currentPage:
+      '<strong class="pagination-button is-active">{{page}}</strong>',
+    moveButton:
+      '<a href="#" class="arrow-button tui-{{type}}" style="border:none">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</a>',
+    disabledMoveButton:
+      '<span class="tui-page-btn tui-is-disabled tui-{{type}}" style="border:none; pointer-events: none;">' +
+      '<span class="tui-ico-{{type}}">{{type}}</span>' +
+      '</span>',
+    moreButton:
+      '<a href="#" class="tui-{{type}}-is-ellip" style="border:none; position: relative; bottom: 25%; padding: 6px;">' +
+      '<span class="tui-ico-ellip">...</span>' +
+      '</a>',
+  },
+};
 
-  createButtons() {
-    this.prevButton = this.createButton('prev', 'Предыдущая');
-    this.nextButton = this.createButton('next', 'Далее');
-    this.pageButton = this.createButton('page', this.currentPage);
+export function setPage(paginate, query) {
+  paginate.on('afterMove', async ({ page = 1 }) => {
+    try {
+      if (query === '') {
+        const catalogMovies = await getTrendyFilms(page);
+        const trendsMovies = createMarkup(catalogMovies.results);
+        insertMarkup(catalogList, trendsMovies);
+        return;
+      }
 
-    // Добавление кнопок в контейнер
-    this.buttonsContainer.appendChild(this.prevButton);
-    this.buttonsContainer.appendChild(this.pageButton);
-    this.buttonsContainer.appendChild(this.nextButton);
-  }
-
-  createButton(className, text) {
-    const button = document.createElement('button');
-    button.className = className;
-    button.textContent = text;
-    return button;
-  }
-
-  updatePageNumber() {
-    this.pageButton.textContent = this.currentPage;
-  }
-
-  onNextButtonClick() {
-    this.currentPage++;
-    this.updatePageNumber();
-    apiService.getMovies(this.currentPage);
-  }
+      const catalogMovies = await getSearchedMovies(query, page);
+      const searchedMovies = createMarkup(catalogMovies.results);
+      insertMarkup(catalogList, searchedMovies);
+    } catch (error) {
+      console.error('An error occurred:', error);
+    }
+  });
 }
