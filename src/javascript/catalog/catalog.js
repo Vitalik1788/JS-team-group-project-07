@@ -7,6 +7,8 @@ import {
   insertMarkup,
 } from '../weekly-trends/weekly-trends-markup';
 
+// Рефи
+
 const {
   searchForm,
   searchInput,
@@ -16,13 +18,19 @@ const {
   pagination,
 } = refs;
 
+// Слухачі
+
 window.addEventListener('DOMContentLoaded', () => {
   handleCatalogTrends();
 });
 
 searchForm.addEventListener('submit', onSubmit);
+
 searchInput.addEventListener('input', onInput);
+
 cancelBtn.addEventListener('click', onCancelBtn);
+
+// Запит на сервер: Тренди тижня => Пошук
 
 async function handleCatalogTrends() {
   try {
@@ -33,7 +41,7 @@ async function handleCatalogTrends() {
 
     insertMarkup(catalogList, movies);
   } catch (error) {
-    handleErrorMarkup(errorContainer, createErrorMarkup());
+    console.error(error);
   }
 }
 
@@ -46,7 +54,7 @@ async function handleSearchedMovies(query) {
 
     // console.log(searchedMovies.total_pages );
 
-    createPagination('', searchedMovies);
+    createPagination(query, searchedMovies);
 
     if (searchedMovies.results.length === 0)
       return handleErrorMarkup(errorContainer, createErrorMarkup());
@@ -56,7 +64,23 @@ async function handleSearchedMovies(query) {
     const movies = createMarkup(searchedMovies.results);
 
     insertMarkup(catalogList, movies);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// =========== Допоміжні функії =========== //
+
+// Обробка сабміту форми, отримання query
+
+function onSubmit(e) {
+  const searchFormInput = e.target.children[0];
+  e.preventDefault();
+
+  handleSearchedMovies(getQuery());
+
+  searchFormInput.value = '';
+  cancelBtn.classList.add('is-hidden');
 }
 
 function getQuery() {
@@ -64,15 +88,7 @@ function getQuery() {
   return query;
 }
 
-function onSubmit(e) {
-  const searchInput = e.target.children[0];
-  e.preventDefault();
-
-  handleSearchedMovies(getQuery());
-
-  searchInput.value = '';
-  cancelBtn.classList.add('is-hidden');
-}
+// Обробка помилки: Відмалювання, приховання та показ
 
 function handleErrorMarkup(inputPlace, markup = '') {
   showError();
@@ -93,6 +109,8 @@ function hideError() {
 
   pagination.classList.remove('is-hidden');
 }
+
+// Cancel Button
 
 function onInput(e) {
   const input = e.currentTarget;

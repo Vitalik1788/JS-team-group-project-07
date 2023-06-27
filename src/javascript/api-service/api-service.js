@@ -15,7 +15,6 @@ export async function getGenresData() {
 const TrendsMoviesApi = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   params: { language: 'en-US', page: '1', api_key: API_KEY },
-  // headers: { Authorization: `Bearer ${API_BAERER}` },
 });
 
 export async function getTrendyFilms(page) {
